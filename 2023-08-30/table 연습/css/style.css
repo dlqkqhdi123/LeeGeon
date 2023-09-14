@@ -1,0 +1,22 @@
+table {
+	border: 1px solid #222;
+	border-collapse: collapse;
+}
+
+table th {
+	border-bottom: 1px solid #222;
+}
+
+table td {
+	border-bottom: 1px solid #222;;
+}
+table tbody td:first-child {
+	border-right: 1px solid #222;
+}
+table tbody th:first-child {
+	border-right: 1px solid #222;
+}
+
+table td {
+	padding: 10px 20px;
+]

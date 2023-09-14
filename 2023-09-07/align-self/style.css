@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 400px;
+    height: 400px;
+    max-width: 100%;
+    padding: 10px;
+    border-radius:120px ;
+    object-fit: cover;
+}
+div{
+    justify-content: space-between;
+}
+.body{
+    display: flex;
+   justify-content:space-between ; 
+
+}
+.body > .body-img{
+    justify-content: center;
+}
+
+
+.start{
+    align-self: flex-end;
+}
+
+img:hover{
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+    
+}
+
+
+.badge{
+    position: absolute;
+    background-color: aqua;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    
+}
+

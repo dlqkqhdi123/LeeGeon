@@ -1,0 +1,81 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*  */
+.container{
+    background-color: gray;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .inner{
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.gallery-item h2{
+    font-size: 16px;
+}
+.gallery-item p{
+    font-size: 14px;
+}
+.container .inner .gallery{
+    display: flex;
+    gap: 1rem;
+}
+.container .inner .gallery .gallery-item{
+    flex-basis: calc(100%/ 3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.container .inner .gallery .gallery-item .gallery-image{
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    position: relative;
+    
+}
+.gallery-image span{
+    position: absolute;
+    background-color: hsla(0, 50%, 50%, 0.8);
+    width: 100%;
+    padding: 0.5rem;
+    bottom: 0;
+    left: 0;
+    color: white;
+    /* opacity: 0; */
+    /* display: none; */
+    /* 오파시티 디스플레이 논 트랜스폼 트랜스레이트와이 다 적용가능 */
+    transition: all 1s ease;
+    transform: translateY(100%);
+}
+.gallery-image:hover span{
+    /* opacity 투명도 0~1로 제어가능 */
+    /* opacity: 1; */
+    transform: translateY(0%);
+    /* visibility: hidden; */
+    /* visibility: hidden; 가시성 유무를 표현한다 */
+    /* display: block; */
+}
+.container .inner .btn{
+    text-decoration: none;
+    color: red;
+    border: 1px solid red;
+    padding: 0.75rem 0;
+    display: block;
+    width: 300px;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+}

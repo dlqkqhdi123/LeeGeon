@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LOTTERIACHAB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIACHAB.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.title {
+    font-family: 'Jua', sans-serif;
+    font-size: 2rem;
+    /* 글자의 두께 조절하는 속성 */
+    font-weight: 100;
+    /* 글자에 꾸밈을 넣는 속성 */
+    text-decoration: underline;
+    /* text-decoration: dashed;
+    text-decoration: line-through; */
+    /* 자간을 조절하는 속성 */
+    letter-spacing: -0.05px;
+    /* 행간을 조절하는 특성 */
+    line-height: 1.5;
+    /* 줄바꿈없이 계속 나열하는 방식 */
+    white-space: nowrap;
+}
+
+/* html,body{
+    font-family: 'Jua', sans-serif;
+} */
+
+.sba {
+    font-family: 'SBAggroB';
+}
+.lotte{
+    font-family: 'LOTTERIACHAB';
+}

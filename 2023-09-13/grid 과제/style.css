@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    height: 100%;
+    display: block;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1fr;
+}
+.grid-item{
+    /* overflow: hidden; */
+    border-radius: 1rem;
+    width: 100%;
+    /* height: 100%; */
+    margin: 0 auto;
+    
+
+}
+@media(min-width:1024px){
+    .grid{grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media(min-width:1200px){
+    .grid{grid-template-columns: repeat(4, 1fr);
+    }
+}

@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Pacifico&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.brand{
+    font-family: 'Pacifico', cursive;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    /* 상하:0, 좌우:auto */
+    margin:0 auto;
+}
+.menu-list{
+    display: flex;
+    list-style: none;
+    
+    gap: 3rem;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

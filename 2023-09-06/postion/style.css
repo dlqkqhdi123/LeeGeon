@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.box{
+    width: 300px;
+    height: 300px;
+    background-color: blue;
+}
+#static{
+    background-color: hsl(180, 50%, 50%);
+    position: static;
+    top: 100px;
+    left: 100px;
+
+}
+#relative{
+    background-color: hsl(180, 50%, 40%);
+    position: relative;
+    top: 100px;
+    left: 500px;
+}
+/* 부모한테 영향 받음 */
+#absolute{
+    background-color: hsl(180, 50%, 30%);
+    position: absolute;
+    top: 2px;
+    left: 300px;
+}
+/* 부모한테 영양 안받음  */
+#fixed{
+    background-color: hsl(180, 50%, 20%);
+    position: fixed;
+    right: 100px;
+}

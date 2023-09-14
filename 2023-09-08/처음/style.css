@@ -1,0 +1,87 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;/*사진 비율 조정할때*/
+
+}
+body{
+    width: 100%;
+    height: 100%;
+    
+}
+.container{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.container.reverse{
+    flex-direction: row-reverse;
+}
+.container .image{
+    flex-basis: 50%;
+    overflow: hidden;
+
+}
+.container .image img{
+    transition: all 0.2s ease;
+}
+.container .content{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;/* 새로 정렬*/
+    justify-content: center;
+    padding: 2rem;
+}
+.container .image:hover img{
+    transform: scale(1.2);
+}
+    
+.container .content h2{
+    font-size: 50px;
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+}
+.container .content h2::before{
+    background-color: gray;
+    position: absolute;
+    bottom: -100%;
+    
+    left: 0;
+    width: 100%;
+    height: 30%;
+    z-index: -1;
+    content:'';
+    transition: all 220ms ease;
+    
+}
+.container .content h2:hover::before{
+    bottom:0;
+}
+.container .content h2::after{
+    background-color: aqua;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    
+    width: 100%;
+    height: 70%;
+    content:'';
+    transition: all 300ms ease;
+    z-index: -2;
+}
+.container .content h2:hover{
+    color: white;
+}
+.container .content h2:hover::after{/*::before, after 스판 대신 슬수있음*/
+    top:0;
+}
+.container .content p{
+    font-size: 30px;
+}

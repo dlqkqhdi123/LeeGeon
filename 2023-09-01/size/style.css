@@ -1,0 +1,39 @@
+#header{
+    font-size: 16px;
+}
+#header > h2{
+    font-size: 2em; 
+}
+.list{
+    font-size: 20px;
+}
+.list li{
+    font-size: 2rem;
+}
+.buttons{
+    font-size: 10px;
+}
+.btn{
+    /* width: 50px; */
+    height: 40px;
+    padding: 0.5rem 1rem;
+    background-color: skyblue;
+    border: 0;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 1rem;
+    color: yellow;
+    cursor:grab;
+    transition: all 0.5s ease;
+}
+
+.btn-primary {
+    background-color: blue;
+}
+.btn:hover{
+    background-color: yellow;
+    color: black;
+}
+.btn:active{
+    background-color: brown;
+}

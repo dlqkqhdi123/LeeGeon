@@ -1,0 +1,13 @@
+.red{
+	color: red;
+	background-color: yellow;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.back{
+	color: skyblue;
+	background-color: yellow;
+	font-size: 32px;
+	font-weight: bold;
+}

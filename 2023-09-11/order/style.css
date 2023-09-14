@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.box{
+    flex-basis: 100%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+/* order는 아무값도 안주면 항상 0을 기본값으로 가지고있다  */
+.box:nth-child(1){
+    background-color: hsl(100, 50%, 50%);
+}
+.box:nth-child(2){
+    background-color: hsl(100, 50%, 60%);
+}
+.box:nth-child(3){
+    background-color: hsl(100, 50%, 70%);
+}
+.box:nth-child(4){
+    background-color: hsl(100, 50%, 80%);
+}
+/* mobile 640px */
+/* table 768/1024px */
+/* desktop-1200, 1440,1920 */
+/* media query 를 안줫을때는 기본적으로 width:0부터 계산하기 시작 */
+/* min-width(최소) table */
+@media(min-width:1000px){
+    .flex > * {
+        /* background-color: black; */
+        color: red;
+    }
+    .box{
+        flex-basis: calc(100%/2);
+    }
+}
+/* min-width(최소)1200px 일때는 3등분 */
+@media(min-width:1200px){
+    .box{
+        flex-basis: calc(100%/3);
+    }
+    .box:nth-child(2){
+        background-color: aqua;
+    }
+}
+@media(min-width:1440px){
+    .box{
+        flex-basis: calc(100%/4);
+    }
+    .box:nth-child(3){
+        background-color: red;
+        color: white;
+    }
+}
+@media(min-width:1800px){
+    .box{
+        flex-basis: calc(100%/1);       
+    }
+    .box:nth-child(1){
+        background-color: red;
+        color: white;
+    }.box:nth-child(2){
+        background-color: red;
+        color: white;
+    }.box:nth-child(3){
+        background-color: red;
+        color: white;
+    }.box:nth-child(4){
+        background-color: red;
+        color: white;
+    }
+    @media(min-width:300px) and (max-with:500px) {
+        .box{
+            background-color: black !important;
+        }
+        
+    }
+    
+    /* @media(orientation:landscape;){
+        .box{
+            background-color: red !important;
+        }
+    } */
+}
+@media(min-width:300px) and (max-width:500px) {
+    .box{
+        background-color: black !important;
+    }
+    
+}

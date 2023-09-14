@@ -1,0 +1,51 @@
+/* ------------------------------
+나중에 참고하려고 남겨놨음
+ul li:nth-child(1)
+ul lli:nth-child(3){
+	background-color: blue;
+	color: yellow;
+}
+-------------------------------*/
+/* 홀수번째를 쓸때는 odd */
+/* 짝수번째를 쓸때는 even */
+ul li:nth-chilld(odd){
+	background-color: red;
+}
+/* 짝수번째 background-color를 blue로 바꿔주세요 */
+
+ul li:nth-child(even) { background-color: blue; }
+ul li:nth-child(odd) { background-color: black; }
+
+ul li { color: yellow; }
+ol li { background-color: yellow; }
+ol li { color: red; }
+
+ol li:nth-child(1) { background-color: black; }
+ol li:nth-child(3) { background-color: green; }
+ol li:nth-child(5) {background-color: pink; }
+
+ul {
+	/* border-width: 3px; */
+	/* border-style: solid; */
+	/* border-style: dashed; */
+	/* border-color: black; */
+	border: 3px solid black;
+	border-radius: 50px;
+	overflow: hidden;
+}
+
+
+ol {
+	border: 5px dashed skyblue;
+	/*--------------------------------
+	border-top-left-radius:20px;
+	border-top-right-radius:50px;
+	border-bottom-left-radius:100px;
+	border-bottom-right-radius:100px;
+	--------------------------------*/
+	/* border-radius: 20px; */
+	overflow: hidden;
+	border-right: 30px solid pink;
+	border-bottom: 50px solid green;
+}
+
