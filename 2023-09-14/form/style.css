@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.form{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+
+}
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    /* border: 1px solid blue; */
+    position: relative;
+    box-shadow: 0 0 0 1px gold;
+}
+.input-wrapper input{
+    padding: 1rem;
+    border: 0;
+}
+.input-wrapper label{
+    position: absolute;
+    left: 8px;
+    top: -18px;
+    background-color: white;
+    padding: 4px 8px;
+
+}
+.input-wrapper input:focus{
+    outline: none;
+    box-shadow: 0 0 0 7px gold;
+}
+button[type="submit"]{
+    padding: 1rem 2rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 0;
+    background-color: aqua;
+    color: black;
+    cursor: pointer;
+}
+button[type="submit"]:active{
+    background-color: black;
+    
+}
