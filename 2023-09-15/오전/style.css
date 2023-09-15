@@ -1,0 +1,131 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    max-height: 25vh;
+    display: flex;
+    
+}
+.inner{
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    background-color: white;
+    
+    
+    
+}
+.content{
+    height: 100px;
+    
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+}
+.input-wrapper{
+    border: 1px solid gray;
+    position: relative;
+}
+.input-wrapper input{
+    border: 0;
+    padding: 5px;
+    width: 100%;
+}
+.input-wrapper label{
+    position: absolute;
+    left: -10px;
+    top: -28.5px;
+    padding: 4px 8px;
+    /* border-bottom: 1px solid gray; */
+    
+}
+.good{
+    width: 100%;
+    text-align: center;
+}
+button[submit]{
+    background-color: aqua;
+    height: 30px;
+    border-radius: 0.3rem;
+}
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    gap: 10px;
+    width: 100%;
+    background-color: aqua;
+    
+}
+.simple{
+    height: 30px;
+    width: 30px;
+    border-radius: 3px;
+}
+.simple:nth-child(1){
+    fill: rgb(36, 36, 238);
+}
+.simple:nth-child(2){
+    border: 1px solid gray;
+    background-color: rgb(10, 10, 231);
+    stroke: black;
+    fill:white;
+}
+.simple:nth-child(3){
+    border: 0.2px solid white;
+    background-color: #03C75A;
+    stroke: gray;
+    fill:white;
+}
+.simple:nth-child(4){
+    border: 1px solid gray;
+    background-color: #FFCD00;
+    stroke: black;
+    fill:white;
+}
+.simple:nth-child(5){
+    border: 1px solid gray;
+    background-color: rgb(10, 10, 231);
+    stroke: black;
+    fill:white;
+}
+@media(min-width:1024px){
+    .container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        
+    }
+    
+    .top{
+        width: 100%;
+        max-height: 100%;
+
+    }
+    .icons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+
+
+    }
+}
