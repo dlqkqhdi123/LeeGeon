@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- AOS css -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque earum, at velit eaque voluptas
+                    sint
+                    nulla, consectetur temporibus tempora amet, itaque reprehenderit eligendi quibusdam consequuntur
+                    aut.
+                    Fugiat voluptatum eligendi explicabo.</p>
+            </div>
+            <div class="image">
+                <figure>
+                    <img src="1.jpg" alt="">
+                </figure>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque earum, at velit eaque voluptas
+                    sint
+                    nulla, consectetur temporibus tempora amet, itaque reprehenderit eligendi quibusdam consequuntur
+                    aut.
+                    Fugiat voluptatum eligendi explicabo.</p>
+            </div>
+            <div class="image">
+                <!-- data-aos-anchor-lpacement 는 top-bottom일경우 
+                자기 자신의 top부분이 화면 bottom에 걸렷을때 실행된다는
+                의미 -->
+                <figure data-aos="fade-left">
+                    <img src="1.jpg" alt="">
+                </figure>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">
+                <h2>Lorem, ipsum.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque earum, at velit eaque voluptas
+                    sint
+                    nulla, consectetur temporibus tempora amet, itaque reprehenderit eligendi quibusdam consequuntur
+                    aut.
+                    Fugiat voluptatum eligendi explicabo.</p>
+            </div>
+            <div class="image">
+                <figure data-aos="flip-right" >
+                    <img src="1.jpg" alt="">
+                </figure>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration:1000, //몇초에 걸쳐서 애니매이션 될지
+            delay:100 //몇초 후에 애이매이션이 실행될지
+        });
+    </script>
+</body>
+
+</html>
