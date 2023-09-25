@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+
+}
+#reult{
+    display: flex;
+    list-style: none;
+}
+li{
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#genrate.processing{
+    cursor: not-allowed;
+    background-color: #bbbbbb;
+    pointer-events: none;
+}
