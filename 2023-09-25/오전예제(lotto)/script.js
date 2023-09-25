@@ -13,7 +13,7 @@ let lottoNumber = [];
 //배열에 요소를추가
 // lottoNumber.push(randomNumber(1,45))
 button.addEventListener("click", () => {
-    button.classList.add("processing")
+    button.classList.add("processing");
     button.textContent = '번호생성중'
 
     if(lottoNumber.length > 0){
