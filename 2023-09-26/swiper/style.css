@@ -1,0 +1,27 @@
+.swiper {
+    width: 600px;
+    height: 300px;
+  }
+.swiper-slide.first{
+    background-color: aqua;
+}
+.swiper-slide.second{
+    background-image:url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAyMjhfMTgw%2FMDAxNjc3NTc5OTM1Mzk5.ha7TNdn1XKwJFZIXd3tw4yKWP6hCBapdEN19EIQvapQg.snrNyhf_97cV7Y2rw88jJVEe1zUzmT8CzFsQi7HKtckg.JPEG.guswls2313%2FIMG_5559.JPG&type=a340");
+    
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.swiper-slide.third{
+    background-color: black;
+    color: white;
+}
+.swiper-pagination-bullet{
+    background-color: black;
+}
+.swiper-pagination-bullet-active{
+    background-color: white;
+    width: 50px;
+    border-radius: 4px;
+    transition: all 200ms ease;
+}
