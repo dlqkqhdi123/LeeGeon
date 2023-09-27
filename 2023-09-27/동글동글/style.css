@@ -1,0 +1,103 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.container{
+    width: 500px;
+    height: 500px;
+    border: 1px solid gray;
+    border-radius: 250px;
+    margin: 0 auto;
+    box-shadow: 10px 10px 10px 5px rgb(83, 79, 79);
+}
+.content{
+    width: 500px;
+    height: 500px;
+    border-radius: 250px;
+    display: flex;
+    align-items: end;
+    justify-content: center;    
+    animation: rolling 4s linear infinite;
+    padding:1px;
+    
+}
+.ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    animation: color 10s infinite alternate ease;
+    transition: all 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .spin{
+    background-color: aqua;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    animation: color 10s infinite alternate ease;
+    transition: all 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.boat{
+    box-shadow: 1px 0px 10px 0px rgb(83, 79, 79);
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem;
+    background-color: rgb(230, 226, 226);
+}
+@keyframes rolling{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+        
+    }
+}
+@keyframes color{
+    0%{
+    background: red;
+
+    }
+    10%{
+        background: linear-gradient(rgb(38, 80, 80),);
+    }
+    20%{
+        background: linear-gradient(black,red);
+    }
+    
+    40%{
+        background: linear-gradient(rgb(41, 192, 22), black);
+        
+    }
+    60%{
+        background: linear-gradient(rgb(2, 20, 20), rgb(33, 14, 197));
+        
+    }
+    80%{
+        background: linear-gradient(rgb(19, 163, 163), rgb(236, 233, 233));
+        
+    }
+    100%{
+        background: linear-gradient(rgb(235, 235, 235), rgb(80, 10, 211));
+        
+    }
+}

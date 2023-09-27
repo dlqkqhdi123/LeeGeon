@@ -1,0 +1,66 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+.swiper-slide{
+    background-color: aqua;
+}
+.swiper-slide:nth-child(1) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20140117_32%2Fsklee1090_1389896785372Pbvrv_JPEG%2FCool_Tiger.jpg&type=a340");
+}
+
+.swiper-slide:nth-child(2) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAxMjFfMTk5%2FMDAxNjExMjE5NjE2Mjk0.pKxfK7QGqe9jTe4GT9KRdbzhN8P6Kku8z_28rvQIw4Eg.YuDNec4F5hrII5W3GMnsZBeaNlkDEJv1-QG8QwmOV8Ag.JPEG.jjmmjj04%2F%25B1%25D7%25B6%25F3%25C6%25FA%25B8%25AE%25BF%25C01%25A3%25AD5.jpg&type=a340");   
+}
+
+.swiper-slide:nth-child(3n) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MTBfMTk1%2FMDAxNjkxNjczNjY1NDgw.2zKRxD9qij8skxujFxr3_ML4VOdTVhUbQIGcLKgEdysg.r1f8R8I8OZI6OF8ycljZrQkgFMLiGCxyu4uaPsL-0TEg.JPEG.hapllotes%2FIMG_4333.jpeg&type=a340");
+}
+
+.swiper-slide:nth-child(4n) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMjNfMzYg%2FMDAxNjE2NDc4MjI0NTU4.cyYxJL6vNaI63tUOVry8OqLX_GoFQKf7O_GFj0ZIWOAg.dUoTRE6JzGoFxQ4qQYE52sO4LyU9pva4T4rpOujQXG0g.JPEG.wewoori1219%2FIMG_1220.JPG&type=a340");
+}
+
+  .swiper-slide:nth-child(5n) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20140718_26%2Fse421mika_1405634122211sDQx6_JPEG%2F1405634119513_2014-07-17-14-52-24_deco.jpg&type=a340");
+}
+
+  .swiper-slide:nth-child(6n) {
+    background-image: url("https://search.pstatic.net/sunny/?src=http%3A%2F%2Fwww.matcl.com%2Ffiles%2Fattach%2Fimages%2F2791205%2F378%2F830%2F002%2Fdbcef9b8814385c96460f6282e014d01.jpg&type=a340");
+  }
+
+  .swiper-slide:nth-child(7n) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxODA2MTlfMjg3%2FMDAxNTI5Mzk3NjIxODAw.hkmGFjtgkW3ME0fMf6709Y4vCc6wToKN_WLdDbWKvTcg.kfDerEeNECBEHJlPP1KnMJ8kSr0MEKA8SgYbj5s55qsg.JPEG.wk7414%2FexternalFile.jpg&type=ofullfill340_600_png");
+  }
+
+  .swiper-slide:nth-child(8n) {
+    background-image: url("https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimg.theqoo.net%2Fimg%2FOMQHC.jpg&type=ofullfill340_600_png");
+  }
+
+  .swiper-slide:nth-child(9n) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MDlfODcg%2FMDAxNjQ5NDcwMDk4MTEw.G56Bay7x0Qo51RLv0rYNDL4kxz_76WxxY2TSm52Tsg8g._dGyvFP-yy954u3uD-onl066twEn0KKtaCCPBdZDvKsg.JPEG.handend%2FIMG_0744.JPG&type=a340");
+  }
+
+  .swiper-slide:nth-child(10n) {
+    background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA0MDdfNzUg%2FMDAxNTIzMDYwODM0MTIx.0Tyu-iTGk8hoenFEwdRXWUCjgYI1ktWUC5QnlwSz3Y0g.AJ7OMBYnjqnVZL0pa_4QHxX9ZMg9VYYKOXSd18mbnRQg.JPEG.jsa1547%2FIMG_3546.jpg&type=a340");
+  }
+.swiper mySwiper{
+    animation: card 1s 0.33333s infinite cubic-bezier(1, 0, 0, 1)
+
+}
+
+  @keyframes card{
+    0%{
+        opacity: 0;
+        transform: translateY(5px) ;
+    }
+        50%{
+            opacity: 1;
+            border-color: aqua;
+            transform: translateX(0px) rotate(-360deg);
+        }
+        100%{
+            transform: translateY(0px) rotate(360deg);
+        }
+  }
