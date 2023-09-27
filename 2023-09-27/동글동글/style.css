@@ -53,7 +53,7 @@ html,body{
     align-items: center;
 } */
 .boat{
-    box-shadow: 1px 0px 10px 0px rgb(83, 79, 79);
+    box-shadow: 3px 3px 10px 3px rgb(83, 79, 79) inset;
     width: 300px;
     height: 300px;
     border-radius: 150px;
@@ -74,7 +74,7 @@ html,body{
 }
 @keyframes color{
     0%{
-    background: red;
+    background: white;
 
     }
     10%{
