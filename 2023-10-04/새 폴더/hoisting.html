@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoisting</title>
+  </head>
+  <body>
+    <script>
+      //   let a = 10;
+      //   if (true) {
+      //     console.log(a);
+      //   }
+      //   let a = 10;
+      //   if (true) {
+      //     console.log(a);
+      //     let a = 20;
+      //   }
+
+      console.log(logMessage());
+      console.log(sumNumbers);
+
+      function logMessage() {
+        return "worked";
+      }
+      var sumNumbers = function () {
+        return 10 + 20;
+      };
+      console.log(sumNumbers);
+    </script>
+  </body>
+</html>

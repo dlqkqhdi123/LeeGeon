@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지역변수 테스트</title>
+  </head>
+  <body>
+    <script>
+      function add(a, b) {
+        var sum = a + b;
+        return sum;
+      }
+      function sub(a, b) {
+        var res = a - b;
+        return res;
+      }
+      window.onload = function () {
+        var sum = add(4, 5);
+        document.write("add=" + sum + "<br />"); //오류, 반환값을 이용
+        var res = sub(10, 4);
+        document.write("sub=" + res); //오류, 반환값을 이용
+      };
+    </script>
+    <!-- <script src="script.js"></script>     -->
+  </body>
+</html>

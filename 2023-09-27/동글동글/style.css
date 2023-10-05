@@ -74,11 +74,11 @@ html,body{
 }
 @keyframes color{
     0%{
-    background: white;
+    background: linear-gradient(white,red);
 
     }
     10%{
-        background: linear-gradient(rgb(38, 80, 80),);
+        background: linear-gradient(rgb(38, 80, 80));
     }
     20%{
         background: linear-gradient(black,red);

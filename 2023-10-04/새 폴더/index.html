@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫번째 javscript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script>
+        var now = new Date();
+        document.write(now);
+        let year = now.getFullYear();
+        document.write('<br/>' + year);
+
+        let month = now.getMonth();
+        month = month + 1;
+        month = month >= 10 ? month : '0' + month;
+        
+        document.write('<br/>' + month)
+        let date = now.getDate()
+        date = date >= 10 ? date : '0' + date;
+        document.write('<br/>' + date)
+        document.write('<br/>' + year + '-' + month + '-' + date);
+
+        let iosFormat = now.toISOString();
+        iosFormat = iosFormat.split('T');
+        iosFormat = iosFormat[0];
+        document.write('<br/>' + iosFormat);
+    </script>
+    <!-- <script src="script.js"></script> -->
+</body>
+
+</html>
