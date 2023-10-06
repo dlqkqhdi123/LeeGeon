@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문 연습</title>
+  </head>
+  <body></body>
+  <script>
+    // (예제1) 사용자에게 숫자를 입력받아 해당 숫자가 3의 배수인지 확인
+    // let inputNum = prompt("숫자(정수)를 입력하세요.");
+    // inputNum = parseInt(inputNum);
+    // alert(isNaN(inputNum + 1));
+    // if (inputNum % 3 == 0) {
+    //   alert("3의 배수입니다. oooo");
+    // } else {
+    //   alert("3의 배수가 아닙니다. xxxx");
+    // }
+
+    // (예제2) 계산기
+    let num1 = prompt("정수를 입력하세요");
+    const operator = prompt("연산자를 입력하세요. ", "+, -, *, /, % 중 하나");
+    let num2 = prompt("두번째 정수를 입력하세요.");
+    let result = 0;
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+
+    if (operator == "+") {
+      result = num1 + num2;
+    } else if (operator == "*") {
+      result = num1 * num2;
+    } else if (operator == "/") {
+      result = num1 / num2;
+    } else if (operator == "%") {
+      result = num1 % num2;
+    } else if (operator == "-") {
+      result = num1 - num2;
+    } else {
+      alert("잘못된 수식입니다.");
+    }
+    document.write(num1 + operator + num2 + "=" + result);
+  </script>
+</html>
