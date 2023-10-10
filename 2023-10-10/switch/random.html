@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // console.log(Math.random() * 200 + 100);
+    // let userInput1 = prompt(
+    //   "가위(1), 바위(2), 보(3) 를 입력해주세요.",
+    //   "ex) 1"
+    // );
+    let userInput1 = parseInt(Math.random() * 3 + 1);
+    let userInput2 = prompt(
+      "가위(1), 바위(2), 보(3) 를 입력해주세요.",
+      "ex) 2"
+    );
+    let str1 = "";
+    let str2 = "";
+
+    if (userInput1 == 1) {
+      str1 = "가위";
+    } else if (userInput1 == 2) {
+      str1 = "바위";
+    } else {
+      str1 = "보";
+    }
+    if (userInput2 == 1) {
+      str2 = "가위";
+    } else if (userInput2 == 2) {
+      str2 = "바위";
+    } else {
+      str2 = "보";
+    }
+    switch (userInput1 - userInput2) {
+      case -2:
+      case 1:
+        document.write("첫번째 사람 :" + str1 + "<br>");
+        document.write("두번째 사람 :" + str2 + "<br><br>");
+        document.write("결과 : 첫번째 사람 승");
+        break;
+      case -1:
+      case 2:
+        document.write("첫번째 사람 :" + str1 + "<br>");
+        document.write("두번째 사람 :" + str2 + "<br><br>");
+        document.write("결과 : 두번째 사람 승");
+        break;
+      case 0:
+        document.write("첫번째 사람 :" + str1 + "<br>");
+        document.write("두번째 사람 :" + str2 + "<br><br>");
+        document.write("결과 : 무승부!");
+        break;
+      default:
+        document.write("잘못 입력하셧습니다.");
+        break;
+    }
+
+    //실패
+  </script>
+</html>
