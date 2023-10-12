@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문 연습</title>
+  </head>
+  <body></body>
+  <script>
+    // 1부터 100까지 출력
+    for (i = 1; i <= 100; i++) {
+      document.write(i + "&nbsp;");
+    }
+    document.write("<hr>");
+
+    // 10 부터 1 까지 출력
+    for (let i = 10; i > 0; i--) {
+      document.write(i + "&nbsp;");
+    }
+    document.write("<hr>");
+
+    // 0 부터 10 까지의 짝수만 출력
+    // for (let i = 0; i <= 10; i++) {
+    //   if (i % 2 == 0) {
+    //     document.write(i);
+    //   }
+    // }
+    for (let i = 0; i <= 10; i += 2) {
+      document.write(i);
+    }
+    document.write("<hr>");
+    // 1부터 100 까지 짝수의 합을 구해보세요
+    let sum = 0;
+    for (let i = 0; i <= 100; i += 2) {
+      sum += i;
+    }
+    document.write(sum);
+    document.write("<hr>");
+
+    // 별 찍기
+    // for (i = 0; i < 5; i++) {
+    //   for (let j = 0; j <= 5; j++) {
+    //     document.write("*");
+    //   }
+    //   document.write("<br>");
+    // }
+    // document.write("<hr>");
+
+    // for (i = 0; i < 5; i++) {
+    //   for (let j = 0; j <= i; j++) {
+    //     document.write("*");
+    //   }
+    //   document.write("<br>");
+    // }
+    // document.write("<hr>");
+    // for (i = 0; i < 5; i++) {
+    //   for (let j = 0; j <= i; j++) {
+    //     document.write("&nbsp" + "*");
+    //   }
+    //   document.write("<br>");
+    // }
+
+    document.write("<hr>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 4; j > i; j--) {
+        document.write("&nbsp");
+      }
+      for (let k = 0; k <= i; k++) {
+        document.write("*");
+      }
+      document.write("<br>");
+    }
+
+    document.write("<hr>");
+    for (let i = 0; i < 5; i++) {
+      document.write("*");
+      for (let j = 5; j <= i; j--) {
+        document.write("*");
+        for (let k = 0; k < i; k++) {
+          document.write("&nbsp");
+        }
+      }
+    }
+    document.write("<hr>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < i; j++) {
+        document.write("&nbsp");
+      }
+      for (let k = 5; k > i; k--) {
+        document.write("*");
+      }
+      document.write("<br>");
+    }
+
+    document.write("<hr>");
+
+    let ret = "";
+    let size = 5;
+    for (let i = 0; i < size; i++) {
+      for (let j = 1; j < size - i; j++) {
+        ret += " ";
+      }
+      for (k = 1; k <= 2 * i - 1; k++) {
+        ret += "*";
+      }
+      ret += "/ n";
+    }
+    for (i = size - 1; i > 0; i--) {
+      for (j = size; j > i; j--) {
+        ret += " ";
+      }
+      for (k = 1; k <= 2 * i - 1; k++) {
+        ret += "*";
+      }
+      ret += "\n";
+    }
+    console.log(ret);
+  </script>
+</html>
