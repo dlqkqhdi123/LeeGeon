@@ -25,16 +25,16 @@
     //     document.write(i);
     //   }
     // }
-    for (let i = 0; i <= 10; i += 2) {
-      document.write(i);
-    }
-    document.write("<hr>");
-    // 1부터 100 까지 짝수의 합을 구해보세요
-    let sum = 0;
-    for (let i = 0; i <= 100; i += 2) {
-      sum += i;
-    }
-    document.write(sum);
+    // for (let i = 0; i <= 10; i += 2) {
+    //   document.write(i);
+    // }
+    // document.write("<hr>");
+    // // 1부터 100 까지 짝수의 합을 구해보세요
+    // let sum = 0;
+    // for (let i = 0; i <= 100; i += 2) {
+    //   sum += i;
+    // }
+    // document.write(sum);
     document.write("<hr>");
 
     // 별 찍기
@@ -60,7 +60,40 @@
     //   document.write("<br>");
     // }
 
+    // document.write("<hr>");
+    // for (let i = 0; i < 5; i++) {
+    //   for (let j = 4; j > i; j--) {
+    //     document.write("&nbsp");
+    //   }
+    //   for (let k = 0; k <= i; k++) {
+    //     document.write("*");
+    //   }
+    //   document.write("<br>");
+    // }
+
     document.write("<hr>");
+    // for (let i = 0; i < 5; i++) {
+    //   document.write("*");
+    //   for (let j = 5; j <= i; j--) {
+    //     document.write("*");
+    //     for (let k = 0; k < i; k++) {
+    //       document.write("&nbsp");
+    //     }
+    //   }
+    // }
+    // document.write("<hr>");
+    // for (let i = 0; i < 5; i++) {
+    //   for (let j = 0; j < i; j++) {
+    //     document.write("&nbsp");
+    //   }
+    //   for (let k = 5; k > i; k--) {
+    //     document.write("*");
+    //   }
+    //   document.write("<br>");
+    // }
+
+    document.write("<hr>");
+
     for (let i = 0; i < 5; i++) {
       for (let j = 4; j > i; j--) {
         document.write("&nbsp");
@@ -68,20 +101,13 @@
       for (let k = 0; k <= i; k++) {
         document.write("*");
       }
+      for (let z = 1; z <= i; z++) {
+        document.write("*");
+      }
       document.write("<br>");
     }
+    document.write("<hr>");
 
-    document.write("<hr>");
-    for (let i = 0; i < 5; i++) {
-      document.write("*");
-      for (let j = 5; j <= i; j--) {
-        document.write("*");
-        for (let k = 0; k < i; k++) {
-          document.write("&nbsp");
-        }
-      }
-    }
-    document.write("<hr>");
     for (let i = 0; i < 5; i++) {
       for (let j = 0; j < i; j++) {
         document.write("&nbsp");
@@ -89,31 +115,62 @@
       for (let k = 5; k > i; k--) {
         document.write("*");
       }
+      for (let z = 3; z >= i; z--) {
+        document.write("*");
+      }
+      document.write("<br>");
+    }
+    document.write("<hr>");
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < i; j++) {
+        document.write("&nbsp");
+      }
+      for (let k = 8; k >= i * 2; k--) {
+        document.write("*");
+      }
+      document.write("<br>");
+    }
+    document.write("<hr>");
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 4; j > i; j--) {
+        document.write("&nbsp");
+      }
+      for (let k = 0; k <= i; k++) {
+        document.write("*");
+      }
+      for (let z = 1; z <= i; z++) {
+        document.write("*");
+      }
       document.write("<br>");
     }
 
+    for (let i = 1; i <= 5; i++) {
+      for (let j = 0; j < i; j++) {
+        document.write("&nbsp");
+      }
+      for (let k = 5; k > i; k--) {
+        document.write("*");
+      }
+      for (let z = 3; z >= i; z--) {
+        document.write("*");
+      }
+      document.write("<br>");
+    }
     document.write("<hr>");
+    // repeat 함수
 
-    let ret = "";
-    let size = 5;
-    for (let i = 0; i < size; i++) {
-      for (let j = 1; j < size - i; j++) {
-        ret += " ";
-      }
-      for (k = 1; k <= 2 * i - 1; k++) {
-        ret += "*";
-      }
-      ret += "/ n";
+    // document.write("*".repeat(9) + "<br>");
+    // document.write("&nbsp" + "*".repeat(7));
+
+    document.write("<hr>");
+    // repeat 함수와 for 문 을이용한 별찍기
+    for (let i = 1; i <= 5; i++) {
+      document.write("&nbsp".repeat(5 - i) + "*".repeat(2 * i - 1) + "<br>");
     }
-    for (i = size - 1; i > 0; i--) {
-      for (j = size; j > i; j--) {
-        ret += " ";
-      }
-      for (k = 1; k <= 2 * i - 1; k++) {
-        ret += "*";
-      }
-      ret += "\n";
+    for (let j = 4; j >= 1; j--) {
+      document.write("&nbsp".repeat(5 - j) + "*".repeat(2 * j - 1) + "<br>");
     }
-    console.log(ret);
   </script>
 </html>
