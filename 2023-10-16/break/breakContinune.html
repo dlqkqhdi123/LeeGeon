@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    document.write("<h2> 1부터 200 까지의 짝수의 합(continue 사용)");
+    let sum = 0;
+    // for (k = 1; k <= 200; k++) {
+    //   if (k % 2 == 1) {
+    //     continue;
+    //   }
+    //   sum += k;
+    // }
+    // document.write(`<br>sum : ${sum}`);
+    document.write("<hr>");
+    document.write(
+      "<h2> 입력한 값을 계속 더하고 0을 입력하면 누적 값을 출력하는 프로그램을 작성하시오"
+    );
+
+    // while (true) {
+    //   var num = parseInt(prompt("정수를 입력하세요"));
+    //   if (num != 0) {
+    //     sum += num;
+    //     continue;
+    //   }
+    //   if (num == 0) {
+    //     break;
+    //   }
+    // }
+    // document.write("<br>" + sum);
+
+    sum = 0;
+    // while (true) {
+    //   var inputNum = parseInt;
+    //   if (inputNum == 0) {
+    //     break;
+    //   }
+    //   sum += inputNum;
+    // }
+    // document.write(`합 : ${sum}`);
+
+    document.write("<hr>");
+    document.write(
+      "<h2> 1에서 10까지 반복되는 2개의 for문을 이용해서 i와 k 를 더한 값이 3의 배수일때만출력 (continue를 사용)<br>"
+    );
+
+    // for (let i = 1; i <= 10; i++) {
+    //   for (let k = 1; k <= 10; k++) {
+    //     if ((i + k) % 3 !== 0) {
+    //       continue;
+    //     }
+    //     document.write(`i : ${i}, k : ${k}, 결과 : ${i + k}  <br>`);
+    //   }
+    // }
+    document.write("<hr>");
+    document.write(
+      "<h2> 1에서 100까지 2의 배수 이면서 3의 배수인것만 출력<br>"
+    );
+    // for (let i = 1; i <= 100; i++) {
+    //   if (i % 2 == 0 && i % 3 == 0) {
+    //     document.write(`값 : ${i}<br>`);
+    //   }
+    // }
+    document.write("<hr>");
+    document.write(
+      "<h2> 1에서 100까지 2의 배수 이면서 3의 배수인것만 출력<br>"
+    );
+    while (true) {
+      let num = +prompt("첫번 째 숫자 ");
+      let num2 = +prompt("두번째 숫자를입력하세요");
+      if (num + num2 >= 100) {
+        document.write(
+          `첫번째 수 : ${num},두번째 수 : ${num2},합 : ${num + num2}`
+        );
+      } else if (num == 0 && num2 == 0) {
+        break;
+      } else {
+        continue;
+      }
+    }
+  </script>
+</html>
