@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function sub(a, b) {
+      return a + b;
+    }
+    window.onload = function () {
+      var res = sub(4, 5);
+      document.getElementById("aa").innerHTML = res;
+      document.getElementById("aa").innerHTML = sub(4, 5);
+    };
+
+    //지역변수
+    function localNum() {
+      //   var num = 10;
+      num = 10;
+      document.write(
+        // `함수 내부에서 변수 num의 타입은 ${typeof num} 입니다.<br>`
+        `함수 내부에서 변수 num의 값은 ${num} 입니다.<br>`
+      );
+    }
+    localNum();
+    document.write(
+      //   `함수의 호출이 끝난 뒤 변수 num의 타입은 ${typeof num} 입니다.<br>`
+      `함수의 호출이 끝난 뒤 변수 num의 값은 ${num} 입니다.<br>`
+    );
+    document.write("<hr>");
+    //전역 변수
+    var num = 10;
+    function globalNum() {
+      var num = 20;
+      document.write(`함수 내부에서 변수 num 의 값은 ${num}입니다 <br>`);
+      document.write(
+        `함수 내부에서 전역 변수 num 의 값은 ${window.num}입니다 <br>`
+      );
+      //   num = 20;
+    }
+    globalNum();
+    document.write(`함수 호출이 끝난 뒤 변수 num 의 값은 ${num}입니다 <br>`);
+
+    document.write("<hr>");
+
+    // 함수 유효 범위
+    let x = 10,
+      y = 20;
+    function sub() {
+      return x - y;
+    }
+    document.write(`${sub()}<br>`);
+
+    function parentFunc() {
+      let x = 1,
+        y = 2;
+      function add() {
+        return x + y;
+      }
+      return add();
+    }
+    document.write(`${parentFunc()}`);
+
+    document.write("<hr>");
+
+    // 매개 변수
+    const addNum = (x, y, z) => {
+      console.log(`x : ${x} , y : ${y}, z : ${z}`);
+      if (x === undefined) x = 0;
+      if (y === undefined) y = 0;
+      if (z === undefined) z = 0;
+
+      return x + y + z;
+    };
+    document.write(`${addNum(1, 2, 3)}`);
+    document.write(`${addNum(1, 4)}`);
+    document.write(`${addNum(1)}`);
+    document.write(`${addNum()}`);
+    document.write("<hr>");
+
+    //arguments 객체
+    const addNum2 = function () {
+      let sum = 0;
+      //arguments 객체는 함수가 호출될 때 전달된 인수배열 형태로 저장하고 있다.
+      for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+      }
+      return sum;
+    };
+    document.write(`${addNum2(1, 2, 3)}`);
+    document.write(`${addNum2(1, 2)}`);
+    document.write(`${addNum2(1)}`);
+    document.write(`${addNum2()}`);
+    console.log(addNum);
+    console.log(addNum2);
+    console.log(parentFunc);
+  </script>
+  <body>
+    <p id="aa"></p>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      background-color: yellow;
+      border: 1px solid red;
+      width: 300;
+      height: 500;
+    }
+  </style>
+  <body>
+    <input type="button" value="시작" onclick="randProc()" /><br />
+    <hr color="blue" />
+    <h1>출력위치</h1>
+    <div id="res"></div>
+  </body>
+  <script>
+    function randProc() {
+      // alert("함숭");
+      let arr = [];
+      for (i = 0; i < 5; i++) {
+        arr.push(parseInt(Math.random() * 100 + 1));
+      }
+      // console.log(arr);
+      const res = document.getElementById("res");
+      // res.innerHTML = "<p>23,24,56,53</p>";
+      // res.append("<p>23,24,56,53</p>");
+      const p = document.createElement("p");
+      p.innerHTML = arr.toString();
+      // console.log(p);
+      res.append(p);
+      let template = `<p>${arr.toString()}</p>`;
+      res.insertAdjacentHTML("beforeend", template);
+      //('위치','html요소의 문자열')
+      //위치 : beforebegin, afrerend ,afterbegin ,beforeend
+    }
+  </script>
+</html>
