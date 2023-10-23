@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 4. reduce() 함수
+    // 해당 배열의 모든 요소를 하나의 값으로 줄이기 위해, 두개의 인수를 전달받는
+    // 콜백함수를 실행한다
+    // 이 때 명시 된 콜백함수에 배열의 첫번째 요소와 두번째 요소를 인수로 전달하고 실행한다.
+    // 그 결과 반환된 결과값에 세번째 요소를 다시 인수로 전달하고 실행한다.
+    let arr = [1, 2, 3, 4, 5];
+    function sumOfArr(x, y) {
+      return x + y;
+    }
+    let result = arr.reduce(sumOfArr);
+    document.write(`<h3>원본 배열 : ${arr}</h3>`);
+    document.write(`<h3> reduce 값 : ${result}</h3>`);
+
+    // accumalator : callback 함수의 반환값을 누적한다.
+    // initialValue : 최초 callback 함수실행시 accumalator 에 할당되는 값
+    // 초기값을 제공하지 않을 경우 배열의 첫번째 요소를 사용한다.
+    let result2 = arr.reduce(function (acc, value) {
+      return acc - value;
+    }, 5);
+    document.write(`<h3> initialValue 사용결과  : ${result2}</h3>`);
+
+    // 5. reduceRight() 함수
+    // reduce() 함수와 같은 방식으로 실행되며 배열의 마비지막 요소부터 줄이기
+    let result3 = arr.reduceRight(sumOfArr);
+    document.write(`<h3> reduceRight 값 : ${result3}</h3>`);
+  </script>
+</html>

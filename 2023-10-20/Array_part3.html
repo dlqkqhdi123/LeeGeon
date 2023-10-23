@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array part3</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. forEach() 함수
+    // 해당 배열의 모든 요소에 대하여 반복적으로 명시된 함수를 실행한다.
+    document.write("<h1>1. forEach() 함수");
+    const arr = [1, true, "Javascript"];
+    function printArr(value, index, array) {
+      document.write(`<h3>arr[${index}] = ${value}</h3>`);
+    }
+    arr.forEach(printArr);
+    // console.log(typeof printArr);
+    // console.log(typeof printArr());
+
+    document.write("<hr>");
+    document.write("<h1>2. map() 함수");
+    // 2. map() 함수 🌟
+    // 해당 배열의 모든 요소에 대하여 반복적으로 명시된 콜백 함수를 실행한 후,
+    // 그 실행 결과를 새로운 배열에 담아 반환한다.
+    const arr2 = [3, 4, 5, 6];
+    const tempArr = [];
+    for (let i = 0; i < arr2.length; i++) {
+      tempArr.push(arr2[i] * 3);
+    }
+    // let modifiedArr = arr2.map(function (element, index, array) {
+    //   return v * 3;
+    // });
+    let modifiedArr = arr2.map((v) => v * 3);
+    document.write(`<h3>arr2 : [${arr2}]</h3>`);
+    document.write(`<h3>arr2의 원소에 *3 : [${modifiedArr}]</h3>`);
+
+    let users = [
+      { firstName: "Beckham", lastName: "David" },
+      { firstName: "De Bruyne", lastName: "Kevin" },
+      { firstName: "Haaland", lastName: "Erling" },
+    ];
+    // ["David Beckham", "Kevin De Bruyne", "Erling Haaland"];
+    // let nameArr = users.map(function (v) {
+    //     return `${v.lastName} ${v.firstName}`;
+    // });
+    let nameArr = users.map((v) => `${v.lastName} ${v.firstName}`);
+    document.write(`<h3>users : [${users}]</h3>`);
+    document.write(`<h3>nameArr : [${nameArr}]</h3>`);
+
+    const numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    function multiplyTwo(number) {
+      return number * 2;
+    }
+    const newNumberArr = numberArr.map(multiplyTwo);
+    document.write(`<h3>numberArr : [${numberArr}]</h3>`);
+    document.write(`<h3>newNumberArr : [${newNumberArr}]</h3>`);
+
+    const numberArr2 = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+    // [[2, 4, 6], [8, 10, 12], [14, 16, 18]];
+    // const newNumberArr2 = numberArr2.map(function (element) {
+    //   return element.map(function (element) {
+    //     return element * 2; // => [2, 4, 6]
+    //   });
+    // });
+    const newNumberArr2 = numberArr2.map((el) =>
+      el.map((number) => number * 2)
+    );
+
+    console.log(newNumberArr2);
+    document.write(`<h3>numberArr2 : [${numberArr2}]</h3>`);
+    document.write(`<h3>newNumberArr2 : [${newNumberArr2}]</h3>`);
+
+    document.write("<hr>");
+    document.write("<h1>3. filter() 함수");
+    // 3. filter() 함수
+    // 배열의 모든 요소에 대하여 반복적으로 명시된 콜백 함수를 실행한 후,
+    // 그 결과값이 true인 요소들만을 새로운 배열로 반환한다.
+    const numberArr3 = [1, 2, 3, 4, 5];
+    let result = [];
+    // for (let i = 0; i < numberArr3.length; i++) {
+    //   if (numberArr3[i] > 3) result.push(numberArr3[i]);
+    // }
+    // result = numberArr3.filter(function (el) {
+    //   return el > 3;
+    // });
+    // result = numberArr3.filter((el, index, array) => el > 3);
+    result = numberArr3.filter((el) => el > 3);
+    document.write(`<h3>numberArr3 : [${numberArr3}]</h3>`);
+    document.write(`<h3>result : [${result}]</h3>`);
+
+    const guys = [
+      { name: "덕배", money: 500000 },
+      { name: "베컴", money: 700000 },
+      { name: "홀란드", money: 600000 },
+      { name: "포든", money: 400000 },
+    ];
+    // [{name : "홀란드", money : 600000}, {name : "베컴", money : 700000}]
+    // const rich = guys.filter(function (el) {
+    //   return el.money > 500000;
+    // });
+    const richNames = guys
+      .filter((el) => el.money > 500000)
+      .map((el) => el.name);
+    // const twoConditionGuy = guys.filter(
+    //   (el) => el.money > 500000 && el.name == "홀란드"
+    // );
+    const twoConditionGuy = guys.filter((el) => {
+      if (el.money > 500000) {
+        if (el.name == "홀란드") {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    console.log(twoConditionGuy);
+
+    // console.log(guys);
+    // console.log(rich);
+    // ["베컴", "홀란드"]
+    document.write(`<h3>richNames : [${richNames}]</h3>`);
+    // document.write(`<h3>twoConditionGuy : [${twoConditionGuy}]</h3>`);
+    // document.write(`<h3>rich : [${rich}]</h3>`);
+  </script>
+</html>
