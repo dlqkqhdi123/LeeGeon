@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>숫자맞추기 게임</title>
+  </head>
+  <body>
+    <h1>Number Guess</h1>
+    <p>1부터 100 사이에 숫자를 입력하시오</p>
+    <input type="text" id="number" />
+    <button type="button" onclick="test()">숫자 추축</button>
+    <p id="message"></p>
+  </body>
+  <script>
+    let randNum = 0;
+    let count = 0;
+    const MAX_COUNT = 5;
+    const pTag = document.querySelector("#message");
+    const input = document.querySelector("#number");
+    let resStr = "";
+    function getRandom() {
+      randNum = parseInt(Math.random() * 100 + 1);
+    }
+    function reset() {
+      count = 0;
+      getRandom();
+      pTag.innerHTML = "";
+      input.value = "";
+      resStr = "";
+    }
+    function test() {
+      if (randNum == input.value) {
+        alert(`게임에서 승리하셧습니다. 컴퓨터의 숫자 : ${randNum}`);
+        reset();
+      } else {
+        count++;
+        let upDown = "";
+        if (input.value > randNum) {
+          upDown = "작습니다";
+        } else if (input.value < randNum) {
+          upDown = "큽니다";
+        }
+        // const spanTag = document.createElement("span");
+        // spanTag.innerHTML;
+        // spanTag.innerHTML = `입력하신 숫자보다 ${upDown} 입력하신 숫자 : ${
+        //   input.value
+        // } 남은 횟수 ${MAX_COUNT - count}<br>`;
+        // pTag.appendChild(spanTag);
+
+        resStr += `입력하신 숫자보다 ${upDown} 입력하신 숫자 : ${
+          input.value
+        } 남은 횟수 ${MAX_COUNT - count}<br>`;
+        pTag.innerHTML = resStr;
+        if (count == MAX_COUNT) {
+          alert(`게임에서 패배하셧습니다 컴퓨터의 숫자 : ${randNum}`);
+          reset();
+        }
+      }
+    }
+    getRandom();
+  </script>
+</html>
