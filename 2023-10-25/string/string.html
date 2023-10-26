@@ -36,7 +36,7 @@
 
     document.write(`<h3> indexOf() 함수 </h3>`);
     // 3. indexOf() 함수
-    // String 에서 특정문자나 문자열이 ㅓ음으로 등장하는 위치를 반환한다.
+    // String 에서 특정문자나 문자열이 처음으로 등장하는 위치를 반환한다.
     const str2 = "abcDEFabc";
     // 문자열을 비교할때 문자의 대소문자를 구분한다.
     document.write(`<h3>abc가 시작되는 인덱스 : ${str2.indexOf("abcd")} </h3>`);
@@ -100,11 +100,78 @@
 
     //  \: 역슬래시 다음에 일반문자가 나오면 이스케이프 문자로 해석하고
     // 특수문자가 나오면 일반 문자로 해석한다
-    //    예)
+    //    예) const name = "\'이건'\";
+    // \d : 숫자를 검색 . == /[0~9]/
+    // \D : 숫자가 아닌 문자를 검색 == \[^0-9]\
+    // \w : 언더바(_)를 포함한 영문자 및 숫자를 검색 == \[A-Za-z0-9]\
+    // \W : 언더바(_), 영문자 , 숫자가 아닌 문자를 검색 == \[]^A-Za-z0-9_\
+    // \s : 띄어쓰기 탭 줄바꿈 문자등의 공백 문자를 검색
+    // \S : 띄어쓰기 탭 줄바꿈 문자등의 공백 문자가 아닌 문자를 검색
+    // \d : 단어의 맨 앞이나 맨 뒤가 패턴과 일치하는지를 검색
+
+    // 전화번호 검색패턴 예 : 000-0000-0000 => /[0-9]{3}-[0-9]{3}-[0-9]{4}/
+    // 이메일 검색패턴 예 : 00000@00000.000 => /[A-Za-z0-9]+@[a-z]+\.[a-z]{3,}/
+
+    let reg = /[A-Za-z0-9]+@[a-z]+\.[a-z\.]{3,}/;
+    const email = "dlrjs6949@gmail.com";
+    console.log(reg.test(email));
+
     const name = "'이건'";
     document.write(`${name}`);
     document.write(`<hr>`);
+    document.write("<h1>search 함수</h1>");
+    // 8. search()함수
+    // String 에서 인수로 전달받은 정규 표현식 또는 문자(열)을 이용하여
+    // String 의 검색 작업을 수행한다
 
-    document.write(`<h3> replace() 함수 </h3>`);
+    document.write(`<h3>is 검색 : ${str5.search("is")}</h3>`);
+    document.write(`<h3>s 검색 : ${str5.search("s")}</h3>`);
+
+    document.write(`<hr>`);
+    document.write("<h1>match 함수</h1>");
+    // 9. match()함수
+    // 정규식 혹은 문자(열)로 검색하여 일치하는결과를 배열로 리턴한다.
+    // 발견되지 않으면 null을 리턴한다
+    document.write(`<h3>match로 java 확인 : ${str5.match("java")}</h3>`);
+
+    document.write(`<hr>`);
+    document.write("<h1>substring 함수</h1>");
+    // 10. substring()함수
+    // String 에서 전달받은 시작 인덱스 부터 종료 인덱스 바로앞까지의
+    // 문자열을 추출한 새로운 문자열을 반환한다
+
+    document.write(`<h3>substring(2, 6) : ${str2.substring(2, 6)}</h3>`);
+    document.write(`<h3>substring(2) : ${str2.substring(2)}</h3>`);
+
+    document.write(`<hr>`);
+    document.write("<h1>substring 함수</h1>");
+    document.write(`<h3>substring(2, 6) : ${str2.substring(2, 6)}</h3>`);
+    document.write(`<h3>substring(2) : ${str2.substring(2)}</h3>`);
+    // 11. substr()함수
+    // String 에서 전달받은 시작인덱스 부터 길이만큼의 문자열을 추출한
+    //새로운 문자열을 반환한다.
+
+    document.write(`<hr>`);
+    document.write("<h1>slice 함수</h1>");
+
+    document.write(`<h3>slice : ${str2.slice(2, 6)}</h3>`);
+    document.write(`<h3>slice : ${str2.slice(-4, -2)}</h3>`);
+    document.write(`<h3>slice : ${str2.slice(4, 2)}</h3>`);
+    // substring은 음수가 전달되면 0으로 변경해서 함수를 실행한다
+    document.write(`<h3>substring : ${str2.substring(4, 2)}</h3>`);
+    //12. slice()함수
+    //String 에서 전달받은 시작 인덱스 부터 종료 인덱스 바로 앞까지의 문자를
+    // 추출한 새 문자열을 반환한다
+    document.write(`<hr>`);
+    document.write("<h1> split() 함수</h1>");
+    // 13. split() 함수
+    // String 을 구분자를 기준을 나눈 후 나뉜 문자열을 배열로 반환한다.
+    const str6 = "사과/바나나/파인애플/딸기/포도";
+    document.write(`<h3>split 사용 : ${str6.split("/")}</h3>`);
+    // document.write(`<h3>slice : ${str2.slice(4, 2)}</h3>`);
+
+    document.write(
+      "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>"
+    );
   </script>
 </html>
