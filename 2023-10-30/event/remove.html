@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="target">
+      <p id="p1">첫번쨰 단락</p>
+      <p id="p2">두번째 단락</p>
+    </div>
+    <button onclick="removeNode()">누르세요</button>
+  </body>
+  <script>
+    function removeNode() {
+      let parent = document.getElementById("target");
+      //   let child = document.getElementById("p1");
+      let child = parent.querySelectorAll("p")[0];
+
+      if (child !== undefined) {
+        console.log(child);
+        // parent.removeChild(child);
+        child.remove();
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOMTree</title>
+  </head>
+  <body>
+    <ul>
+      <li><span>List item 1</span></li>
+      <li><span>List item 2</span></li>
+      <li><span>List item 3</span></li>
+      <li><span>List item 4</span></li>
+      <li><span>List item 5</span></li>
+    </ul>
+  </body>
+  <script>
+    let list = document.getElementsByTagName("ul")[0];
+    let allItems = list.getElementsByTagName("li");
+    allItems[4].lastChild.style.color = "red";
+    allItems[2].previousSibling.previousSibling.style.color = "yellow";
+    allItems[2].nextSibling.nextSibling.style.color = "blue";
+    for (var i = 0, length = allItems.length; i < length; i++) {
+      // alert(allItems[i].firstChild.data);
+      // console.log(allItems[i].firstChild.innerHTML);
+      console.log(allItems[i]);
+    }
+  </script>
+</html>
