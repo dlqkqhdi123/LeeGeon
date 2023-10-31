@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #wrapper {
+      border-radius: 50%;
+      background-color: gray;
+      /* background:linear-gradient(134deg,gray,white) */
+      padding: 0;
+      margin: 30px;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #content {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 20px solid aqua;
+    }
+    div.off {
+      border: 10px solid aqua;
+    }
+    /* div.on {
+    } */
+    img {
+      border-radius: 50%;
+      width: 300px;
+      height: 300px;
+    }
+    #image.off {
+      /* filter: drop-shadow(0, 0, 0, red) saturate(1000%); */
+      background-color: red;
+    }
+    /* img.off {
+    } */
+    img:hover {
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="content" class="off">
+        <img src="11.png" id="image" class="off" />
+      </div>
+    </div>
+  </body>
+  <script>
+    const imgTag = document.querySelector("img");
+    const divTag = document.querySelector("#content");
+
+    imgTag.addEventListener("click", function () {
+      //   imgTag.currentClass = imgTag.classList[0];
+      //   if (currentClass == of) {
+      //     imgTag.classList.remove("off");
+      //     imgTag.classList.add("on");
+      //     divTag.classList.remove("off");
+      //     divTag.classList.add("on");
+      //   } else {
+      //     imgTag.classList.remove("on");
+      //     imgTag.classList.add("off");
+      //     divTag.classList.remove("on");
+      //     divTag.classList.add("off");
+      //   }
+
+      imgTag.classList.toggle("on");
+      divTag.classList.toggle("on");
+    });
+  </script>
+</html>

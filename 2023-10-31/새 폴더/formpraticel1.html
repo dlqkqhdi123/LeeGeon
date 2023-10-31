@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <form action="">
+        <label for="">이름 : </label>
+        <input type="text">
+        <br>
+        <br>
+        <label for="">성별 : </label>
+        <input type="radio">남
+        <input type="radio">여
+        <br>
+        <br>
+        <label for="">취 미 :</label>
+        <input type="checkbox">여행
+        <input type="checkbox">독서
+        <input type="checkbox">영화 감상
+        <input type="checkbox">바둑
+        <input type="checkbox">장기
+        <input type="checkbox">등산
+        <input type="checkbox">낚시
+        <br><br>
+        <input type="button" value="결과출력">
+        <br><br>
+        <textarea name="" id="" cols="50" rows="10" ></textarea>
+    </form> -->
+    <form action="">
+      <p>이름 : <input type="text" name="name" /></p>
+      <p>
+        성별 :
+        <input type="radio" name="gender" id="male" value="남" />
+        <label for="male">남</label>
+        <input type="radio" name="gender" id="female" value="여" />
+        <label for="female">여</label>
+      </p>
+      <p>
+        취미 :
+        <input type="checkbox" name="hobby" id="travel" />
+        <label for="travel">여행</label>
+        <input type="checkbox" name="hobby" id="reading" />
+        <label for="reading">독서</label>
+        <input type="checkbox" name="hobby" id="WM" />
+        <label for="WM">낚시</label>
+        <input type="checkbox" name="hobby" id="HTML" />
+        <label for="HTML">HTML</label>
+        <input type="checkbox" name="hobby" id="CSS" />
+        <label for="CSS">CSS</label>
+        <input type="checkbox" name="hobby" id="Javascript" />
+        <label for="Javascript">Javascript</label>
+        <input type="checkbox" name="hobby" id="jquery" />
+        <label for="jquery">jquery</label>
+      </p>
+      <input type="button" value="결과출력" id="resultBtn" />
+    </form>
+    <br />
+    <textarea name="" cols="80" rows="13"></textarea>
+  </body>
+  <script>
+    const resultBtn = document.getElementById("resultBtn");
+    resultBtn.addEventListener("click", function () {
+      const name = document.querySelector("input[name='name']").value;
+      const radioEl = document.querySelectorAll("input[name='gender']");
+      // console.log(radioEl);
+      let radioVal;
+      radioEl.forEach((el) => {
+        if (el.checked) {
+          radioVal = el.value;
+        }
+      });
+      const checkboxEl = document.querySelectorAll("input[name='hobby']");
+      const checkboxArr = [];
+      checkboxEl.forEach((el) => {
+        if (el.checked) {
+          checkboxArr.push(el.id);
+        }
+      });
+      const textareaEl = document.querySelector("textarea");
+      textareaEl.innerHTML = `${name} 님 \n 당신의 성별은 ${radioVal}자이고 \n 취미는 ${checkboxArr.toString()} 이군요!`;
+    });
+  </script>
+</html>

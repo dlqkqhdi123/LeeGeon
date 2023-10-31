@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change context</title>
+  </head>
+  <body>
+    <div id="ex">무궁화 꽃이 피엇습니다</div>
+    <a href="#" onclick="get()">div 요소 내용 가져오기</a><br />
+    <a href="#" onclick="set('장미꽃이 피었습니다')">div 요소 내용 변경하기</a>
+  </body>
+  <script>
+    function get() {
+      var val = document.getElementById("ex").innerHTML;
+      alert(val);
+    }
+    function set(v) {
+      document.getElementById("ex").innerHTML = v;
+    }
+  </script>
+</html>

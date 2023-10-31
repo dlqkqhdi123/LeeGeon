@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "event"
+	},
+	{
+		"path": "../2023-10-27"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "event"
+  }
+}
