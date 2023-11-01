@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      문단안에 <a>링크</a> 태그가 있다 두번째 <span><a>링크</a></span> 은
+      손자이다
+    </h2>
+  </body>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <script>
+    // h2 에 자식a 태그의 스타일에 테두리 설정 - solid
+    $("h2 > a").css("border", "2px solid black");
+  </script>
+</html>

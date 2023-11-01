@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>형제 선택자에 대하여</p>
+    <h3>꼬마버스 타요 가족을 소개 합니다</h3>
+    <p>타요</p>
+    <p>로기</p>
+    <p>라니</p>
+    <p>가니</p>
+  </body>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <script type="text/javascript">
+    $("h3 ~ *")
+      .css("backgroundColor", "yellow")
+      .css("width", "200x")
+      .css("text-align", "center");
+    $("h3 + *").css("font-size", "900");
+  </script>
+</html>

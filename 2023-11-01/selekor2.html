@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>이 문단에는 <span>스팬</span>엘리먼트가 있다</p>
+    <div>
+      이 디비젼에도 <span>스팬</span>엘리멘트이다
+      <p>디비젼의 내부 문단의<span>스팬</span>엘리먼트이다</p>
+      <div>
+        <p>
+          내부 디비전의 다시 문단 속 아지
+          <strong>깊은곳에</strong>
+          <em>숨어있는</em>
+          <span>스팬</span>앨리먼트도 잇다
+        </p>
+      </div>
+    </div>
+  </body>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <script>
+    // span 태그의 배경색 변경
+    $("span").css("backgroundColor", "yellow");
+    // div의 모든 후손중 span 태그 의 테두리 변경
+    $("div span").css("border", "2px solid black");
+    // div 의 바로다음자식 스판태그의 테두리 변경
+    $("div > span").css("border", "2px solid blue");
+  </script>
+</html>
