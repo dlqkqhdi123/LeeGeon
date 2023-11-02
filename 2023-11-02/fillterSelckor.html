@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fillter Seleckor</title>
+  </head>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <body>
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>five</li>
+      <li>six</li>
+      <li>seven</li>
+      <li>eight</li>
+      <li>nine</li>
+    </ul>
+  </body>
+  <script>
+    // $("li:lt(4)").css("font-size", "29px");
+    // $("li:first").css("backgroundColor", "yellow");
+    // $("li:eq(5)").css("backgroundColor", "red");
+    // $("li:last").css("backgroundColor", "yellow");
+
+    $("li:odd").css("backgroundColor", "yellow");
+    $("li:even").css("backgroundColor", "orange");
+  </script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+  <body>
+    <a href="http://tjdaewoo.co.kr/">DW아카데미</a><br /><br />
+    <a href="mailto:kjy.devops@gmail.com">kjy에게 메일보내기</a><br /><br />
+    <div><label>Some images:</label></div>
+    <div>
+      <img src="6.jpg" id="img1" alt="Hibiscus" />
+      <img src="7.png" id="little-Bear" title="A dog named little Bear" />
+      <img src="1.jpg" id="verbena" alt="Verbena" />
+      <img src="2.jpg" id="cozmo" title="A puppy named Cozmo" />
+      <img src="3.jpg" id="tigerLily" alt="Tiger Lily" />
+      <img src="4.jpg" id="little" title="coffeePot" />
+      <img src="5.jpg" title="dog2" />
+    </div>
+    <div id="someDiv">
+      이곳은 ID속성이 <tt>someDiv</tt>인 &lt;div&gt;태그 입니다.
+    </div>
+    <form>
+      <div>
+        <label>Text:</label>
+        <input type="text" id="aTextField" name="someTextField" />
+      </div>
+      <button type="submit" id="submitButton">Submit</button
+      ><input type="button" value="클릭~~" id="changBtn" />
+    </form>
+  </body>
+  <script>
+    $("#changBtn").on("click", function () {
+      $("input[type=button]").css("backgroundColor", "yellow");
+      $("a[href*=mailto]").css({
+        backgroundColor: "yellow",
+        "text-decoration": "none",
+      });
+      $("img[id != img1]").css("border", "4px solid red");
+      $("img[title *= 'dog2']").css("border", "4px solid blue");
+      $("img[src *= '7']").css("border", "4px solid gray");
+    });
+  </script>
+</html>
