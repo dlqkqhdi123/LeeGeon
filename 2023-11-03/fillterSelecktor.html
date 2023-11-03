@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    * {
+      font-size: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      /* border: 1px solid black; */
+    }
+    td {
+      width: 100px;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <table border="1">
+      <tr>
+        <td>이름</td>
+        <td>주소</td>
+      </tr>
+      <tr>
+        <td>홍길동</td>
+        <td>대전</td>
+      </tr>
+      <tr>
+        <td>진달래</td>
+        <td>서울</td>
+      </tr>
+      <tr>
+        <td>개나리</td>
+        <td>부산</td>
+      </tr>
+      <tr>
+        <td>무궁화</td>
+        <td>대구</td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    $("tr:odd").css("backgroundColor", "yellow");
+    $("tr:even").css("backgroundColor", "orange");
+    $("tr:first").css({ backgroundColor: "black", color: "white" });
+  </script>
+</html>

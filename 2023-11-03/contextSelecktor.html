@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style type="text/css">
+    div {
+      width: 300px;
+      height: 30px;
+      border: 1px solid green;
+    }
+  </style>
+  <body>
+    <div></div>
+    <div>
+      헬로우
+      <span>오늘도 즐겁게~열심히</span>
+    </div>
+    <p>Hello jQurey! <span>Tanks jQuery</span></p>
+    <div class="myClass">jQuery~~!!</div>
+    <span class="notMyClass">쉬운 jQuery</span>
+    <div></div>
+    <br /><br />
+    <hr color="blue" />
+    <br />
+  </body>
+  <script>
+    $("span:contains(jQuery)").css("border", "2px solid gray");
+    // $("span").not("span:contains:jQuery").css("border", "2px solid red");
+    $("div:has(span)").css("border", "2px solid pink");
+    $("div:empty").css("backgroundColor", "pink");
+    $("div span:parent").css({
+      backgroundColor: "pink",
+      color: "red",
+      "font-weight": "600",
+      "font-size": "15px",
+    });
+  </script>
+</html>
