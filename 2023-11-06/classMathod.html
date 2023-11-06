@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    .wrapper * {
+      display: block;
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 4px;
+      margin: 5px;
+    }
+    .big {
+      font-size: 200%;
+      color: aqua;
+      font-weight: bold;
+    }
+    .back {
+      background-color: yellow;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <ul>
+        ul
+        <li class="start">li class="start"</li>
+        <li class="my">li class="my"</li>
+        <li>li</li>
+        <li class="my">li class="my"</li>
+        <li class="stop">li class="stop"</li>
+        <li>li</li>
+        <li>li</li>
+        <li>li</li>
+      </ul>
+    </div>
+    <button id="addClassBtn">클래스 추가</button>
+    <button id="hasClassBtn">클래스 확인</button>
+    <button id="ramoveClassBtn">클래스 삭제</button>
+    <button id="toggleClassBtn">클래스 토글</button>
+  </body>
+  <script>
+    $("button").on("click", function () {
+      const btnId = $(this).prop("id");
+      if (btnId.search("add") == 0) {
+        $("li:last").addClass("big back");
+      } else if (btnId.search("has") == 0) {
+      } else if (btnId.search("remove") == 0) {
+      } else btnId.search("has") == 0;
+    });
+  </script>
+</html>

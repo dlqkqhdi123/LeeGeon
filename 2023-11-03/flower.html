@@ -24,9 +24,10 @@
   <script>
     const imgArr = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"];
     $("p").on("click", function () {
-      //   alert("p 태그 클릭");
+      // //   alert("p 태그 클릭");
       const index = $("this").index();
-      $(this).append(`<img src="../resources/img/${imgArr[index]}" />`);
+      // $(this).append(`<img src="../resources/img/${imgArr[index]}" />`);
+      $(this).after(`<img src="../resources/img/${imgArr[index]}" />`);
     });
   </script>
 </html>

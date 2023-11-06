@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent-Is</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    div {
+      border: 3px solid orange;
+    }
+  </style>
+  <body>
+    <div>
+      <p>무궁와 꽃이 피엇습니다</p>
+    </div>
+    <p>은주는 예쁘다</p>
+    <div>
+      <p>사뿐히 즈려밟고 가시옵소서</p>
+    </div>
+  </body>
+  <script>
+    const el = $("pTag");
+    $("p").on("click", function () {
+      const pTag = $(this);
+      const parentEl = pTag.parent();
+      const parentTagName = parentEl.prop("tagName").toLowerCase();
+      if (parentTagName == "div") {
+        const txt = pTag.text();
+        parentEl.append(`<p style="color:red">${txt}</p>`);
+        // parentEl.append(pTag.clone(true).css("color", "red"));
+      } else {
+        alert("작업대상이아닙니다");
+      }
+    });
+
+    // 1. 선택된 p 태그를가져온다.
+    // 2. 선택된 p태그의 부모요소를가져온다
+    // 3. 부모요소를 확인한다 (div 태그인지)
+    // 4. div 태그라면 부모요소에 새로운 p 태그를 추가한다.
+    // 4.1 선택된 p태그의 부모요소에 새로운p 태그를 추가한다.
+    // 5. div 태그가 아니라면 alert 창을 띄운다
+  </script>
+</html>
