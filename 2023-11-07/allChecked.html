@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <input type="checkbox" id="chkController" />
+    <label for="chkController">전체선택</label>
+    <br />
+    <input type="checkbox" id="a" />
+    <label for="a">aaa</label>
+    <input type="checkbox" id="b" />
+    <label for="b">bbb</label>
+    <input type="checkbox" id="c" />
+    <label for="c">ccc</label>
+    <input type="checkbox" id="d" />
+    <label for="d">ddd</label>
+    <input type="checkbox" id="e" />
+    <label for="e">eee</label>
+  </body>
+  <script>
+    $("#chkController").on("click", function () {
+      const allChk = $("#chkController");
+      // 1. 전체선택에 매핑되어있는 input 박스(체크박스)를 가져온다.
+      // 2. 가져온 체크박스가 체그되어 있는지를 확인한다.
+      const chk = allChk.prop("checked");
+      if (chk) {
+        allChk.siblings("input").prop("checked", true);
+      } else {
+        allChk.siblings("input").prop("checked", false);
+      }
+      // 3. 체크 되어있다면 아래 다섯개의 체크박스 체크, 아니라면
+      //     아래 다섯개의 체크박스 체크해제
+    });
+
+    $("#chkController")
+      .siblings("input")
+      .on("click", function () {
+        // 1. 체크 된 체크박스만 가져온다
+        const checkedBox = $("#chkController").siblings("input:checked");
+        // 2. 전체 체크박스를 가져온다
+        const allCheckBox = $("#chkController").siblings("input");
+        // 3. 전체 체크박스의 개수와 체크된 체크박스의 개수를 비교해서
+        //    전체 선택에 매핑되어있는 체크박스를 checked 만든다
+        if (allCheckBox.length == checkedBox.length) {
+          $("#chkController").prop("checked", true);
+        } else {
+          $("#chkController").prop("checked", false);
+        }
+      });
+  </script>
+</html>

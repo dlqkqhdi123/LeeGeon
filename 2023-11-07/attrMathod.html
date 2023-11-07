@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    div {
+      border: 2px solid blue;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+  <body>
+    <div>
+      <img src="../resources/img/바다.jpg" alt="" />
+      <img src="../resources/img/바다2.jpg" alt="" />
+      <img src="../resources/img/바다3.jpg" alt="" />
+      <img src="../resources/img/바다4.jpg" alt="" />
+      <img src="../resources/img/바다5.jpg" alt="" />
+      <br />
+      <button onclick="changeTitle()">눌러보세요</button>
+    </div>
+  </body>
+  <script>
+    function changeTitle() {
+      // 1. img 태그 전체 요소를가져온다
+      const imgTags = $("img");
+      // 2. 전체 태그에 대한 반복문을실행
+      imgTags.each((i, el) => {
+        const srcVal = $(el).attr("src");
+        $(el).attr("title", srcVal);
+        //     el.attr("title",el.attr("src"))
+      });
+
+      // 3. 반복문 안에서 attr 함수를 활용해 title에 src와 똑같은 값을 넣어준다
+    }
+  </script>
+</html>

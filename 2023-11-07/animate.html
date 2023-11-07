@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <div
+      id="div"
+      style="
+        background-color: yellow;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+      "
+    >
+      rlacl
+    </div>
+  </body>
+  <script>
+    $("#div").on("click", function () {
+      //   $("#div").animate({
+      //     left: "250px",
+      //     opacity: "0.5",
+      //     height: "300px",
+      //     width: "300px",
+      //     backgroundColor: "red",
+      //   });
+      $("#div").animate({ height: "600px", opacity: "0.8", fontSize: "2em" });
+      $("#div").animate({ height: "300px", opacity: "0.5", fontSize: "2em" });
+      $("#div").animate({ height: "200px", opacity: "0.2", fontSize: "2em" });
+      $("#div").animate({
+        height: "100px",
+        width: "600px",
+        opacity: "0.1",
+        fontSize: "2em",
+      });
+      $("#div").animate({ width: "600px", height: "600px", opacity: "0.9" });
+    });
+  </script>
+</html>

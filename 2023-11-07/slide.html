@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    #panel,
+    #flip {
+      padding: 5px;
+      font-size: 19px;
+      background-color: #555;
+      color: white;
+      border: 2px solid #666;
+      border-radius: 3px;
+      text-align: center;
+    }
+    #panel {
+      display: none;
+      padding: 50px;
+    }
+  </style>
+  <body>
+    <button id="Stop">Stop sliding</button>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div id="flip">여기를 클릭하세요!!</div>
+    <div id="panel">Hello jQuery!!</div>
+  </body>
+  <script>
+    $("#flip").on("click", function () {
+      //   $("#panel").slideDown(5000); // 밀리서컨즈
+      $("#panel").slideToggle(10000); // 밀리서컨즈
+    });
+    $("#Stop").on("click", function () {
+      $("#panel").stop();
+    });
+  </script>
+</html>
