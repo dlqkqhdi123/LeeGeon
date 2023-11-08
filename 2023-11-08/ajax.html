@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body>
+    <h1>Authors</h1>
+    <ul id="authors">
+      li
+    </ul>
+    <button onclick="doAction()">Action</button>
+  </body>
+  <script>
+    const url = "https://jsonplaceholder.typicode.com/users";
+    function doAction() {
+      // fetch 함수는 promise 객체를 반환
+      // promise ==> 비동기 통신에 대한 상태와 결과값을 담고있는 객체
+      // promis state 값
+      // pending : 진행중
+      // fulfulled : 작업 (통신) 성공
+      // rejected : 작업(통신) 실패
+      const data = fetch(url).then((response) => console.log(response));
+      //   console.log(data);
+    }
+  </script>
+</html>

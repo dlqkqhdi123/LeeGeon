@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    body * {
+      border: 3px solid blue;
+      padding: 20px;
+      margin: 15px;
+    }
+  </style>
+  <body>
+    <form action="">
+      FORM
+      <div>
+        DIV
+        <p>P</p>
+      </div>
+    </form>
+  </body>
+  <script>
+    const allEl = document.querySelectorAll("*");
+    for (let elem of allEl) {
+      elem.addEventListener(
+        "click",
+        function (e) {
+          alert(`캡쳐링 : ${elem.tagName}`);
+        },
+        true
+      );
+    }
+  </script>
+</html>
