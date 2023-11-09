@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body></body>
+  <script>
+    const gift = ["하니", "해린", "민지", "다니엘", "진용"];
+
+    // ES5
+    // const airMax = gift[0];
+    // const airpod = gift[1];
+    // const appleCoupon = gift[2];
+    // const etcCoupon1 = gift[3];
+    // const etcCoupon2 = gift[4];
+
+    // ES6
+    // const [airMax, airpod, appleCoupon, etcCoupon1, etcCoupon2] = gift;
+    // console.log(airMax, airpod, appleCoupon, etcCoupon1, etcCoupon2);
+    const [airMax, airpod, appleCoupon, ...etcCoupon] = gift;
+    console.log(airMax, airpod, appleCoupon, etcCoupon);
+
+    const obj = {
+      name: "홍길동",
+      age: "20",
+      address: "대전광역시",
+      weigth: "70Kg",
+      height: "170cm",
+    };
+    0;
+    // ES5
+    // const name = obj.name;
+    // const age = obj.age;
+    // const address = obj.address;
+
+    // ES6
+    const { name, age, address: addr, tel = "123-1234-1234", ...etc } = obj;
+    console.log(name, age, addr, tel, etc);
+  </script>
+</html>

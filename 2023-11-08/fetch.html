@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body></body>
+  <script>
+    console.log("Start!!");
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.text())
+      .then((result) => console.log(JSON.parse(result)[0]));
+    // 위의 result는 JSON 형태의 string 으로 받아진다.
+    // 따라서 객체의 형태로 사용하려면 JSON 객체의 parse() 를 사용하여 객체로 변환해야한다
+    console.log("End");
+
+    // fetch 함수가 리턴하는 객체 ==> promise
+    // then 은 리턴 받는 promise 함수
+    // then 함수도 promise 객체를 반환
+
+    // Start 콘솔이 먼저 찍힘
+    // fetch 를 만났는데 여기서 리턴하는 promise의 then 함수로 콜백을 등록
+    // 뒤에 있는 두번째 then 함수도 콜백을 등록(등록만 할 뿐 실행은 하지 않음)
+    // 서버(요청한 쪽)에 response 가 도착하면 then 함수로 등록했던 콜백들이 실행
+  </script>
+</html>

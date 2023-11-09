@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    li {
+      border: 2px solid yellow;
+      list-style: none;
+    }
+  </style>
+  <body>
+    <h1>Authors</h1>
+    <ul id="authors"></ul>
+    <button onclick="doAction()">Action</button>
+    <button onclick="doAjax()">Ajax</button>
+  </body>
+  <script>
+    const url = "https://jsonplaceholder.typicode.com/users";
+    function doAction() {
+      let data;
+      fetch(url)
+        .then((response) => response.text())
+        .then((result) => {
+          data = JSON.parse(result);
+          // console.log(data[0].address.city);
+          // 10명의 이름,이메일, 주소, 를 li 태그로 만들어서
+          // ul 태그에 추가를 해봅시다
+
+          // 1. 가져온 data의 반복문 통해 객체에 하나씩 접근한다.
+          for (const {
+            name,
+            email,
+            address: { city },
+          } of data) {
+            // 2. name, email, address 의 city
+            // const {
+            //   name,
+            //   email,
+            //   address: { city },
+            // } = user;
+            console.log(name, email, city);
+            // 3. li태그를 생성하고 그 li태그에 이름은 h2 태그 , 나머지 정보는
+            // p태그에 담아서 apped
+            const li = document.createElement("li");
+            const h2 = document.createElement("h2");
+            h2.innerHTML = name;
+            const p1 = document.createElement("p");
+            p1.innerHTML = `Email : ${email}`;
+            const p2 = document.createElement("p");
+            p2.innerHTML = `city : ${city}`;
+
+            const ul = document.getElementById("authors");
+            li.append(h2);
+            li.append(p1);
+            li.append(p2);
+            ul.append(li);
+          }
+        });
+    }
+    function doAjax() {
+      $.ajax({
+        type: "GET",
+        url: url,
+        success: function (data) {
+          for (const {
+            name,
+            email,
+            address: { city },
+          } of data) {
+            $("#authors").append(
+              $("<li>").append(
+                $("<h2>").text(name),
+                $("<p>").text(`email : ${email}`),
+                $("<p>").text(`city : ${city}`)
+              )
+            );
+          }
+        },
+        error: function () {},
+      });
+    }
+  </script>
+</html>

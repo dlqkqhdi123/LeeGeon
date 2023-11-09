@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <body></body>
+  <script>
+    const url = "https://jsonplaceholder.typicode.com/users";
+    async function fetchAndPrint() {
+      console.log(2);
+      const response = await fetch(url);
+      console.log(7);
+      const result = await response.text();
+    }
+
+    // await 은 promise 객체를 리턴하는 코드 앞에 붙인다.
+    // 함수앞에 async 가 붙어있으면 함수 안에 비동기적으로 실행되는 코드가 있다는 말.
+    // await 은 뒤에있는 코드의 promise 가  fulfilled 혹은 rejected 가 될 때 까지 기다림.
+    console.log(1);
+    fetchAndPrint();
+    console.log(3);
+    console.log(4);
+    console.log(5);
+    console.log(6);
+  </script>
+</html>
