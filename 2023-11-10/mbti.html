@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="../resources/css/home.css" />
+    <link rel="stylesheet" href="../resources/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-container">
+        <!-- 헤더 로고(제목) 작성부 -->
+        <div class="header">
+          <h1>
+            MBTI별<br />
+            <span class="accent">좋아하는 컬러</span>
+            <br />
+          </h1>
+          <div>
+            <span class="filter">
+              <span>INFP</span>
+              <img class="remobe-icn" src="../resources/img/x.svg" alt="" />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <!-- 새 컬러 등록하기 -->
+        <a class="add-item" href="#">+ 새 컬러 등록하기</a>
+        <!-- MBTI별 컬러 -->
+        <ul class="items">
+          <li class="item">
+            <div class="item-id">20</div>
+            <div class="item-mbti">ENFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #efb587"
+            ></div>
+            <div class="item-color-code">#8649b6</div>
+          </li>
+          <li class="item">
+            <div class="item-id">19</div>
+            <div class="item-mbti">ENFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #123456"
+            ></div>
+            <div class="item-color-code">#123456</div>
+          </li>
+          <li class="item">
+            <div class="item-id">18</div>
+            <div class="item-mbti">INFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #775588"
+            ></div>
+            <div class="item-color-code">#775588</div>
+          </li>
+          <li class="item">
+            <div class="item-id">17</div>
+            <div class="item-mbti">INTJ</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #135825"
+            ></div>
+            <div class="item-color-code">#135825</div>
+          </li>
+          <li class="item">
+            <div class="item-id">16</div>
+            <div class="item-mbti">ISFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #852289"
+            ></div>
+            <div class="item-color-code">#852289</div>
+          </li>
+          <li class="item">
+            <div class="item-id">15</div>
+            <div class="item-mbti">ENTP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #795858"
+            ></div>
+            <div class="item-color-code">#795858</div>
+          </li>
+          <li class="item">
+            <div class="item-id">14</div>
+            <div class="item-mbti">ENTJ</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #588285"
+            ></div>
+            <div class="item-color-code">#588285</div>
+          </li>
+          <li class="item">
+            <div class="item-id">13</div>
+            <div class="item-mbti">ENFJ</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #365241"
+            ></div>
+            <div class="item-color-code">#365241</div>
+          </li>
+          <li class="item">
+            <div class="item-id">12</div>
+            <div class="item-mbti">INFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #731928"
+            ></div>
+            <div class="item-color-code">#731928</div>
+          </li>
+          <li class="item">
+            <div class="item-id">11</div>
+            <div class="item-mbti">ESFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #718293"
+            ></div>
+            <div class="item-color-code">#718293</div>
+          </li>
+          <li class="item">
+            <div class="item-id">10</div>
+            <div class="item-mbti">ENJP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #682282"
+            ></div>
+            <div class="item-color-code">#682282</div>
+          </li>
+          <li class="item">
+            <div class="item-id">9</div>
+            <div class="item-mbti">ENFJ</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #666583"
+            ></div>
+            <div class="item-color-code">#666583</div>
+          </li>
+          <li class="item">
+            <div class="item-id">8</div>
+            <div class="item-mbti">ISFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #362548"
+            ></div>
+            <div class="item-color-code">#362548</div>
+          </li>
+          <li class="item">
+            <div class="item-id">7</div>
+            <div class="item-mbti">INFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #953625"
+            ></div>
+            <div class="item-color-code">#953625</div>
+          </li>
+          <li class="item">
+            <div class="item-id">6</div>
+            <div class="item-mbti">ENFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #654123"
+            ></div>
+            <div class="item-color-code">#654123</div>
+          </li>
+          <li class="item">
+            <div class="item-id">5</div>
+            <div class="item-mbti">ESTP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #864287"
+            ></div>
+            <div class="item-color-code">#864287</div>
+          </li>
+          <li class="item">
+            <div class="item-id">4</div>
+            <div class="item-mbti">INFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #525252"
+            ></div>
+            <div class="item-color-code">#525252</div>
+          </li>
+          <li class="item">
+            <div class="item-id">3</div>
+            <div class="item-mbti">ENTJ</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #333333"
+            ></div>
+            <div class="item-color-code">#333333</div>
+          </li>
+          <li class="item">
+            <div class="item-id">2</div>
+            <div class="item-mbti">ISFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #778778"
+            ></div>
+            <div class="item-color-code">#778778</div>
+          </li>
+          <li class="item">
+            <div class="item-id">1</div>
+            <div class="item-mbti">ISFP</div>
+            <div class="item-arrow">
+              <img
+                class="item-arrow-icon"
+                src="../resources/img/arrow.svg"
+                alt="화살표"
+              />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: #778778"
+            ></div>
+            <div class="item-color-code">#778778</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
