@@ -4,10 +4,10 @@
   width: 865px;
   gap: 40px;
 }
-.header-container {
-  /* position: fixed;
-  top: 0; */
-}
+/* .header-container { 
+ position: fixed;
+  top: 10px; 
+} */
 .add-item {
   display: block;
   text-decoration: none;
@@ -44,6 +44,7 @@
   background-color: #ffffff;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  align-self: center;
 }
 .content {
   flex-grow: 1;
@@ -106,6 +107,10 @@
 @media screen and (max-width: 944px) {
   .container {
     flex-direction: column;
+    margin: 0;
+    padding: 24px 16px;
+    gap: 24px;
+    width: 100%;
   }
   .header {
     padding: 32px;
@@ -114,5 +119,41 @@
   }
   .header > h1 {
     font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .filter {
+    padding: 4px 8px;
+    gap: 8px;
+  }
+  .add-item {
+    padding: 20px 24px;
+  }
+  .item {
+    padding: 18px 16px;
+  }
+  .item-id {
+    margin-right: 16px;
+    width: 37px;
+  }
+  .item-mbti {
+    width: 54px;
+    margin-right: 16px;
+  }
+  .item-color-code {
+    width: 72px;
+  }
+  .item-color-chip {
+    margin-left: 16px;
+    margin-right: 8px;
+  }
+  .remove-icon {
+    width: 12px;
+    height: 12px;
+  }
+  .header-container {
+    width: 100%;
+    position: sticky;
+    top: 24px;
+    z-index: 1;
   }
 }
