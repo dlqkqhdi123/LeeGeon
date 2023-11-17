@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="shareskill.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">shareSkill</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">버튼</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">튼버</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">버어튼</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- 캐러셀 시작 -->
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div
+            class="item1"
+            style="
+              width: 100%;
+              height: 100%;
+              background-image: url('../resources/img/바다2.jpg');
+              background-position: center;
+              background-size: cover;
+            "
+          >
+            <div class="carousel-caption d-none d-md-block intro">
+              <h2>음악을 배워보세요</h2>
+              <h3>
+                멋진 뮤지션들이 주변에 잇습니다
+              </h3>
+              <a href="#">소셜</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div
+            class="item2"
+            style="
+              width: 100%;
+              height: 100%;
+              background-image: url('../resources/img/바다4.jpg');
+              background-position: center;
+              background-size: cover;
+            "
+          >
+            <div class="carousel-caption d-none d-md-block intro">
+              <h2>메이크업을 배워보세요
+              <h3>
+                멋진 메이크업 아티스트들이 주변에 있
+              </h3>
+              <a href="#">소셜</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div
+            class="item3"
+            style="
+              width: 100%;
+              height: 100%;
+              background-image: url('../resources/img/바다3.jpg');
+              background-position: center;
+              background-size: cover;
+            "
+          >
+            <div class="carousel-caption d-none d-md-block intro">
+              <h2>요리를 배워보세요</h2>
+              <h3>
+                멋진 요리사들이 주변에 있습니다
+              </h3>
+              <a href="#">소셜</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- 캐러셀 끝 -->
+    <div class="container">
+        <div class="row">   <!--row : flex container-->
+        <div class="col-12">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>튜터 모집!</strong>재능을 나누어보아요
+                <button class="btn-close" type="button" aria-label="Close"></button>
+            </div>
+        </div>           
+        </div>
+        <div class="row">
+            <div class="col-xl-3"></div>
+        </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+</html>

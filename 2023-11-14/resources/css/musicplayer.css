@@ -1,0 +1,274 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: Pretendard;
+  word-break: keep-all;
+  font-size: 16px;
+}
+
+body {
+  background-color: #000;
+  color: #d9d9d9;
+  margin: 0;
+}
+.sidebar {
+  padding: 16px;
+  background-color: #161519;
+  color: #8c8993;
+  width: 240px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.menu-items {
+  margin: 0;
+  margin-bottom: 48px;
+  padding: 0;
+  list-style: none;
+}
+.menu-item {
+  display: flex;
+  align-content: center;
+  gap: 8px;
+  padding: 8px 24px;
+}
+.menu-item:hover {
+  cursor: pointer;
+}
+.menu-item.active {
+  background-color: rgba(205, 187, 255, 0.1);
+  color: #ffffff;
+}
+main {
+  margin-left: 240px;
+  margin-bottom: 132px;
+}
+section {
+  max-width: 1120px;
+  width: 100%;
+  margin: 80px auto;
+  padding: 0 36px;
+}
+.section-title {
+  font-weight: 700;
+  font-size: 32px;
+  margin: 32px 0;
+}
+.featured {
+  display: flex;
+  gap: 40px;
+}
+.featured-thumb {
+  flex-shrink: 0;
+  border-radius: 24px;
+}
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.featured-title {
+  font-weight: 700;
+  font-size: 40px;
+  color: #d9d9d9;
+  margin: 0;
+}
+.featured-description {
+  margin: 0;
+  color: #d9d9d9;
+}
+.featured-tag {
+  width: fit-content;
+  background-color: #18181b;
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #565662;
+}
+
+.playlists {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.playlist {
+  flex-basis: 23%;
+}
+.playlist-thumb {
+  border-radius: 16px;
+  width: 100%;
+}
+.playlist-title {
+  font-weight: 700;
+  font-size: 24px;
+  margin: 16px 0 8px;
+}
+.playlist-artist {
+  color: #868686;
+  margin: 0;
+}
+.artists {
+  display: flex;
+  gap: 32px;
+}
+.artist {
+  width: 120px;
+  text-align: center;
+  border-radius: 50%;
+}
+.artist-profile {
+  width: 100%;
+}
+.artist-name {
+  font-weight: 500;
+  font-size: 24px;
+  margin: 24px 0 0;
+}
+.stations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.station {
+  width: 100%;
+  border-radius: 16px;
+  aspect-ratio: 1;
+}
+.charts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0;
+}
+.charts-title {
+  margin: 0;
+}
+.charts-see-all {
+  font-weight: 500;
+  font-size: 24px;
+  text-decoration: none;
+  color: #d9d9d9;
+}
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+.chart {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.chart-cover {
+  flex: 0 0;
+  border-radius: 16px;
+  width: 160px;
+  height: 160px;
+}
+.chart-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chart-rank {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chart-number {
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 24px;
+  padding: 8px 16px;
+}
+.chart-change {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.2);
+}
+.chart-change.up {
+  color: red;
+}
+.chart-title {
+  font-weight: 700;
+  font-size: 32px;
+}
+.chart-artist {
+  font-weight: 500;
+  font-size: 24px;
+  color: #868686;
+}
+.progress-bar {
+  height: 6px;
+  background: #4f4f54;
+}
+.progress {
+  background-color: #7000ff;
+  width: 70%;
+  height: 100%;
+}
+.player {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.player-main {
+  background-color: rgba(48, 48, 55, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  backdrop-filter: blur(15px);
+  flex: 1 0;
+}
+.info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.current {
+  border-radius: 14px;
+}
+.title {
+  color: #d9d9d9;
+}
+.artist {
+  color: #8c8993;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time {
+  color: #8c8993;
+  text-align: right;
+}
+.info,
+.time {
+  flex-basis: 300px;
+}
+
+@media screen and (max-width: 971px) {
+  .playlist {
+    flex-basis: 30%;
+  }
+  .artist-name {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 757px) {
+  .playlist {
+    flex-basis: 47%;
+  }
+}
