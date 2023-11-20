@@ -34,3 +34,29 @@
 .container {
   margin-top: 50px;
 }
+.course {
+  display: block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+}
+.course:hover {
+  text-decoration: underline;
+}
+.course .info {
+  padding: 10px;
+}
+.course .info h4 {
+  font-size: 18px;
+  color: #4a4a4a;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.course .info .lecture {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-size: 13px;
+  color: #4a4a4a;
+}

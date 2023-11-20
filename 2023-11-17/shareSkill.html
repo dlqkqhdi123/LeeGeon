@@ -152,19 +152,174 @@
     </div>
     <!-- 캐러셀 끝 -->
     <div class="container">
-        <div class="row">   <!--row : flex container-->
+      <!-- 튜터모집 alert 시작  -->
+      <div class="row">   <!--row : flex container-->
         <div class="col-12">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>튜터 모집!</strong>재능을 나누어보아요
-                <button class="btn-close" type="button" aria-label="Close"></button>
-            </div>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>튜터 모집!</strong>재능을 나누어보아요
+            <button class="btn-close" type="button" aria-label="Close"></button>
+          </div>
         </div>           
+      </div>
+      <!-- 튜터모집 alert 끝  -->
+      <!-- 클래스 목록 시작  -->
+      <div class="row" id="courseList">
+        <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course1.jpg" width="100%" class="course-ing" alt="과정1번 이미지"/>
+            <div class="info">
+              <h4>개성있는 일러스트 작품 만들기</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
         </div>
-        <div class="row">
-            <div class="col-xl-3"></div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course2.jpg" width="100%" class="course-ing" alt="과정2번 이미지"/>
+            <div class="info">
+              <h4>내가 만드는 나만의 악세서리</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
         </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course3.jpg" width="100%" class="course-ing" alt="과정3번 이미지"/>
+            <div class="info">
+              <h4>내 이야기를 노래로</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course4.jpg" width="100%" class="course-ing" alt="과정4번 이미지"/>
+            <div class="info">
+              <h4>비전공자를 위한 웹 프로그래밍</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course5.jpg" width="100%" class="course-ing" alt="과정5번 이미지"/>
+            <div class="info">
+              <h4>자신감 업! 메이크업 클래스</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course6.jpg" width="100%" class="course-ing" alt="과정6번 이미지"/>
+            <div class="info">
+              <h4>아이돌 댄스 정복하기</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course7.jpg" width="100%" class="course-ing" alt="과정7번 이미지"/>
+            <div class="info">
+              <h4>사진 작가에게 배우는 야외 사진</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <a href="#" class="course">
+            <img src="../resources/img/course8.jpg" width="100%" class="course-ing" alt="과정8번 이미지"/>
+            <div class="info">
+              <h4>기본부터 익히는 플라워 클래스</h4>
+              <div class="lecture"> 
+                <img src="../resources/img/user.png" width="20px" height="20px" alt="유저이미지">
+                <span class="name">이건</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div> -->
+      <!-- 클래스 목록 끝  -->
     </div>
   </body>
+  <script>
+   const courseArr = [];
+   const courseObj1 = {
+    courseImgPath:"../resources/img/course1.jpg",
+    courseAlt : "과정1번 이미지",
+    courseName: "개성있는 일러스트 작품 만들기",
+    tchrPflImgPath:"../resources/img/user.png",
+    tchrName: "이건"
+   }
+   const courseObj2 = {
+    courseImgPath:"../resources/img/course2.jpg",
+    courseAlt : "과정2번 이미지",
+    courseName: "내가 만드는 나만의 악세서리",
+    tchrPflImgPath:"../resources/img/user.png",
+    tchrName: "이건"
+   }
+   const courseObj3 = {
+    courseImgPath:"../resources/img/course3.jpg",
+    courseAlt : "과정3번 이미지",
+    courseName: "내 이야기를 노래로",
+    tchrPflImgPath:"../resources/img/user.png",
+    tchrName: "이건"
+  }
+   const courseObj4 = {
+    courseImgPath:"../resources/img/course4.jpg",
+    courseAlt : "과정4번 이미지",
+    courseName: "비전공자를 위한 웹 프로그래밍",
+    tchrPflImgPath:"../resources/img/user.png",
+    tchrName: "이건"
+  }
+  courseArr.push(courseObj1);
+  courseArr.push(courseObj2);
+  courseArr.push(courseObj3);
+  courseArr.push(courseObj4);
+  console.log(courseArr);
+  const courseList = document.getElementById("courseList")
+  courseArr.forEach((el) => {
+
+    courseList.insertAdjacentHTML("beforeend", `
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <a href="#" class="course">
+              <img src="${el.courseImgPath}" width="100%" class="course-ing" alt="${el.courseAlt}"/>
+              <div class="info">
+                <h4>${el.courseName}</h4>
+                <div class="lecture"> 
+                  <img src="${el.tchrPflImgPath}" width="20px" height="20px" alt="">
+                  <span class="name">${el.courseName}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+    `)
+  });
+  
+  </script>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
