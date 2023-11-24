@@ -1,0 +1,401 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #212212;
+  color: #fff;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  word-break: keep-all;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+/* 헤더 시작 */
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  margin: 0 auto;
+  padding: 16px 8px;
+  transition: all 0.1s linear;
+}
+
+.navigation.active {
+  background-color: #f2c301;
+  color: #212212;
+  z-index: 300;
+  border-radius: 0 0 20px 20px;
+}
+
+.navigation.active a {
+  color: #212212;
+}
+
+.deactive {
+  background-color: transparent;
+}
+
+.site {
+  z-index: 1000;
+}
+
+.site_name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  padding-right: 16px;
+  border-right: 1px solid gray;
+}
+
+.site_name > span {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.site_name > small {
+  font-size: 16px;
+}
+
+.site_logo {
+  /* 로고 결정시 아래 background-image삭제 */
+  background-image: url("../image/4.jpg");
+  width: 50px;
+  height: 50px;
+}
+
+.nav_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.item {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.gnb {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 119px;
+  background-color: inherit;
+  padding-top: 16px;
+  margin-left: 16px;
+}
+
+.gnb a {
+  color: #fff;
+}
+
+.gnb.active a {
+  color: #212212;
+}
+
+.nav_left .gnb {
+  height: 100%;
+}
+
+.gmain {
+  position: relative;
+}
+
+.gmain > a {
+  height: 100%;
+}
+
+.gmain:hover .gsub {
+  display: block;
+}
+
+.gsub {
+  position: absolute;
+  background-color: white;
+  width: 120px;
+  text-align: center;
+  padding: 8px 10px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  top: 25px;
+  right: -16%;
+  z-index: 800;
+}
+
+.gmain:nth-child(2) .gsub {
+  left: -60%;
+}
+
+.gsub a {
+  border-bottom: 1px solid #ccc;
+  display: block;
+  padding: 3px 8px;
+  color: #212212;
+}
+
+.gsub a:hover {
+  background-color: #f2c301;
+  color: #212212;
+  font-weight: 700;
+}
+
+.gsub li:last-of-type a {
+  border-bottom: none;
+}
+
+.account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  gap: 8px;
+}
+
+.hamburger-button {
+  position: relative;
+  transition: 0.3s ease-in-out;
+  width: 45px;
+  height: 34px;
+  display: none;
+  cursor: pointer;
+}
+.hamburger-button span {
+  position: absolute;
+  height: 8px;
+  border-radius: 4px;
+  width: 100%;
+  background: #fff;
+  top: 0;
+  transition: 0.2s;
+}
+
+.navigation.active .hamburger-button span {
+  background-color: #212212;
+}
+
+.hamburger-button.active {
+  background-color: transparent;
+}
+
+.hamburger-button span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-button span:nth-child(2),
+.hamburger-button span:nth-child(3) {
+  top: 13px;
+}
+
+.hamburger-button span:nth-child(4) {
+  top: 26px;
+}
+
+.hamburger-button.active span:nth-child(1),
+.hamburger-button.active span:nth-child(4) {
+  opacity: 0;
+}
+
+.hamburger-button.active span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.hamburger-button.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* 헤더 종료 */
+/* 메인 시작 */
+
+/* 메인 종료 */
+
+/* footer 시작 */
+.footer_wrap {
+  width: 100%;
+  height: 20%;
+  margin-top: 100px;
+  background-color: #f2c301;
+  border-radius: 5% 5% 0 0;
+}
+
+.footer_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-bottom: 2px solid gray;
+  color: #212212;
+}
+
+.footer_homePage {
+  font-weight: 700;
+}
+
+.day {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.time {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.inquiry {
+  padding: 32px 45px;
+  background-color: #4b4b4b;
+  cursor: pointer;
+  color: #dddddd;
+  font-weight: 700;
+  font-size: 24px;
+  border-radius: 16px;
+}
+
+.footer_bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 32px 24px 32px;
+  color: #212212;
+  gap: 15px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.footer_bottom a {
+  color: #212212;
+}
+
+.site_address {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+/* footer 종료 */
+
+@media screen and (max-width: 1024px) {
+  /* 헤더 시작 */
+  .gnb {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    background-color: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+    transition: all 0.5s linear;
+  }
+
+  .gnb.vh {
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(1.8);
+    z-index: 500;
+  }
+
+  .gnb.vh a {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .gnb.vh body {
+    overflow: hidden;
+  }
+
+  .gnb.vh .gsub {
+    display: none;
+  }
+
+  .navigation {
+    justify-content: space-between;
+  }
+
+  .navigation.active .hamburger-button span {
+    background-color: #212212;
+  }
+
+  .navigation.active .hamburger-button.active span {
+    background-color: #fff;
+  }
+
+  .hamburger-button {
+    display: inline-block;
+    z-index: 600;
+  }
+
+  .account {
+    position: fixed;
+    right: -100%;
+    display: flex;
+    gap: 8px;
+    width: 90%;
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    justify-content: center;
+    align-items: center;
+    margin: 0 5%;
+    z-index: 500;
+  }
+  .account.active {
+    right: 0;
+    left: 0;
+    top: 20%;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .account.active a {
+    color: #fff;
+    padding: 1rem 3rem;
+    border: 3px solid #fff;
+    border-radius: 45%;
+    font-weight: 700;
+  }
+
+  /* 헤더 종료 */
+  /* 메인 시작 */
+  .sub_content {
+    flex-direction: column;
+  }
+  /* 메인 종료 */
+
+  .bottom_address address {
+    display: flex;
+    flex-direction: column;
+  }
+}

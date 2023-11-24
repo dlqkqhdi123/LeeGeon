@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search">
+        <input type="text" class="search-input" placeholder="ID입력" />
+        <button class="search-button" onclick="{searchID()}">검 색</button>
+        <p class="msg"></p>
+      </div>
+      <hr />
+      <div class="content">
+        <label for="id">ID</label>
+        <input type="text" id="id" /><br />
+        <label for="name">이름</label>
+        <input type="text" id="name" /><br />
+        <label for="gender">성별</label>
+        <input type="text" id="gender" /><br />
+        <label for="job">직업</label>
+        <input type="text" id="job" /><br />
+        <label for="address">주소</label>
+        <input type="text" id="address" /><br />
+        <button class="submit" onclick="{register()}">등록</button>
+      </div>
+    </div>
+  </body>
+  <script src="simpleDB.js"></script>
+</html>
