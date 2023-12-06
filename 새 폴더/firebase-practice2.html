@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>firebase-pracitce</title>
+  </head>
+  <style>
+    .selected {
+      background-color: yellow;
+    }
+
+    tr {
+      cursor: pointer;
+      height: 50px;
+    }
+  </style>
+  <body>
+    <p>
+      <label>이름 : </label>
+      <input type="text" name="name" />
+    </p>
+    <p>
+      <label>나이 : </label>
+      <input type="text" name="age" />
+    </p>
+    <p>
+      <label>아이디 : </label>
+      <input type="text" name="id" />
+    </p>
+    <p>
+      <label>전화번호 : </label>
+      <input type="text" name="tel" />
+    </p>
+    <p>
+      <label>성별 : </label>
+      <input type="text" name="gender" />
+    </p>
+    <p>
+      <button id="saveBtn">데이터저장</button>
+    </p>
+
+    <table border="1">
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+        <th>아이디</th>
+        <th>전화번호</th>
+      </tr>
+    </table>
+    <br />
+    <button id="deleteBtn">회원삭제</button>
+    <button id="updateBtn">회원정보수정</button>
+  </body>
+  <script type="module">
+    import * as firebase from "../resources/js/firebase.js";
+    const {
+      db,
+      getDocs,
+      collection,
+      getDatas,
+      setDoc,
+      addDoc,
+      doc,
+      addDatas,
+      deleteDatas,
+      updateDoc,
+      deleteField,
+      updateDatas,
+    } = firebase;
+
+    const memberTable = document.querySelector("table");
+    async function getMembers() {
+      const snapshot = await getDatas("member");
+      snapshot.forEach((doc) => {
+        const { memberName, memberAge, memberGender, memberTel, memberId } =
+          doc.data();
+        memberTable.insertAdjacentHTML(
+          "beforeend",
+          `
+            <tr>
+                <td>${memberName}</td>
+                <td>${memberAge}</td>
+                <td>${memberGender}</td>
+                <td>${memberId}</td>
+                <td>${memberTel}</td>
+                <input type="hidden" value="${doc.id}" />
+            </tr>
+          `
+        );
+      });
+    }
+
+    getMembers().then(function () {
+      const trs = document.querySelectorAll("tr");
+      trs.forEach((el) => {
+        el.addEventListener("click", function (e) {
+          if (e.target.tagName != "TH") {
+            el.classList.toggle("selected");
+          }
+        });
+      });
+    });
+
+    const deleteBtn = document.querySelector("#deleteBtn");
+    deleteBtn.addEventListener("click", function () {
+      const selectedTrs = memberTable.querySelectorAll("[class=selected]");
+      if (selectedTrs.length == 0) {
+        alert("삭제할 데이터가 없습니다.");
+        return;
+      }
+
+      selectedTrs.forEach((el) => {
+        const docId = el.lastElementChild.value;
+        deleteDatas("member", docId).then(function () {
+          window.location.reload();
+        });
+      });
+    });
+
+    const updateBtn = document.querySelector("#updateBtn");
+    updateBtn.addEventListener("click", function () {
+      const updateObj = {
+        memberId: "ljh0609",
+        memberTel: "01012345678",
+        memberTell: deleteField(),
+      };
+
+      updateDatas("member", "member1", updateObj).then(() =>
+        window.location.reload()
+      );
+    });
+
+    const btn = document.querySelector("#saveBtn");
+    btn.addEventListener("click", function () {
+      const memberInfo = {
+        memberName: document.querySelector("input[name=name]").value,
+        memberAge: document.querySelector("input[name=age]").value,
+        memberGender: document.querySelector("input[name=gender]").value,
+        memberTel: document.querySelector("input[name=tel]").value,
+        memberId: document.querySelector("input[name=id]").value,
+      };
+      addDatas("member", memberInfo).then(() => window.location.reload());
+    });
+  </script>
+</html>
