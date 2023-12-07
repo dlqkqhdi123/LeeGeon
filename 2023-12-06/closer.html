@@ -19,14 +19,25 @@
       //   console.log(counter);
 
       // 3.
-      function add() {
+      //   function add() {
+      //     let counter = 0;
+      //     function plus() {
+      //       counter = counter + 1;
+      //     }
+      //     plus();
+      //     console.log(counter);
+      //   }
+      //   add();
+      //   add();
+      //   add();
+      // 4.
+      const add = (function () {
         let counter = 0;
-        function plus() {
+        return function () {
           counter = counter + 1;
-        }
-        plus();
-        console.log(counter);
-      }
+          console.log(counter);
+        };
+      })();
       add();
       add();
       add();
