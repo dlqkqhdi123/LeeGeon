@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 10vmin;
+  background-color: darkslategray;
+  font-size: 4vmin;
+  line-height: 140%;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5vmin;
+  height: 100%;
+  background-color: cornsilk;
+  transform-origin: 0 100%;
+
+  /* 세로 */
+  /* -webkit-transform-origin-y: 0; */
+}

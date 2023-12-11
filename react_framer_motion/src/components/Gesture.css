@@ -1,0 +1,23 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #d0e, #91f);
+}
+.biggerBox {
+  width: 1000px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.box {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
