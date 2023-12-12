@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>funcutionPractice</title>
+  </head>
+  <body></body>
+  <script>
+    let z = 2;
+
+    function A(a, b) {
+      //   console.log(a + b + B(a, b));
+      z = a - b;
+    }
+    function B(a, b, ...args) {
+      console.log(arguments);
+      return a + b;
+    }
+
+    const B = (a, b, ...arg) => {
+      return a + b;
+    };
+    A(2, 5);
+
+    // // var let const
+    // /**
+    //  * let 재할당 가능
+    //  * let test = 0
+    //  * test = 1 가능
+    //  * const 재할당 불가능
+    //  * const test2 = 1
+    //  * test2 = 3 불가능
+    //  *
+    //  * let x 가능 console.log 작성시 언디파인드
+    //  * const y 불가능
+    //  *
+    //  * 지역 변수 전역 변수
+
+    function sumArr(arr) {
+      arr.forEach((v) => {
+        return (z += v);
+      });
+    }
+
+    const arr = [1, 2, 3, 4, 5];
+    sumArr(arr);
+  </script>
+</html>

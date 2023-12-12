@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arrayFunction</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. forEach
+    const arr = [10, 20, 30, 40, 50];
+    let sum = 0;
+    // arr.forEach(function (value, index, array) {
+    //   console.log(`value:${value},index:${index}, array:${array}`);
+    //   sum = sum + value;
+    //   또는
+    // sum += value
+    // });
+
+    arr.forEach((v) => {
+      sum += v;
+    });
+
+    console.log(sum);
+
+    // 2. map
+    // [30, 60 ,90, 120, 150] 배열 만들기
+    // const newArr = [];
+    // arr.forEach((v) => {
+    //   newArr.push(v * 3);
+    // });
+    const newArr = arr.map((v) => v * 3);
+    console.log(newArr);
+
+    const objArr = [
+      { id: 1, name: "홍길동" },
+      { id: 2, name: "진달래" },
+      { id: 3, name: "임꺽정" },
+    ];
+
+    const nameArr = objArr.map(function (v) {
+      return v.name;
+    });
+    console.log(nameArr);
+
+    // 3. reduce
+    // const arrSum = arr.reduce(function (prevValue, curValue, curIdx, array) {
+    //   console.log(
+    //     `prevValue: ${prevValue}, curValue:${curValue}, curIdx:${curIdx}, array:${array}`
+    //   );
+    //   return prevValue + curValue;
+    // });
+
+    // const arrSum = arr.reduce((a, b) => a + b);
+    // const arrSum = arr.reduce((a, b) => a + b, -1);
+    // const arrSum = arr.reduce((a, b) => a - b, 30);
+    const arrSum = arr.reduce((a, b) => a * b, 30);
+    console.log(arrSum);
+  </script>
+</html>
