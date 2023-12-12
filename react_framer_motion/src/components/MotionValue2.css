@@ -1,0 +1,31 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: dodgerblue;
+}
+.bigBox {
+  width: 70%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.box {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: gray;
+}
+.text {
+  font-size: 1.5rem;
+  line-height: 150px;
+  text-align: center;
+  color: #333;
+  user-select: none;
+}

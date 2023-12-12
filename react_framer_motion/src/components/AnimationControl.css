@@ -1,0 +1,32 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: -600px;
+}
+.box.box1 {
+  /* background-color: lightblue; */
+  background-image: url("https://media.fromsoftware.jp/fromsoftware/jp/static/img/top/pc/sekiro/background_c.jpg");
+}
+.box.box2 {
+  /* background-color: lightcoral; */
+  background-image: url("https://media.fromsoftware.jp/fromsoftware/jp/static/img/top/pc/ac6/background2_c.jpg");
+}
+.box.box3 {
+  /* background-color: lightgoldenrodyellow; */
+  background-image: url("https://media.fromsoftware.jp/fromsoftware/jp/static/img/top/pc/eldenring/background_c.jpg");
+}
+.box.box4 {
+  /* background-color: lightgreen; */
+  background-image: url("https://media.fromsoftware.jp/fromsoftware/jp/static/img/top/pc/darksouls/background_c.jpg");
+}
+.box.box5 {
+  /* background-color: lightsalmon; */
+  background-image: url("https://media.fromsoftware.jp/fromsoftware/jp/static/img/top/pc/bloodborne/background_c.jpg");
+}
