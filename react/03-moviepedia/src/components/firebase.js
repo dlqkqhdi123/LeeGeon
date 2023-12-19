@@ -30,21 +30,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getDatas(collectionName, order, limitNum, lq) {
+async function getDatas(collectionName, options) {
+  // throw new Error("애러가 아니라 기능이다");
   // const querySnapshot = await getDocs(collection(db, collectionName));
   let docQuery;
-  if (lq === undefined) {
+  if (options.lq === undefined) {
     docQuery = query(
       collection(db, collectionName),
-      orderBy(order, "desc"),
-      limit(limitNum)
+      orderBy(options.order, "desc"),
+      limit(options.limitNum)
     );
   } else {
     docQuery = query(
       collection(db, collectionName),
-      orderBy(order, "desc"),
-      startAfter(lq),
-      limit(limitNum)
+      orderBy(options.order, "desc"),
+      startAfter(options.lq),
+      limit(options.limitNum)
     );
   }
   const querySnapshot = await getDocs(docQuery);
