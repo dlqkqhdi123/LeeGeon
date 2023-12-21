@@ -13,17 +13,24 @@ import {
   limit,
   orderBy,
   startAfter,
+  exists,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+import {
+  getStorage,
+  ref,
+  Data,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDnW0xykXXw7syjS3qPKAbyaWxinAWmr-A",
-  authDomain: "test-0101-2910e.firebaseapp.com",
-  projectId: "test-0101-2910e",
-  storageBucket: "test-0101-2910e.appspot.com",
-  messagingSenderId: "155382254005",
-  appId: "1:155382254005:web:b75a9315b320c9e02071fc",
-  measurementId: "G-FQDJK63C2M",
+  apiKey: "AIzaSyAdMfkFXGyDXxHjqu47Jzs1IkSd7YIpD24",
+  authDomain: "project0304-8472f.firebaseapp.com",
+  projectId: "project0304-8472f",
+  storageBucket: "project0304-8472f.appspot.com",
+  messagingSenderId: "468535082988",
+  appId: "1:468535082988:web:b30f3147cc5a8637504ac9",
 };
 
 // Initialize Firebase
@@ -38,14 +45,14 @@ async function getDatas(collectionName, options) {
     docQuery = query(
       collection(db, collectionName),
       orderBy(options.order, "desc"),
-      limit(options.limitNum)
+      limit(options.limit)
     );
   } else {
     docQuery = query(
       collection(db, collectionName),
       orderBy(options.order, "desc"),
       startAfter(options.lq),
-      limit(options.limitNum)
+      limit(options.limit)
     );
   }
   const querySnapshot = await getDocs(docQuery);
@@ -53,8 +60,99 @@ async function getDatas(collectionName, options) {
   // orderBy, limit, starAfter
   const result = querySnapshot.docs;
   const lastQuery = result[result.length - 1];
-  const reviews = result.map((doc) => doc.data());
+  const reviews = result.map((doc) => ({ docId: doc.id, ...doc.data() }));
+  // const reviews = result.map((doc) => {
+  //   const obj = doc.data();
+  //   obj.docId = doc.id;
+  //   return obj;
+  // });
   return { reviews, lastQuery };
+}
+
+async function deleteDatas(collectionName, docId, imgUrl) {
+  const storage = getStorage();
+  const deleteRef = ref(storage, imgUrl);
+  try {
+    await deleteObject(deleteRef);
+    await deleteDoc(doc(db, collectionName, docId));
+  } catch (error) {
+    return false;
+  }
+  return true;
+}
+
+async function addDatas(collectionName, formData) {
+  const uuid = crypto.randomUUID();
+  const path = `movie/${uuid}`;
+  const lastId = (await getLastId(collectionName)) + 1;
+  const time = new Date().getTime();
+  // 파일을 저장하고 url 을 받아온다
+  const url = await uploadImage(path, formData.imgUrl);
+
+  formData.id = lastId;
+  formData.created = time;
+  formData.updateAt = time;
+  formData.imgUrl = url;
+
+  const result = await addDoc(collection(db, collectionName), formData);
+  const docSnap = await getDoc(result);
+  if (docSnap.exists()) {
+    const review = { docId: docSnap.id, ...docSnap.data() };
+    return { review };
+  }
+}
+
+async function updateDatas(collectionName, formData, docId, imgUrl) {
+  const docRef = await doc(db, collectionName, docId);
+
+  const time = new Date().getTime();
+
+  formData.imgUrl = imgUrl;
+  formData.updatedAt = time;
+
+  // 사진 파일을 변경했을 때
+  if (formData.imgUrl !== null) {
+    // 사진파일 업로드 및 업로드한 파일 경로 가져오기
+    const uuid = crypto.randomUUID();
+    const path = `movie/${uuid}`;
+    const url = await uploadImage(path, formData.imgUrl);
+
+    // 기존사진 삭제하기
+    const storage = getStorage();
+    const deleteRef = ref(storage, imgUrl);
+    await deleteObject(deleteRef);
+
+    // 가져온 사진 경로 updateInfoObj의 imgUrl 에 셋팅하기
+    formData.imgUrl = url;
+  }
+
+  // 문서 필드 데이터 수정
+  await updateDoc(docRef, formData);
+  const docData = await getDoc(docRef);
+  console.log("수정 성공!!");
+}
+
+async function uploadImage(path, imgFile) {
+  const storage = getStorage();
+  const imageRef = ref(storage, path);
+
+  // File 객체를 꺼내서 스토리지에 저장
+  await uploadBytes(imageRef, imgFile);
+
+  // 저장한 File 의 Url을 받아온다
+  const url = await getDownloadURL(imageRef);
+  return url;
+}
+
+async function getLastId(collectionName) {
+  const docQuery = query(
+    collection(db, collectionName),
+    orderBy("id", "desc"),
+    limit(1)
+  );
+  const lastDoc = await getDocs(docQuery);
+  const lastId = lastDoc.docs[0].data().id;
+  return lastId;
 }
 
 export {
@@ -64,8 +162,10 @@ export {
   getDatas,
   setDoc,
   addDoc,
-  // addDatas,
+  addDatas,
   doc,
   deleteDoc,
   updateDoc,
+  deleteDatas,
+  updateDatas,
 };

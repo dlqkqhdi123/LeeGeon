@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import mockItems from "../mock.json";
 import ReviewList from "./ReviewList";
-import { getDatas } from "./firebase";
+import { getDatas, addDatas, deleteDatas, updateDatas } from "./firebase";
 import ReviewForm from "./ReviewForm";
 import "./ReviewForm.css";
 
@@ -28,10 +28,15 @@ function App() {
   const handleNewestClick = () => setOrder("createdAt");
   const handleBestClick = () => setOrder("rating");
 
-  const handleDelete = (id) => {
+  const handleDelete = async (docId, imgUrl) => {
     // items 에서 id 파라미터와 같은 id 가지는 요소(객체)를 제거
-    const nextItems = items.filter((item) => item.id !== id);
-    setItems(nextItems);
+    // const nextItems = items.filter((item) => item.id !== id);
+    // setItems(nextItems);
+    const result = await deleteDatas("movie", docId, imgUrl);
+    if (!result) return; //  db 에서 삭제가 성공했을 때만 그 결과를화면에 반영한다
+
+    // Item 세팅
+    setItems((prevItems) => prevItems.filter((item) => item.docId !== docId));
   };
   const handleLoad = async (options) => {
     let result;
@@ -56,7 +61,11 @@ function App() {
     setHasNext(lastQuery);
   };
   const handleLoadMore = () => {
-    handleLoad({ order, lq: undefined, limit: LIMIT });
+    handleLoad({ order, lq, limit: LIMIT });
+  };
+
+  const handleAddSuccess = (review) => {
+    setItems((prevItems) => [review, ...prevItems]);
   };
 
   // useEffect는 arguments 로 콜백함수와 배열을 넘겨준다
@@ -78,8 +87,13 @@ function App() {
         <button onClick={handleNewestClick}>최신순</button>
         <button onClick={handleBestClick}>베스트순</button>
       </div>
-      <ReviewForm />
-      <ReviewList items={items} onDelete={handleDelete} />
+      <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
+      <ReviewList
+        items={items}
+        onDelete={handleDelete}
+        onUpdate={updateDatas}
+      />
+
       {
         // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
         // 조건부 연산자
