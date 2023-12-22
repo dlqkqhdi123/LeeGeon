@@ -37,9 +37,16 @@ function ReviewForm({
     try {
       setSubmittingError(null);
       setIsSubmitting(true);
-      const { review } = await onSubmit("movie", values);
+      const formData = {
+        title: values.title,
+        content: values.content,
+        imgUrl: values.imgUrl,
+        rating: values.rating,
+      };
+      const { review } = await onSubmit("movie", formData);
       onSubmitSuccess(review);
     } catch (error) {
+      setSubmittingError(error);
       return;
     } finally {
       setIsSubmitting(false);

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./ReviewList.css";
 import ReviewForm from "./ReviewForm";
+import LoacleContext from "../contexts/LoclaContext";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -8,6 +9,8 @@ function formatDate(value) {
 }
 
 function ReviewListItem({ item, onDelete, onEdit }) {
+  const locale = useContext(LoacleContext);
+
   const handleDeleteClick = () => onDelete(item.docId, item.imgUrl);
   const handleEditClick = () => {
     onEdit(item.id);
@@ -21,6 +24,7 @@ function ReviewListItem({ item, onDelete, onEdit }) {
         <span>{item.rating}</span>
         <p>{formatDate(item.createdAt)}</p>
         <p>{item.content}</p>
+        <p>현재 언어 : {locale}</p>
         <button onClick={handleEditClick}>수정</button>
         <button onClick={handleDeleteClick}>삭제</button>
       </div>
@@ -28,7 +32,7 @@ function ReviewListItem({ item, onDelete, onEdit }) {
   );
 }
 
-function ReviewList({ items, onDelete, onUpdate }) {
+function ReviewList({ items, onDelete, onUpdate, onUpdateSuccess }) {
   const [editingId, setEditingId] = useState(null);
   console.log(editingId);
   return (
@@ -41,7 +45,18 @@ function ReviewList({ items, onDelete, onUpdate }) {
           const handleCancel = () => setEditingId(null);
 
           const handleSubmit = (collectionName, formatDate) => {
-            onUpdate(collectionName, formatDate, docId);
+            const result = onUpdate(collectionName, formatDate, docId, imgUrl);
+
+            if (result === null) {
+              alert("리뷰를 수정할 수 없습니다.\n 관리자에게 문의주세요");
+              return;
+            }
+            return result;
+          };
+
+          const handleSubmitSuccess = (review) => {
+            onUpdateSuccess(review);
+            setEditingId(null);
           };
 
           return (
@@ -51,6 +66,7 @@ function ReviewList({ items, onDelete, onUpdate }) {
                 initialPreview={imgUrl}
                 onCancel={handleCancel}
                 onSubmit={handleSubmit}
+                onSubmitSuccess={handleSubmitSuccess}
               />
             </li>
           );

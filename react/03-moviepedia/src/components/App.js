@@ -4,6 +4,10 @@ import ReviewList from "./ReviewList";
 import { getDatas, addDatas, deleteDatas, updateDatas } from "./firebase";
 import ReviewForm from "./ReviewForm";
 import "./ReviewForm.css";
+import LocaleSelect from "./LocaleSelect";
+import LocaleContext from "../contexts/LoclaContext";
+import LocaleProvider from "../contexts/LoclaContext";
+// import LocaleProvider from "../contexts/LoclaContext";
 
 const LIMIT = 5;
 
@@ -14,6 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
   const [hasNext, setHasNext] = useState(false);
+  // const [locale, setLocale] = useState("ko");
 
   // sort 함수에 아무런 argument(아규먼트)도 전달하지 않을 때는 기본적으로 유니코드에 정의된 문자열 순서에 따라 정렬된다.
   // ==> ompareFunction가 생략될 경우, 배열의 모든 요소들은 문자열 취급되며, 유니코드 값 순서대로 정렬된다는 의미이다
@@ -32,8 +37,14 @@ function App() {
     // items 에서 id 파라미터와 같은 id 가지는 요소(객체)를 제거
     // const nextItems = items.filter((item) => item.id !== id);
     // setItems(nextItems);
+
+    //  db 에서 삭제가 성공했을 때만 그 결과를화면에 반영한다
     const result = await deleteDatas("movie", docId, imgUrl);
-    if (!result) return; //  db 에서 삭제가 성공했을 때만 그 결과를화면에 반영한다
+
+    if (!result) {
+      alert("저장된 파일이 없습니다. \n경로를 확인해주세요");
+      return;
+    }
 
     // Item 세팅
     setItems((prevItems) => prevItems.filter((item) => item.docId !== docId));
@@ -51,6 +62,7 @@ function App() {
     } finally {
       setIsLoading(false);
     }
+
     const { reviews, lastQuery } = result;
     if (options.lq === undefined) {
       setItems(reviews);
@@ -60,12 +72,24 @@ function App() {
     setLq(lastQuery);
     setHasNext(lastQuery);
   };
+
   const handleLoadMore = () => {
     handleLoad({ order, lq, limit: LIMIT });
   };
 
   const handleAddSuccess = (review) => {
     setItems((prevItems) => [review, ...prevItems]);
+  };
+  const handleUpdateSuccess = (review) => {
+    setItems((prevItems) => {
+      const splitIdx = prevItems.findIndex((item) => item.id === review.id);
+
+      return [
+        ...prevItems.slice(0, splitIdx),
+        review,
+        ...prevItems.slice(splitIdx + 1),
+      ];
+    });
   };
 
   // useEffect는 arguments 로 콜백함수와 배열을 넘겨준다
@@ -77,34 +101,38 @@ function App() {
   }, [order]);
 
   return (
-    <div>
-      {hasNext && (
-        <button disabled={isLoading} onClick={handleLoadMore}>
-          더 보기
-        </button>
-      )}
+    <LocaleProvider defaultValue="ko">
       <div>
-        <button onClick={handleNewestClick}>최신순</button>
-        <button onClick={handleBestClick}>베스트순</button>
-      </div>
-      <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
-      <ReviewList
-        items={items}
-        onDelete={handleDelete}
-        onUpdate={updateDatas}
-      />
+        <LocaleSelect />
+        <div>
+          <button onClick={handleNewestClick}>최신순</button>
+          <button onClick={handleBestClick}>베스트순</button>
+        </div>
+        <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
+        <ReviewList
+          items={items}
+          onDelete={handleDelete}
+          onUpdate={updateDatas}
+          onUpdateSuccess={handleUpdateSuccess}
+        />
+        {hasNext && (
+          <button disabled={isLoading} onClick={handleLoadMore}>
+            더 보기
+          </button>
+        )}
+        {
+          // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
+          // 조건부 연산자
+          // AND(&&) :  앞에 나오는 값이 true 이면 렌더링
+          // OR(||) :  앞에 나오는 값이 false 이면 렌더링
+          // falsy ==> null, NaN, 0, 빈 문자열, undefined
+          // truthy ==> 이외의 모든것
 
-      {
-        // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
-        // 조건부 연산자
-        // AND(&&) :  앞에 나오는 값이 true 이면 렌더링
-        // OR(||) :  앞에 나오는 값이 false 이면 렌더링
-        // falsy ==> null, NaN, 0, 빈 문자열, undefined
-        // truthy ==> 이외의 모든것
-        loadingError !== null ? <span>{loadingError.message}</span> : ""
-        // loadingError?.message && <span>{loadingError.message}</span>
-      }
-    </div>
+          loadingError !== null ? <span>{loadingError.message}</span> : ""
+          // loadingError?.message && <span>{loadingError.message}</span>
+        }
+      </div>
+    </LocaleProvider>
   );
 }
 
