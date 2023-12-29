@@ -9,6 +9,7 @@ import Practice3 from "./components/06/Practice3";
 import Inheritance from "./components/07/Inheritance";
 import Reuse from "./components/08/Reuse";
 import Practice4 from "./components/09/Practice4";
+import Login from "./components/10/Login";
 
 function Main() {
   return (
@@ -24,6 +25,7 @@ function Main() {
           <Route path="07" element={<Inheritance />} />
           <Route path="08" element={<Reuse />} />
           <Route path="09" element={<Practice4 />} />
+          <Route path="10" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>

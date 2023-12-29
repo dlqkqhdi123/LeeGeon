@@ -33,6 +33,9 @@ function App() {
         <Link to="09">
           <li>9. SearchInput</li>
         </Link>
+        <Link to="10">
+          <li>10. Login</li>
+        </Link>
       </ul>
       <Outlet />
     </>
