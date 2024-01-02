@@ -11,13 +11,21 @@ function UserMenu() {
   };
 
   useEffect(() => {
+    if (!isOpen) return;
     const handleClickOutside = () => setIsOpen(false);
+    // const handleClickOutside = () => {
+    //   alert("123");
+    // };
 
     window.addEventListener("click", handleClickOutside);
-  }, []);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className={styles.UserMenu}>
+    <div className={styles.userMenu}>
       <button className={styles.iconButton} onClick={handleButtonClick}>
         <img src={personIcon} alt="유저 메뉴" />
       </button>

@@ -6,9 +6,9 @@ import styles from "./Footer.module.css";
 
 function Footer() {
   return (
-    <div className={styles.Footer}>
+    <div className={styles.footer}>
       <Container>
-        <ul className={styles.Links}>
+        <ul className={styles.links}>
           <li>DWOS소개</li>
           <li>개인정보 취급방침</li>
           <li>사용자 이용약관</li>
@@ -25,7 +25,7 @@ function Footer() {
         </ul>
         <div className={styles.icons}>
           <div className={styles.logo}>
-            <span>DW</span>
+            <span>DW</span>OS
           </div>
           <div className={styles.sns}>
             <img src={facebookIcon} />
