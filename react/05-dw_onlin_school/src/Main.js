@@ -3,6 +3,7 @@ import App from "./components/App";
 import HomePage from "./pages/HomePage";
 import CourseListPage from "./pages/CourseListPage";
 import QuestionListPage from "./pages/QuestionListPage";
+import CoursePage from "./pages/CoursePage";
 
 function Main() {
   return (
@@ -11,10 +12,8 @@ function Main() {
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="courses">
-            <Route index element={<CourseListPage />}>
-              {/* <Route path="" element={<CourseListPage}>
-            </Route> */}
-            </Route>
+            <Route index element={<CourseListPage />}></Route>
+            <Route path=":courseSlug" element={<CoursePage />} />
           </Route>
           <Route path="questions">
             <Route index element={<QuestionListPage />}>

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import styles from "./App.module.css";
 import Footer from "./Footer";
+import "./App.font.css";
 
 function App() {
   return (
