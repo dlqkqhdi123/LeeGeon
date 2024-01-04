@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import personIcon from "../assets/person.png";
 import styles from "./UserMenu.module.css";
+import { Link } from "react-router-dom";
+import { useMember } from "../contexts/MemberContexts";
 
 function UserMenu() {
+  const member = useMember();
+  console.log(member);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleButtonClick = (e) => {
@@ -31,9 +35,13 @@ function UserMenu() {
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <li>위시리스트</li>
+          <Link to="/wishlist">
+            <li>위시리스트</li>
+          </Link>
           <li className={styles.disabled}>회원가입</li>
-          <li>로그인</li>
+          <Link to="/login">
+            <li>{member ? "로그아웃" : "로그인"}</li>
+          </Link>
         </ul>
       )}
     </div>
