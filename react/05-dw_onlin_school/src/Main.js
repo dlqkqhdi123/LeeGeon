@@ -5,6 +5,8 @@ import CourseListPage from "./pages/CourseListPage";
 import QuestionListPage from "./pages/QuestionListPage";
 import CoursePage from "./pages/CoursePage";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
+import WishlistPage from "./pages/WishlistPage";
 
 function Main() {
   return (
@@ -23,6 +25,8 @@ function Main() {
             </Route>
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="logout" element={<Logout />} />
+          <Route path="wishlist" element={<WishlistPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

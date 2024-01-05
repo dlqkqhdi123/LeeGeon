@@ -6,7 +6,7 @@ import Link from "./Link";
 import Label from "./Label";
 import { useState } from "react";
 import { getMember } from "../api/firebase";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useMember, useSetMember } from "../contexts/MemberContexts";
 
 const Logo = styled.h1`
@@ -35,10 +35,11 @@ const Container = styled.div`
 `;
 
 function Login() {
-  const member = useMember();
-  const setMember = useSetMember();
+  // const member = useMember();
+  // const setMember = useSetMember();
+  const { state } = useLocation();
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     id: "",
     password: "",
@@ -56,11 +57,11 @@ function Login() {
     e.preventDefault();
     const { memberObj, message } = await getMember(values);
     if (message === undefined) {
+      localStorage.setItem("member", JSON.stringify(memberObj));
       // window.location.href = "/";
-      // Navigate("/");
-      setMember(memberObj);
+      // setMember(memberObj);
+      navigate(state ? state : "/");
     } else {
-      console.log("dsa");
       alert(message);
     }
   };
