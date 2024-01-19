@@ -1,0 +1,29 @@
+.button {
+  padding: 13px 41px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background-color: #494949;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  margin: 10px;
+}
+.button:hover {
+  background-color: red;
+}
+div.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button.round {
+  padding: 9px 22px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  background-color: #494949;
+  border-radius: 9999px;
+}

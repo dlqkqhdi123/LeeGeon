@@ -1,10 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Button from "../components/Button";
 import Card from "../components/Card";
 import Container from "../components/Container";
-import CourseIcon from "../components/CourseIcon";
 import styles from "./CoursePage.module.css";
-import getCourseColor from "../utils/getCourseColor";
 import { useEffect, useState } from "react";
 import { getData, updateDatas } from "../api/firebase";
 
@@ -12,22 +9,17 @@ function CoursePage() {
   const props = useLocation();
   // const { course } = props.state;
   const { pathname } = props;
-  const [course, setCourse] = useState();
+  const [qwer, setQwer] = useState();
   const navigate = useNavigate();
-  const { courseSlug } = useParams();
+  const { disease } = useParams();
   //   const props = useParams();
   //   console.log(props);
-
-  const courseColor = getCourseColor(course?.code);
-  const headerStyle = {
-    borderTopColor: courseColor,
-  };
 
   const handleAddWishlistClick = async () => {
     const member = JSON.parse(localStorage.getItem("member"));
 
     if (member) {
-      const result = await updateDatas("member", member.docId, course, {
+      const result = await updateDatas("member", member.docId, qwer, {
         type: "ADD",
         fieldName: "courseList",
       });
@@ -38,9 +30,8 @@ function CoursePage() {
     }
   };
   const handleLoad = async () => {
-    const result = await getData("courses", "slug", "==", courseSlug);
-    // console.log(courseSlug);
-    setCourse(result);
+    const result = await getData("qwer", "code", "==", disease);
+    setQwer(result);
   };
 
   useEffect(() => {
@@ -49,22 +40,19 @@ function CoursePage() {
 
   return (
     <>
-      <div className={styles.header} style={headerStyle}>
+      <div className={styles.header}>
         <Container className={styles.content}>
-          <CourseIcon photoUrl={course?.photoUrl} />
-          <h1 className={styles.title}>{course?.title}</h1>
-          <Button variant="round" onClick={handleAddWishlistClick}>
-            + 코스 담기
-          </Button>
-          <p className={styles.summary}>{course?.summary}</p>
+          <h1 className={styles.title}>{qwer?.title}</h1>
+
+          <p className={styles.summary}>{qwer?.summary}</p>
         </Container>
       </div>
       <Container classNames={styles.topics}>
-        {course?.topics.map(({ topic }) => (
+        {qwer?.topics.map(({ topic }) => (
           <Card className={styles.topic} key={topic.slug}>
             <h3 className={styles.summary}>{topic.title}</h3>
             <p className={styles.summary}>{topic.summary}</p>
-            {/* {console.log(topic)} */}
+            <p className={styles.summary}>{topic.subheading}</p>
           </Card>
         ))}
       </Container>

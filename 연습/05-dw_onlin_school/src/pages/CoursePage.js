@@ -39,7 +39,6 @@ function CoursePage() {
   };
   const handleLoad = async () => {
     const result = await getData("courses", "slug", "==", courseSlug);
-    // console.log(courseSlug);
     setCourse(result);
   };
 
@@ -64,7 +63,7 @@ function CoursePage() {
           <Card className={styles.topic} key={topic.slug}>
             <h3 className={styles.summary}>{topic.title}</h3>
             <p className={styles.summary}>{topic.summary}</p>
-            {/* {console.log(topic)} */}
+            {console.log(topic)}
           </Card>
         ))}
       </Container>
