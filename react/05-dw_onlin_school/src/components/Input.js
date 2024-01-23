@@ -8,7 +8,6 @@ const Input = styled.input`
   font-size: 16px;
   display: block;
   width: 100%;
-
   ${({ $error }) =>
     !$error &&
     `

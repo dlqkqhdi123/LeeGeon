@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getDatas } from "../api/firebase";
 import Warn from "../components/Warn";
 import CourseItem from "../components/CourseItem";
+import Input from "../components/Input";
 
 let listItems;
 
@@ -41,7 +42,7 @@ function CourseListPage() {
       description="자체 제작된 코스들로 기초를 쌓으세요"
     >
       <form className={searchBarStyles.form} onSubmit={handleSubmit}>
-        <input
+        <Input
           value={keyword}
           onChange={handleKeywordChange}
           name="Keyword"
