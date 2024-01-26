@@ -1,0 +1,193 @@
+[
+  {
+    "code": "101",
+    "title": "스케일링",
+    "difficulty": 1,
+    "slug": "intro-to-python-programming",
+    "summary": "사랑하는 반려동물의 치아를 지켜주세요!",
+    "language": "PYTHON",
+    "photoUrl": "python",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "making-use-of-python",
+          "title": "파이썬 응용하기",
+          "summary": "파이썬 문법과 프로그래밍 개념은 배웠는데, 어떻게 활용해야 할지 모르겠다고요? 데이터 분석, 로또 시뮬레이션 등 프로젝트를 해 보며 아이디어를 얻어 보세요."
+        }
+      }
+    ]
+  },
+  {
+    "code": "111",
+    "title": "종합건강검진",
+    "difficulty": 2,
+    "slug": "python-intermediate",
+    "summary": "혹시나? 하지말고 미리미리 건강 챙겨주세요.",
+    "language": "PYTHON",
+    "photoUrl": "python",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "python-module-and-package",
+          "title": "파이썬 모듈과 패키지",
+          "summary": "파이썬 실력을 한 단계 향상해 주는 모듈과 패키지, 이번 토픽을 통해 마스터하세요!"
+        }
+      }
+    ]
+  },
+  {
+    "code": "121",
+    "title": "심장사상충",
+    "difficulty": 2,
+    "slug": "object-oriented-programming",
+    "summary": "모기에게 감염된 아이들을 구해주세요.",
+    "language": "PYTHON",
+    "photoUrl": "oop",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "solid-principles-of-oop",
+          "title": "견고한 객체 지향 프로그래밍",
+          "summary": "객체 지향 프로그래밍의 마지막 걸음. 코드의 규모가 커질 수록 복잡성은 증가합니다. 객체 지향 코드를 견고하게 관리할 수 있는 방법을 배워 보세요."
+        }
+      }
+    ]
+  },
+  {
+    "code": "122",
+    "title": "슬개골 탈구",
+    "difficulty": 2,
+    "slug": "algorithms",
+    "summary": "무릎뼈, 슬개골이 원래 있어야할 자리에서 탈구되거나 움직여져있는 상태",
+    "language": "정형외과",
+    "photoUrl": "algorithm",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "practicing-algorithmic-problem-solving",
+          "title": "문제 해결 능력 기르기",
+          "summary": "개발자 면접을 보면 알고리즘 문제를 낸다던데… 그럼 훈련을 해야겠죠? 실전 문제들을 보고, 분석하는 단계부터 실제 코드를 구현하는 단계까지 모두 연습하세요."
+        }
+      }
+    ]
+  },
+  {
+    "code": "131",
+    "title": "골절",
+    "difficulty": 2,
+    "slug": "data-structures",
+    "summary": "방대한 데이터를 효율적으로 관리하는 방법을 배워, 컴퓨터 과학의 기본기를 탄탄하게 쌓아봐요.",
+    "language": "PYTHON",
+    "photoUrl": "ds",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "graphs",
+          "title": "그래프",
+          "summary": "실세상에 존재하는 데이터들은 대부분 서로 연결되어 있는 경우가 많은데요. 컴퓨터에서 이런 데이터들을 저장하고 사용할 수 있게 해주는 그래프에 대해서 배워봅시다!"
+        }
+      }
+    ]
+  },
+  {
+    "code": "311",
+    "title": "피부질환",
+    "difficulty": 2,
+    "slug": "data-science",
+    "summary": "데이터를 이해하고 다루는 능력을 기르고, 데이터 중심으로 다변하는 산업에서 경쟁력을 키우세요.",
+    "language": "PYTHON",
+    "photoUrl": "data-science",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "collecting-and-creating-data",
+          "title": "데이터 만들기",
+          "summary": "분석을 하기 위해 필요한 데이터를 수집해야겠죠? 웹사이트를 분해하는 코드도 작성하고, 자동으로 웹을 돌아다니면서 정보를 수집하는 프로그램도 만들어 보세요."
+        }
+      }
+    ]
+  },
+  {
+    "code": "321",
+    "title": "치근단농양",
+    "difficulty": 3,
+    "slug": "machine-learning",
+    "summary": "이 시대의 핵심 IT 키워드인 인공 지능(AI). 그 기반이 되는 기술인 머신 러닝으로 시작해 보세요.",
+    "language": "PYTHON",
+    "photoUrl": "machine-learning",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "decision-tree-and-ensemble",
+          "title": "결정 트리와 앙상블 기법",
+          "summary": "결정 트리와, 수많은 결정 트리를 합쳐서 좋은 성능의 모델을 만들어내는 앙상블 기반 알고리즘들 대해서 배워봅시다."
+        }
+      }
+    ]
+  },
+  {
+    "code": "331",
+    "title": "중성화 수술",
+    "difficulty": 3,
+    "slug": "machine-learning-in-practice",
+    "summary": "머신 러닝이 우리 생활 속에서 어디에 사용되고, 어떻게 적용되는지 실전 예제를 통해 알아 보아요!",
+    "language": "PYTHON",
+    "photoUrl": "machine-learning",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "natural_language_processing",
+          "title": "자연어 처리",
+          "summary": "자연어란 컴퓨터가 아니라 사람들이 사용하는 언어를 뜻하는데요. 머신 러닝을 사용해서 어떻게 사람들의 언어를 컴퓨터로 처리하는지 배워봅시다!"
+        }
+      }
+    ]
+  },
+  {
+    "code": "336",
+    "title": "백신&예방접종",
+    "difficulty": 3,
+    "slug": "deep-learning",
+    "summary": "1950년대부터 해 온 인공 지능 연구. 최근 들어 급격한 발전이 이루어졌는데요. 엄청난 성능의 딥 러닝 덕분에 가능했던 것입니다. 그저 마법 같은 이 기술의 원리와 활용법을 알려드리겠습니다.",
+    "language": "PYTHON",
+    "photoUrl": "deep-learning",
+    "newReleased": false,
+    "topics": [      
+      {
+        "topic": {
+          "slug": "deep-learning-topic-2",
+          "title": "인공 신경망 쉽게 사용하기",
+          "summary": "신경망은 이론만 알고 바로 실전에서 사용하기는 굉장히 어렵습니다. 이번 토픽에서는 라이브러리를 사용해서 신경망을 쉽게 사용하는 방법에 대해서 알아보겠습니다!"
+        }
+      }
+    ]
+  },
+  {
+    "code": "501",
+    "title": "체리아이",
+    "difficulty": 1,
+    "slug": "intro-to-programming-in-javascript",
+    "summary": "웹 개발을 하고 싶다면 필수! 무엇이든 할 수 있는 기반을 다지려면 자바스크립트로 시작하세요.",
+    "language": "JAVASCRIPT",
+    "photoUrl": "js",
+    "newReleased": false,
+    "topics": [
+      {
+        "topic": {
+          "slug": "javascript-programming-and-data",
+          "title": "프로그래밍과 데이터 in JavaScript",
+          "summary": "프로그래밍이란 결국 데이터를 받아서 처리하는 것인데요. 그렇다면 프로그래밍을 잘하기 위해서는 데이터를 제대로 알아야겠죠? 그 비결을 알려드립니다!"
+        }
+      }
+    ]
+  }
+
+]
