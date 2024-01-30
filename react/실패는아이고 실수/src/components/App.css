@@ -1,50 +1,41 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   background-color: #fbfbfd;
 }
-
 .App input,
 .App textarea {
   padding: 15px 20px;
   border: solid 1px #f9f9f9;
   border-radius: 6px;
   outline: none;
-  font-size: 16px;
   background-color: #f9f9f9;
   font-family: sans-serif;
 }
-
 .App input::placeholder,
 .App textarea::placeholder {
   color: #bdbdbd;
 }
-
 .App {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100vh;
 }
-
 .App .App-nav,
 .App .App-footer {
   flex: none;
 }
-
 .App .App-container {
   flex: 1 1;
 }
-
 .App-nav {
   height: 65px;
   background-color: #fff;
   border-bottom: 1px solid #e2e2e2;
 }
-
 .App-nav-container,
 .App-container,
 .App-footer-container {
@@ -62,15 +53,12 @@ body {
 .App-container {
   padding: 50px 21px;
 }
-
 .App-logo {
   margin-top: -5px;
 }
-
 .App-sorts {
   margin: 51px 0 23px;
 }
-
 .AppSortButton {
   padding: 12px 40px;
   border: none;
@@ -79,7 +67,6 @@ body {
   font-size: 18px;
   background-color: transparent;
 }
-
 .AppSortButton:not(:disabled) {
   cursor: pointer;
 }
@@ -89,36 +76,31 @@ body {
   color: #fff;
   background-color: #000;
 }
-
-.App-ReviewList {
-  padding: 30px 30px 0;
-  border-radius: 5px;
-  box-shadow: 0 0 11px rgba(105, 105, 105, 0.2);
-  background-color: #fff;
-}
-
 .App-ReviewForm {
   padding: 30px 32px 30px 30px;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 11px rgba(105, 105, 105, 0.2));
+  filter: drop-shadow(0 0 1px rgba(105, 105, 105, 0.2));
   border-radius: 5px;
 }
-
 .App-load-more-button {
   width: 100%;
   padding: 25px 0;
   font-size: 16px;
   background-color: transparent;
+
   border: none;
   cursor: pointer;
 }
-
+.App-ReviewList {
+  padding: 30px 30px 0;
+  border-radius: 5px;
+  box-shadow: 0 0 11px rgba(105, 105, 105, 0.2);
+}
 .App-footer {
   background-color: #000;
 }
-
 .App-footer-container {
   padding: 30px 21px;
   font-size: 14px;

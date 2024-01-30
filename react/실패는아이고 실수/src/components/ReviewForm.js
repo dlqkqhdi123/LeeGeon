@@ -23,9 +23,11 @@ function ReviewForm({
   const t = useTranslate();
 
   const handleChange = (name, value) => {
-    setValues((prevValues) => ({ ...prevValues, [name]: value }));
+    setValues((prevValue) => ({
+      ...prevValue,
+      [name]: value,
+    }));
   };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     handleChange(name, value);
@@ -34,16 +36,15 @@ function ReviewForm({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = {
-      title: values.title,
-      content: values.content,
-      imgUrl: values.imgUrl,
-      rating: values.rating,
-    };
-
     try {
       setSubmittingError(null);
       setIsSubmitting(true);
+      const formData = {
+        title: values.title,
+        content: values.content,
+        imgUrl: values.imgUrl,
+        rating: values.rating,
+      };
       const { review } = await onSubmit("movie", formData);
       onSubmitSuccess(review);
     } catch (error) {
@@ -58,8 +59,8 @@ function ReviewForm({
   return (
     <form className="ReviewForm" onSubmit={handleSubmit}>
       <FileInput
-        name="imgUrl"
         value={values.imgUrl}
+        name="imgUrl"
         initialPreview={initialPreview}
         onChange={handleChange}
       />
@@ -86,7 +87,7 @@ function ReviewForm({
       <button type="submit" disabled={isSubmitting}>
         {t("confirm button")}
       </button>
-      {submittingError?.message && <div>{submittingError.message}</div>}
+      {submittingError?.messge && <div>{submittingError.messge}</div>}
     </form>
   );
 }

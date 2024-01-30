@@ -1,5 +1,4 @@
 import "./Rating.css";
-
 const RATINGS = [1, 2, 3, 4, 5];
 
 function Star({ selected = false, rating, onSelect, onHover }) {
@@ -7,7 +6,6 @@ function Star({ selected = false, rating, onSelect, onHover }) {
 
   const handleClick = onSelect ? () => onSelect(rating) : undefined;
   const handleMouseOver = onHover ? () => onHover(rating) : undefined;
-
   return (
     <span
       className={className}
@@ -19,7 +17,7 @@ function Star({ selected = false, rating, onSelect, onHover }) {
   );
 }
 
-function Rating({ className, hoverRating = 0, onSelect, onHover, onMouseOut }) {
+function Rating({ className, hoverRating, onSelect, onHover, onMouseOut }) {
   return (
     <div className={className} onMouseOut={onMouseOut}>
       {RATINGS.map((arrNum) => (
@@ -34,5 +32,4 @@ function Rating({ className, hoverRating = 0, onSelect, onHover, onMouseOut }) {
     </div>
   );
 }
-
 export default Rating;

@@ -20,53 +20,51 @@
 }
 
 /* find */
-.find{}
-
-.h2{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding-bottom: 1.5rem;
+.find {
 }
 
-.image{}
+.h2 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 1.5rem;
+}
 
-.information{
+.image {
+}
+
+.information {
 }
 
 .animal,
-.search{
-    width: 100%;
-    margin: 1rem auto;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
+.search {
+  width: 100%;
+  margin: 1rem auto;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
 }
 
 .infoBox {
-    width: 100%;
-    display: grid;
-    padding: 2rem 0;
-  }
+  width: 100%;
+  display: grid;
+  padding: 2rem 0;
+}
 
-  .container2 {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    align-items: center;
-    border-bottom: 1px solid #d9d9d9;
-  }
-  
-  label {
-    font-weight: 600;
-    margin-left: 3rem;
-    padding: 1.5rem 0;
-  }
+.container2 {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+}
 
+label {
+  font-weight: 600;
+  margin-left: 3rem;
+  padding: 1.5rem 0;
+}
 
-  
 /* ////////// */
-
-
 
 input {
   border: none;
