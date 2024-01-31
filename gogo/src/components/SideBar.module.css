@@ -1,0 +1,13 @@
+.sidecontainer {
+  background-color: #ffc26f;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+.sideUl {
+  display: flex;
+  flex-direction: column;
+  padding: 140px;
+  gap: 20px;
+}

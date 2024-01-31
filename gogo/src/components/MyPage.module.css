@@ -1,0 +1,24 @@
+.disContainer {
+  width: 100%;
+  margin: 100px;
+}
+
+.companyTitle {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 50px;
+}
+.container2 {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #d9d9d9;
+}
+input {
+  border: none;
+  outline: none;
+  background-color: #f8ebd8;
+  padding: 20px 10px;
+}
