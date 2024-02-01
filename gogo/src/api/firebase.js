@@ -41,8 +41,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function getDatas(collectionName, options) {
-  // throw new Error("애러가 아니라 기능이다");
-  // const querySnapshot = await getDocs(collection(db, collectionName));
   let docQuery;
   if (options === undefined) {
     const querySnapshot = await getDocs(collection(db, collectionName));
@@ -191,15 +189,24 @@ async function getLastId(collectionName) {
   );
   const lastDoc = await getDocs(docQuery);
   const lastId = lastDoc.docs[0].data().id;
+
   return lastId;
 }
 
 async function upDate(collectionName, docId, text) {
   const docQuery = doc(db, collectionName, docId);
   const upDate = await updateDoc(docQuery, text);
-  // const lastDoc = await getDocs(docQuery);
-  // const lastId = lastDoc.docs[0].data().id;
-  // return lastId;
+}
+async function getTechInfo(collectionName) {
+  const querySnapshot = await getDocs(collection(db, collectionName));
+
+  const docs = querySnapshot.docs || []; // querySnapshot.docs가 undefined인 경우 빈 배열로 초기화
+
+  const result = docs.map((doc) => ({
+    docId: doc.id,
+    ...doc.data(),
+  }));
+  return result;
 }
 
 export {
@@ -218,4 +225,5 @@ export {
   getMember,
   getData,
   upDate,
+  getTechInfo,
 };

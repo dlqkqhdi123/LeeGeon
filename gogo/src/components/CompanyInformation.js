@@ -1,106 +1,123 @@
 import React, { useEffect, useState } from "react";
 import styles from "./MyPage.module.css";
-import * as firebase from "firebase/app";
-
-import { collection, db } from "../api/firebase";
+import {
+  collection,
+  db,
+  getDatas,
+  getDocs,
+  getTechInfo,
+  updateDoc,
+} from "../api/firebase";
 
 function CompanyInformation() {
-  const [name, setName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [specialty, setSpecialty] = useState("");
+  const [businessHours, setBusinessHours] = useState("");
   const [address, setAddress] = useState("");
-  const [parking, setParking] = useState("");
-  const [number, setNumber] = useState("");
-  const [editMode, setEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [items, setItems] = useState();
 
   useEffect(() => {
-    // Firebase에서 데이터 가져오기
     const fetchData = async () => {
-      const docRef = await upData(collection, "techInfo", db);
-      const doc = await docRef.get();
-      if (doc.exists) {
-        const data = doc.data();
-        setName(data.name);
-        setAddress(data.address);
-        setParking(data.parking);
-        setNumber(data.number);
+      const techInfoRef = collection(db, "techInfo");
+      const techInfoDocs = await getDocs(techInfoRef);
+
+      if (techInfoDocs.length > 0) {
+        const techInfoData = techInfoDocs[0].data();
+        setCompanyName(techInfoData.companyName);
+        setPhoneNumber(techInfoData.phoneNumber);
+        setSpecialty(techInfoData.specialty);
+        setBusinessHours(techInfoData.businessHours);
+        setAddress(techInfoData.address);
       }
     };
 
     fetchData();
-  }, []);
+  }, [items]);
 
+  // 수정 버튼을 눌렀을 때 입력 폼을 활성화하는 함수
   const handleEdit = () => {
-    setEditMode(true);
+    setIsEditMode(true);
   };
 
-  const handleSave = () => {
-    setEditMode(false);
-    // 수정한 데이터를 Firebase에 저장하기
-    firebase
-      .firestore()
-      .collection("techInfo")
-      .doc("wHhy9UlkB40hsd3MDqv0")
-      .set({
-        name,
-        address,
-        parking,
-        number,
+  // 저장 버튼을 눌렀을 때 정보를 업데이트하고 입력 폼을 비활성화하는 함수
+  const handleSave = async () => {
+    // Firebase 데이터 업데이트 로직
+    const techInfoRef = collection(db, "techInfo");
+    console.log(techInfoRef);
+    const techInfoDocs = await getDocs(techInfoRef);
+
+    if (techInfoDocs.length > 0) {
+      const techInfoId = techInfoDocs[0].id; // 첫 번째 문서의 ID
+
+      await updateDoc(techInfoRef, techInfoId, {
+        companyName: companyName,
+        phoneNumber: phoneNumber,
+        specialty: specialty,
+        businessHours: businessHours,
+        address: address,
       });
+    }
+
+    setIsEditMode(false);
   };
 
   return (
     <div>
-      <div>
-        <label>이름:</label>
-        {editMode ? (
+      <h1>마이페이지</h1>
+      {isEditMode ? (
+        <form>
+          <label>업체명:</label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
           />
-        ) : (
-          <input type="text" value={name} disabled />
-        )}
-      </div>
-      <div>
-        <label>주소:</label>
-        {editMode ? (
+
+          <label>대표전화:</label>
+          <input
+            type="text"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+          <label>전문분야:</label>
+          <input
+            type="text"
+            value={specialty}
+            onChange={(e) => setSpecialty(e.target.value)}
+          />
+
+          <label>운영시간:</label>
+          <input
+            type="text"
+            value={businessHours}
+            onChange={(e) => setBusinessHours(e.target.value)}
+          />
+
+          <label>주소:</label>
           <input
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-        ) : (
-          <input type="text" value={address} disabled />
-        )}
-      </div>
-      <div>
-        <label>주차 가능 여부:</label>
-        {editMode ? (
-          <input
-            type="text"
-            value={parking}
-            onChange={(e) => setParking(e.target.value)}
-          />
-        ) : (
-          <input type="text" value={parking} disabled />
-        )}
-      </div>
-      <div>
-        <label>번호:</label>
-        {editMode ? (
-          <input
-            type="text"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-          />
-        ) : (
-          <input type="text" value={number} disabled />
-        )}
-      </div>
-      {editMode ? (
-        <button onClick={handleSave}>저장</button>
+
+          <button type="button" onClick={handleSave}>
+            저장
+          </button>
+        </form>
       ) : (
-        <button onClick={handleEdit}>수정</button>
+        <div>
+          <p>업체명: {companyName}</p>
+          <p>대표전화: {phoneNumber}</p>
+          <p>전문분야: {specialty}</p>
+          <p>운영시간: {businessHours}</p>
+          <p>주소: {address}</p>
+
+          <button type="button" onClick={handleEdit}>
+            수정
+          </button>
+        </div>
       )}
     </div>
   );

@@ -43,8 +43,6 @@ function Dog() {
     const fetchData = async () => {
       const query = await getDocs(collection(db, "qwer"));
       const data = query.docs.map((doc) => doc.data());
-      // 여기서 추가적인 로직을 구현합니다.
-      // 예를 들어, 데이터를 가공하거나 상태를 업데이트하는 등의 작업을 수행할 수 있습니다.
     };
 
     fetchData();
@@ -62,7 +60,6 @@ function Dog() {
                 alt="123"
               />
             ) : null}
-            {/* <img src={gigigi} className={styles.gogogogo} /> */}
           </StyledLink>
           <h1 className={styles.title}>{items?.title}</h1>
         </header>

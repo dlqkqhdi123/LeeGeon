@@ -61,7 +61,6 @@ function Cat() {
                 alt="123"
               />
             ) : null}
-            {/* <img src={gigigi} className={styles.gogogogo} /> */}
           </StyledLink>
           <h1 className={styles.title}>{items?.title}</h1>
         </header>
