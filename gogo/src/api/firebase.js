@@ -197,17 +197,14 @@ async function upDate(collectionName, docId, text) {
   const docQuery = doc(db, collectionName, docId);
   const upDate = await updateDoc(docQuery, text);
 }
-async function getTechInfo(collectionName) {
+const getTechInfo = async (collectionName) => {
   const querySnapshot = await getDocs(collection(db, collectionName));
-
-  const docs = querySnapshot.docs || []; // querySnapshot.docs가 undefined인 경우 빈 배열로 초기화
-
-  const result = docs.map((doc) => ({
-    docId: doc.id,
-    ...doc.data(),
-  }));
-  return result;
-}
+  let techInfo = null;
+  querySnapshot.forEach((doc) => {
+    techInfo = doc.data();
+  });
+  return techInfo;
+};
 
 export {
   db,
