@@ -148,27 +148,16 @@ async function addDatas(collectionName, formData) {
   }
 }
 
-async function updateDatas(collectionName, docId, updateData, options) {
-  const docRef = doc(db, collectionName, docId);
+async function updateDatas(collectionName, docId, updateData) {
+  const docRef = doc(db, collectionName, docId); // 업데이트하려는 문서의 참조를 가져옵니다.
   try {
-    if (options) {
-      if (options.type == "ADD") {
-        await updateDoc(docRef, {
-          [options.fieldName]: arrayUnion(updateData),
-        });
-      } else if (options.type == "DELETE") {
-        await updateDoc(docRef, {
-          [options.fieldName]: arrayRemove(updateData),
-        });
-      }
-    } else {
-    }
+    await updateDoc(docRef, updateData); // updateDoc 함수를 사용하여 문서를 업데이트합니다.
     return true;
   } catch (error) {
+    console.error("Error updating document: ", error); // 오류 발생 시 콘솔에 오류 메시지를 출력합니다.
     return false;
   }
 }
-
 async function uploadImage(path, imgFile) {
   const storage = getStorage();
   const imageRef = ref(storage, path);

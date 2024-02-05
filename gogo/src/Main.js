@@ -8,6 +8,7 @@ import Disease2 from "./pages/Disease2.js";
 import MaPage from "./pages/MaPage.js";
 import ReservationList from "./components/ReservationList.js";
 import CompanyInformation from "./components/CompanyInformation.js";
+import ReservationManagement from "./components/ReservationManagement.js";
 
 function Main() {
   return (
@@ -24,8 +25,7 @@ function Main() {
           </Route>
           <Route path="MyPage" element={<MaPage />}>
             <Route path="Company" element={<CompanyInformation />}></Route>
-            {/* <Route path="111" element={<MaPageContainer />}></Route> */}
-            <Route path="a1a2a3a4" element={<ReservationList />}></Route>
+            <Route path="reservationList" element={<ReservationList />}></Route>
           </Route>
         </Route>
       </Routes>

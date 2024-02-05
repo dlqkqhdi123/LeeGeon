@@ -10,13 +10,11 @@ function SideBar() {
           <Link to="Company">
             <li>업체 정보 관리</li>
           </Link>
-          <Link>
-            <li>예약 관리</li>
-          </Link>
-          <Link to="111">
+
+          <Link to="ReservationList">
             <li>예약 목록</li>
           </Link>
-          <Link to="a1a2a3a4">
+          <Link>
             <li>게시글 관리</li>
           </Link>
           <Link>
