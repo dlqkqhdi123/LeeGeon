@@ -5,6 +5,7 @@ import CommonTable from "./table/CommonTable";
 import CommonTableColumn from "./table/CommonTableColumn";
 import CommonTableRow from "./table/CommonTableRow";
 import { collection, db, doc, getDocs } from "../api/firebase";
+import ReservationModal from "./ReservationModal";
 
 function ReservationList() {
   const [reservations, setReservations] = useState([]);
@@ -12,7 +13,7 @@ function ReservationList() {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창의 상태를 관리하는 상태
 
   async function getReservations(db) {
-    const reservationsCol = collection(db, "ReservationList"); // "reservations"는 예약 정보가 저장된 컬렉션의 이름입니다.
+    const reservationsCol = collection(db, "ReservationList");
     const reservationsSnapshot = await getDocs(reservationsCol);
     const reservationsList = reservationsSnapshot.docs.map((doc) => doc.data());
     return reservationsList;
@@ -22,7 +23,7 @@ function ReservationList() {
     async function fetchReservations() {
       try {
         const reservations = await getReservations(db);
-        setReservations(reservations); // 불러온 예약 정보를 상태에 저장해주세요.
+        setReservations(reservations);
       } catch (error) {
         console.error("예약 정보를 불러오는 중에 오류가 발생했습니다.", error);
       }
@@ -31,8 +32,17 @@ function ReservationList() {
     fetchReservations();
   }, []);
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal = (reservation) => {
+    setSelectedReservation(reservation);
+    setIsModalOpen(true);
+  };
+
   return (
-    <>
+    <div>
       <CommonTable
         headersName={[
           "",
@@ -51,12 +61,7 @@ function ReservationList() {
             </CommonTableColumn>
             <CommonTableColumn>{index + 1}</CommonTableColumn>
             <CommonTableColumn>
-              <button
-                onClick={() => {
-                  setSelectedReservation(reservation);
-                  setIsModalOpen(true);
-                }}
-              >
+              <button onClick={() => openModal(reservation)}>
                 {reservation.ReservationNumber}
               </button>
             </CommonTableColumn>
@@ -68,12 +73,12 @@ function ReservationList() {
         ))}
 
         {isModalOpen && (
-          <Modal
+          <ReservationModal
+            isOpen={isModalOpen}
             reservation={selectedReservation}
-            onClose={() => setIsModalOpen(false)}
+            onClose={closeModal}
           />
         )}
-
         <CommonTableRow>
           <CommonTableColumn>
             <input type="checkbox" />
@@ -86,20 +91,9 @@ function ReservationList() {
           <CommonTableColumn>2024-01-16</CommonTableColumn>
         </CommonTableRow>
       </CommonTable>
-    </>
-  );
-}
-function Modal({ reservation, onClose }) {
-  return (
-    <div>
-      <h1>예약 정보</h1>
-      <p>예약번호: {reservation.ReservationNumber}</p>
-      <p>예약날짜: {reservation.ReservationDate}</p>
-      <p>동물이름: {reservation.PetName}</p>
-
-      <button onClick={onClose}>닫기</button>
     </div>
   );
 }
+// 예약 정보 예약자 번호 받아와야 완성
 
 export default ReservationList;

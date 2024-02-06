@@ -9,6 +9,7 @@ import MaPage from "./pages/MaPage.js";
 import ReservationList from "./components/ReservationList.js";
 import CompanyInformation from "./components/CompanyInformation.js";
 import ReservationManagement from "./components/ReservationManagement.js";
+import BoardManagement from "./components/BoardManagement.js";
 
 function Main() {
   return (
@@ -24,8 +25,12 @@ function Main() {
             <Route path=":id" element={<Cat />}></Route>
           </Route>
           <Route path="MyPage" element={<MaPage />}>
-            <Route path="Company" element={<CompanyInformation />}></Route>
-            <Route path="reservationList" element={<ReservationList />}></Route>
+            <Route index element={<CompanyInformation />}></Route>
+            <Route
+              path=":reservationList"
+              element={<ReservationList />}
+            ></Route>
+            <Route path="BoardManagement" element={<BoardManagement />}></Route>
           </Route>
         </Route>
       </Routes>
