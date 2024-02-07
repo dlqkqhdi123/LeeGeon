@@ -9,16 +9,21 @@
 .common_table_header_column {
   border-bottom: 2px solid #ff8b50;
   border-top: 2px solid #ff8b50;
-  /* font-size: 16px; */
   padding: 10px 30px;
   font-weight: bold;
 }
 
 .common_table_row {
-  /* border-bottom: 1px solid #ff8b50; */
+  width: 100%;
+  justify-content: space-around;
+  border-bottom: 2px solid #ff8b50;
 }
 
 .common_table_column {
+  width: 100%;
   padding: 10px 0;
   border-bottom: 2px solid #ff8b50;
+}
+.mainBoard {
+  width: 100%;
 }

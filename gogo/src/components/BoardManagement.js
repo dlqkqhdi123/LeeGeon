@@ -3,14 +3,18 @@ import CommonTableRow from "./table/CommonTableRow";
 import CommonTableColumn from "./table/CommonTableColumn";
 import { getDatas, deleteDatas } from "../api/firebase";
 import { useEffect, useState } from "react";
+import styles from "./table/CommonTable.module.css";
+import BoardModal from "./BoardModal.js";
 
-const LIMIT = 1;
+const LIMIT = 5;
 function BoardManagement() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("createdAt");
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
   const [lq, setLq] = useState({});
+  const [selectedReservation, setSelectedReservation] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDelete = async (docId, imgUrl) => {
     // db에서 데이터 삭제
@@ -53,33 +57,49 @@ function BoardManagement() {
     handleLoad({ order, lq: undefined, limit: LIMIT });
   }, [order]);
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal = (BoardManagement) => {
+    setSelectedReservation(BoardManagement);
+    setIsModalOpen(true);
+  };
+
   return (
     <div>
       <h1>내가 쓴글</h1>
 
-      <CommonTable headersName={["번호", "제목", "펫이름", "예약일자"]}>
+      <CommonTable headersName={["", "번호", "제목", "펫이름", "예약일자"]}>
         {items.map((item) => (
-          <div>
-            <CommonTableRow>
-              <CommonTableColumn>
-                <input type="checkbox" />
-              </CommonTableColumn>
-              <CommonTableColumn key={item.id}>{item.title}</CommonTableColumn>
-              <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
-              <CommonTableColumn>강강이</CommonTableColumn>
-              <CommonTableColumn>오늘날짜</CommonTableColumn>
-            </CommonTableRow>
-          </div>
+          <CommonTableRow>
+            <CommonTableColumn>
+              <input type="checkbox" />
+            </CommonTableColumn>
+            <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
+            <CommonTableColumn key={item.id}>
+              <button onClick={() => openModal(item)}>{item.title}</button>
+            </CommonTableColumn>
+            <CommonTableColumn>강강이</CommonTableColumn>
+            <CommonTableColumn>오늘날짜</CommonTableColumn>
+          </CommonTableRow>
         ))}
+        {isModalOpen && (
+          <BoardModal
+            isOpen={isModalOpen}
+            BoardManagement={selectedReservation}
+            onClose={closeModal}
+          />
+        )}
 
         <CommonTableRow>
           <CommonTableColumn>
             <input type="checkbox" />
           </CommonTableColumn>
-          {/* <CommonTableColumn>02</CommonTableColumn>
+          <CommonTableColumn>02</CommonTableColumn>
           <CommonTableColumn>하기시렁</CommonTableColumn>
           <CommonTableColumn>냥냥이</CommonTableColumn>
-        <CommonTableColumn>2024-01-16</CommonTableColumn> */}
+          <CommonTableColumn>2024-01-16</CommonTableColumn>
         </CommonTableRow>
       </CommonTable>
     </div>

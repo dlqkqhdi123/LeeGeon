@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
-import "./Modal.css";
+import "./ReservationModal.css";
 import { collection, db, getDocs } from "../api/firebase";
 
-function Modal({ isOpen, onClose }) {
+function ReservationModal({ isOpen, onClose }) {
   const [images, setImages] = useState([]);
   const [showChevron, setShowChevron] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,6 +21,7 @@ function Modal({ isOpen, onClose }) {
 
     fetchReservations();
   }, []);
+
   if (!isOpen) return null;
 
   async function getReservations(db) {
@@ -101,4 +102,4 @@ function Modal({ isOpen, onClose }) {
   );
 }
 
-export default Modal;
+export default ReservationModal;

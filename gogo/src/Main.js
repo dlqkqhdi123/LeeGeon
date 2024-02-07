@@ -8,7 +8,6 @@ import Disease2 from "./pages/Disease2.js";
 import MaPage from "./pages/MaPage.js";
 import ReservationList from "./components/ReservationList.js";
 import CompanyInformation from "./components/CompanyInformation.js";
-import ReservationManagement from "./components/ReservationManagement.js";
 import BoardManagement from "./components/BoardManagement.js";
 
 function Main() {

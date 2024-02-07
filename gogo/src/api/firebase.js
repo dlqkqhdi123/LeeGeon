@@ -1,3 +1,4 @@
+import { uploadString } from "firebase/storage";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import {
   getFirestore,
@@ -194,6 +195,31 @@ const getTechInfo = async (collectionName) => {
   });
   return techInfo;
 };
+const storage = getStorage();
+
+const uploadImages = async (images) => {
+  const imageUrls = [];
+
+  for (const image of images) {
+    const storageRef = ref(storage, `images/${image.name}`);
+    const base64String = await convertToBase64(image);
+    await uploadString(storageRef, base64String, "base64");
+    const imageUrl = await getDownloadURL(storageRef);
+    imageUrls.push(imageUrl);
+  }
+
+  return imageUrls;
+};
+const convertToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve(reader.result.split(",")[1]);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
 
 export {
   db,
@@ -212,4 +238,6 @@ export {
   getData,
   upDate,
   getTechInfo,
+  uploadImages,
+  convertToBase64,
 };
