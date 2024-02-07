@@ -1,11 +1,10 @@
-import { getDatas, addDatas, deleteDatas, updateDatas } from "../firebase";
 import CommonTable from "./table/CommonTable";
 import CommonTableRow from "./table/CommonTableRow";
 import CommonTableColumn from "./table/CommonTableColumn";
-import { getDatas } from "../api/firebase";
+import { getDatas, deleteDatas } from "../api/firebase";
 import { useEffect, useState } from "react";
 
-const LIMIT = 5;
+const LIMIT = 1;
 function BoardManagement() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("createdAt");
@@ -51,42 +50,36 @@ function BoardManagement() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getDatas(); // Firebase에서 데이터 가져오기
-        setItems(data); // 가져온 데이터를 state에 저장
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData(); // 데이터 가져오는 함수 호출
-  }, []);
+    handleLoad({ order, lq: undefined, limit: LIMIT });
+  }, [order]);
 
   return (
     <div>
       <h1>내가 쓴글</h1>
-      <CommonTable headersName={["", "번호", "제목", "펫이름", "예약일자"]}>
-        <CommonTableRow>
-          <CommonTableColumn>
-            <input type="checkbox" />
-          </CommonTableColumn>
-          {items.map((item) => (
-            <CommonTableColumn key={item.id}>{item.title}</CommonTableColumn>
-          ))}
-          <CommonTableColumn>이벤트</CommonTableColumn>
-          <CommonTableColumn>강강이</CommonTableColumn>
-          <CommonTableColumn>오늘날짜</CommonTableColumn>
-        </CommonTableRow>
+
+      <CommonTable headersName={["번호", "제목", "펫이름", "예약일자"]}>
+        {items.map((item) => (
+          <div>
+            <CommonTableRow>
+              <CommonTableColumn>
+                <input type="checkbox" />
+              </CommonTableColumn>
+              <CommonTableColumn key={item.id}>{item.title}</CommonTableColumn>
+              <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
+              <CommonTableColumn>강강이</CommonTableColumn>
+              <CommonTableColumn>오늘날짜</CommonTableColumn>
+            </CommonTableRow>
+          </div>
+        ))}
 
         <CommonTableRow>
           <CommonTableColumn>
             <input type="checkbox" />
           </CommonTableColumn>
-          <CommonTableColumn>02</CommonTableColumn>
+          {/* <CommonTableColumn>02</CommonTableColumn>
           <CommonTableColumn>하기시렁</CommonTableColumn>
           <CommonTableColumn>냥냥이</CommonTableColumn>
-          <CommonTableColumn>2024-01-16</CommonTableColumn>
+        <CommonTableColumn>2024-01-16</CommonTableColumn> */}
         </CommonTableRow>
       </CommonTable>
     </div>
