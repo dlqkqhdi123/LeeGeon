@@ -1,52 +1,52 @@
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import styles from "./BoardModal.module.css";
-import { collection, db, getDocs, uploadImages } from "../api/firebase";
+import { collection, db, doc, getDocs, uploadImages } from "../api/firebase";
 import iconClose from "../assets/icon/icon-close_ff9b50.png";
 import chevronLeftIcon from "../assets/icon/chevron_left_ff9b50.png";
 import chevronRightIcon from "../assets/icon/chevron_right_ff9b50.png";
 
-function BoardModal({ isOpen, onClose, onSendData, userData }) {
+function BoardModal({
+  isOpen,
+  onClose,
+  onSendData,
+  userData,
+  BoardManagement,
+}) {
   const [images, setImages] = useState([]);
   const [showChevron, setShowChevron] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
   const [items, setItems] = useState(null);
 
   useEffect(() => {
-    async function fetchReservations() {
+    const fetchPost = async () => {
       try {
-        const reservations = await getReservations();
-        setItems(reservations);
+        const postDoc = doc(db, "post");
+        const postSnapshot = await getDocs(postDoc);
+        if (postSnapshot.exists()) {
+          setItems(postSnapshot.data());
+        } else {
+          console.log("해당하는 게시물이 없습니다.");
+        }
       } catch (error) {
-        console.error("예약 정보를 불러오는 중에 오류가 발생했습니다.", error);
+        console.error("게시물 정보를 불러오는 중 오류가 발생했습니다.", error);
       }
-    }
+    };
 
-    async function getReservations() {
-      const postCol = collection(db, "post");
-      const postSnapshot = await getDocs(postCol);
-      const postList = postSnapshot.docs.map((doc) => doc.data());
-      return postList;
-    }
-
-    fetchReservations(); // 컴포넌트가 마운트될 때 fetchReservations 함수를 실행하도록 호출합니다.
+    fetchPost();
   }, []);
 
-  if (!isOpen) return null;
+  const handleButtonClick = (index) => {
+    setCurrentIndex(index);
+  };
 
-  async function getReservations(db) {
-    const postCol = collection(db, "post");
-    const postSnapshot = await getDocs(postCol);
-    const postList = postSnapshot.docs.map((doc) => doc.data());
-    return postList;
-  }
+  if (!isOpen) return null;
 
   const handleOverlayClick = (e) => {
     e.stopPropagation();
 
     if (isOpen) {
+      // 원하는 동작을 추가하세요.
     }
   };
 
@@ -85,16 +85,16 @@ function BoardModal({ isOpen, onClose, onSendData, userData }) {
         const imageUrls = await uploadImages(images);
 
         const data = {
-          title,
-          content,
-          images: imageUrls,
-          userData: userData,
+          // title,
+          // content,
+          // images: imageUrls,
+          // userData: userData,
         };
         console.log("sendData 호출, userData:", userData);
         onSendData(data);
         onClose();
       } catch (error) {
-        console.error("Error uploading images: ", error);
+        console.error("이미지 업로드 중 오류가 발생했습니다.", error);
       }
     }
     console.log("handleSendData의 userData", handleSendData);
@@ -102,10 +102,7 @@ function BoardModal({ isOpen, onClose, onSendData, userData }) {
 
   return (
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
-      <div
-        className={styles.modal - content}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modalContainer}>
           <div className={styles.modalHeader}>
             <span className={styles.modalSpan}>글쓰기</span>
@@ -119,7 +116,7 @@ function BoardModal({ isOpen, onClose, onSendData, userData }) {
           <div className={styles.modalContent}>
             <div className={styles.modalImgBox}>
               <figure id="imageFigure">
-                {items.length > 0 && (
+                {items && Array.isArray(items) && items.length > 0 && (
                   <>
                     <div className={styles.imageIndicators}>
                       {items.map((post, index) => (
@@ -128,26 +125,21 @@ function BoardModal({ isOpen, onClose, onSendData, userData }) {
                           className={`image-indicator ${
                             currentIndex === index ? "active" : ""
                           }`}
-                          //여기도 다시생각해봐야댐
+                          onClick={() => handleButtonClick(index)}
                         ></div>
                       ))}
                     </div>
-                    <img
-                      src={URL.createObjectURL(images[currentIndex])}
-                      alt={`Selected Image ${currentIndex + 1}`}
-                    />
+
                     {showChevron && (
                       <>
                         <div
                           className={styles.modalChevron}
-                          // modal-chevron-left 클레스네임추가 해야함
                           onClick={handlePrevClick}
                         >
                           <img src={chevronLeftIcon} alt="left-chevron" />
                         </div>
                         <div
                           className={styles.modalChevron}
-                          // modal-chevron-right 이것도
                           onClick={handleNextClick}
                         >
                           <img src={chevronRightIcon} alt="right-chevron" />
@@ -168,14 +160,10 @@ function BoardModal({ isOpen, onClose, onSendData, userData }) {
             </div>
             <div className={styles.modalContentBox}>
               <div className={styles.modalContentTitle}>
-                {items && (
+                {items && Array.isArray(items) && items.length > 0 && (
                   <div>
                     <h2>{items.title}</h2>
                     <p>{items.content}</p>
-                    {/* Firebase 데이터의 이미지 표시 */}
-                    {items.images.map((image, index) => (
-                      <img key={index} src={image.url} alt={image.alt} />
-                    ))}
                   </div>
                 )}
               </div>
