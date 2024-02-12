@@ -7,20 +7,20 @@ function SideBar() {
     <div>
       <div className={styles.sidecontainer}>
         <ul className={styles.sideUl}>
-          <Link to="/mypage">
+          <Link className={styles.text} to="/mypage">
             <li>업체 정보 관리</li>
           </Link>
 
-          <Link to="ReservationList">
+          <Link className={styles.text} to="ReservationList">
             <li>예약 목록</li>
           </Link>
-          <Link to="BoardManagement">
+          <Link className={styles.text} to="BoardManagement">
             <li>게시글 관리</li>
           </Link>
-          <Link>
+          <Link className={styles.text}>
             <li>제휴 관리</li>
           </Link>
-          <Link>
+          <Link className={styles.text}>
             <li>제휴 업체</li>
           </Link>
         </ul>

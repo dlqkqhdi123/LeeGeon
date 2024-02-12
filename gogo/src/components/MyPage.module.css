@@ -2,7 +2,12 @@
   width: 100%;
   margin: 100px;
 }
-
+.formgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100px;
+  background-color: red;
+}
 .companyTitle {
   display: flex;
   justify-content: flex-end;
@@ -10,18 +15,20 @@
 }
 .container2 {
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
   align-items: center;
   padding: 8px;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 2px solid #d9d9d9;
 }
-input {
+/* 이것도 저것도 안먹어서 꺼둠 */
+/* input {
   border: none;
   outline: none;
   background-color: #f8ebd8;
   padding: 20px 10px;
-}
+  width: 100px;
+} */
 .containerBox {
   width: 70%;
   margin: 40px 10rem 40px 40%;

@@ -16,7 +16,6 @@ function CompanyInformation() {
   const [businessHours, setBusinessHours] = useState("");
   const [address, setAddress] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
-  const [items, setItems] = useState();
 
   useEffect(() => {
     async function fetchData(collectionName) {
@@ -80,67 +79,8 @@ function CompanyInformation() {
     <div className={styles.disContainer}>
       <h1 className={styles.companyTitle}>마이페이지</h1>
       {isEditMode ? (
-        <form>
-          <label>업체명:</label>
-          <input
-            type="text"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            className={styles.container2}
-          />
-
-          <label>대표전화:</label>
-          <input
-            type="text"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            className={styles.container2}
-          />
-          <label>전문분야:</label>
-          <input
-            type="text"
-            value={specialty}
-            onChange={(e) => setSpecialty(e.target.value)}
-            className={styles.container2}
-          />
-
-          <label>운영시간:</label>
-          <input
-            type="text"
-            value={businessHours}
-            onChange={(e) => setBusinessHours(e.target.value)}
-            className={styles.container2}
-          />
-
-          <label>주소:</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className={styles.container2}
-          />
-
-          <button type="button" onClick={handleSave}>
-            저장
-          </button>
-        </form>
-      ) : (
-        <div>
-          <p className={styles.container2}>업체명: {companyName}</p>
-          <p className={styles.container2}>대표전화: {phoneNumber}</p>
-          <p className={styles.container2}>전문분야: {specialty}</p>
-          <p className={styles.container2}>운영시간: {businessHours}</p>
-          <p className={styles.container2}>주소: {address}</p>
-
-          <button type="button" onClick={handleEdit}>
-            수정
-          </button>
-        </div>
-      )}
-      <h1 className={styles.companyTitle}>마이페이지</h1>
-      {isEditMode ? (
-        <form>
-          <label>업체명:</label>
+        <form className={styles.formgrid}>
+          <label>업체명: </label>
           <input
             type="text"
             value={companyName}

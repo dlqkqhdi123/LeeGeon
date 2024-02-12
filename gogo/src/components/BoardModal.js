@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import styles from "./BoardModal.module.css";
-import { collection, db, doc, getDocs, uploadImages } from "../api/firebase";
+import {
+  collection,
+  db,
+  doc,
+  getDocs,
+  updateDoc,
+  uploadImages,
+} from "../api/firebase";
 import iconClose from "../assets/icon/icon-close_ff9b50.png";
 import chevronLeftIcon from "../assets/icon/chevron_left_ff9b50.png";
 import chevronRightIcon from "../assets/icon/chevron_right_ff9b50.png";
@@ -17,28 +24,28 @@ function BoardModal({
   const [showChevron, setShowChevron] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [items, setItems] = useState(null);
+  const [postData, setPostData] = useState([]);
+
+  const fetchPostData = async () => {
+    try {
+      const postCollection = collection(db, "post");
+      const postSnapshot = await getDocs(postCollection);
+      if (!postSnapshot.empty) {
+        const postData = postSnapshot.docs.map((doc) => doc.data());
+        setPostData(postData);
+        setItems(postData); // items 업데이트
+        setCurrentIndex(0);
+      } else {
+        console.log("해당하는 게시물이 없습니다.");
+      }
+    } catch (error) {
+      console.error("게시물 정보를 불러오는 중 오류가 발생했습니다.", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const postDoc = doc(db, "post");
-        const postSnapshot = await getDocs(postDoc);
-        if (postSnapshot.exists()) {
-          setItems(postSnapshot.data());
-        } else {
-          console.log("해당하는 게시물이 없습니다.");
-        }
-      } catch (error) {
-        console.error("게시물 정보를 불러오는 중 오류가 발생했습니다.", error);
-      }
-    };
-
-    fetchPost();
+    fetchPostData();
   }, []);
-
-  const handleButtonClick = (index) => {
-    setCurrentIndex(index);
-  };
 
   if (!isOpen) return null;
 
@@ -84,20 +91,23 @@ function BoardModal({
       try {
         const imageUrls = await uploadImages(images);
 
-        const data = {
-          // title,
-          // content,
-          // images: imageUrls,
-          // userData: userData,
+        const updatedData = {
+          title: items[currentIndex].title,
+          content: items[currentIndex].content,
+          images: imageUrls,
+          userData: userData,
         };
-        console.log("sendData 호출, userData:", userData);
-        onSendData(data);
+
+        const postDocRef = doc(db, "post", items[currentIndex].id);
+        await updateDoc(postDocRef, updatedData);
+
+        console.log("데이터 수정 완료");
+        onSendData(updatedData);
         onClose();
       } catch (error) {
         console.error("이미지 업로드 중 오류가 발생했습니다.", error);
       }
     }
-    console.log("handleSendData의 userData", handleSendData);
   };
 
   return (
@@ -116,18 +126,15 @@ function BoardModal({
           <div className={styles.modalContent}>
             <div className={styles.modalImgBox}>
               <figure id="imageFigure">
-                {items && Array.isArray(items) && items.length > 0 && (
+                {/* {items && Array.isArray(items) && items.length > 0 && (
                   <>
                     <div className={styles.imageIndicators}>
-                      {items.map((post, index) => (
-                        <div
-                          key={index}
-                          className={`image-indicator ${
-                            currentIndex === index ? "active" : ""
-                          }`}
-                          onClick={() => handleButtonClick(index)}
-                        ></div>
-                      ))}
+                      {items && Array.isArray(items) && items.length > 0 && (
+                        <div>
+                          <h2>{postData[currentIndex].title}</h2>
+                          <p>{postData[currentIndex].content}</p>
+                        </div>
+                      )}
                     </div>
 
                     {showChevron && (
@@ -147,7 +154,7 @@ function BoardModal({
                       </>
                     )}
                   </>
-                )}
+                )} */}
               </figure>
               <input
                 type="file"
@@ -162,11 +169,13 @@ function BoardModal({
               <div className={styles.modalContentTitle}>
                 {items && Array.isArray(items) && items.length > 0 && (
                   <div>
-                    <h2>{items.title}</h2>
-                    <p>{items.content}</p>
+                    <h2>{items[currentIndex].title}</h2>
+                    <p>{items[currentIndex].content}</p>
                   </div>
                 )}
               </div>
+              <Button onClick={handleSendData}>수정</Button>{" "}
+              {/* 수정 버튼 추가 */}
             </div>
           </div>
         </div>
