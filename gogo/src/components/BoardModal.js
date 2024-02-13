@@ -8,10 +8,13 @@ import {
   getDocs,
   updateDoc,
   uploadImages,
+  deleteDoc,
 } from "../api/firebase";
 import iconClose from "../assets/icon/icon-close_ff9b50.png";
 import chevronLeftIcon from "../assets/icon/chevron_left_ff9b50.png";
 import chevronRightIcon from "../assets/icon/chevron_right_ff9b50.png";
+import MyPageButton from "./MyPageButton";
+import ModalButton from "./ModalButton";
 
 function BoardModal({
   isOpen,
@@ -25,13 +28,19 @@ function BoardModal({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [items, setItems] = useState(null);
   const [postData, setPostData] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const fetchPostData = async () => {
     try {
       const postCollection = collection(db, "post");
       const postSnapshot = await getDocs(postCollection);
       if (!postSnapshot.empty) {
-        const postData = postSnapshot.docs.map((doc) => doc.data());
+        const postData = postSnapshot.docs.map((doc) => {
+          return {
+            ...doc.data(),
+            id: doc.id, // 각 게시물의 id도 함께 저장
+          };
+        });
         setPostData(postData);
         setItems(postData); // items 업데이트
         setCurrentIndex(0);
@@ -85,27 +94,49 @@ function BoardModal({
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
+  const handleContentChange = (e) => {
+    const newContent = e.target.value;
+    setItems((prevItems) => {
+      const newItems = [...prevItems];
+      newItems[currentIndex].content = newContent;
+      return newItems;
+    });
+  };
+  const handleEditClick = () => {
+    setIsEditing(true); // 수정 버튼을 누르면 true로 변경
+  };
 
-  const handleSendData = async () => {
+  const handleDeleteData = async () => {
     if (isOpen) {
       try {
-        const imageUrls = await uploadImages(images);
+        const postDocRef = doc(db, "post", items[currentIndex].id);
+        await deleteDoc(postDocRef); // postDocRef 문서 삭제
 
+        console.log("데이터 삭제 완료");
+        onClose(); // 모달 닫기
+      } catch (error) {
+        console.error("데이터 삭제 중 오류가 발생했습니다.", error);
+      }
+    }
+  };
+
+  const handleSaveClick = async () => {
+    if (isOpen) {
+      try {
         const updatedData = {
           title: items[currentIndex].title,
           content: items[currentIndex].content,
-          images: imageUrls,
-          userData: userData,
         };
 
         const postDocRef = doc(db, "post", items[currentIndex].id);
         await updateDoc(postDocRef, updatedData);
 
         console.log("데이터 수정 완료");
-        onSendData(updatedData);
-        onClose();
+        onSendData(updatedData); // 수정된 데이터 전달
       } catch (error) {
-        console.error("이미지 업로드 중 오류가 발생했습니다.", error);
+        console.error("데이터 수정 중 오류가 발생했습니다.", error);
+      } finally {
+        setIsEditing(false); // 저장 버튼을 누르면 false로 변경
       }
     }
   };
@@ -125,37 +156,7 @@ function BoardModal({
           </div>
           <div className={styles.modalContent}>
             <div className={styles.modalImgBox}>
-              <figure id="imageFigure">
-                {/* {items && Array.isArray(items) && items.length > 0 && (
-                  <>
-                    <div className={styles.imageIndicators}>
-                      {items && Array.isArray(items) && items.length > 0 && (
-                        <div>
-                          <h2>{postData[currentIndex].title}</h2>
-                          <p>{postData[currentIndex].content}</p>
-                        </div>
-                      )}
-                    </div>
-
-                    {showChevron && (
-                      <>
-                        <div
-                          className={styles.modalChevron}
-                          onClick={handlePrevClick}
-                        >
-                          <img src={chevronLeftIcon} alt="left-chevron" />
-                        </div>
-                        <div
-                          className={styles.modalChevron}
-                          onClick={handleNextClick}
-                        >
-                          <img src={chevronRightIcon} alt="right-chevron" />
-                        </div>
-                      </>
-                    )}
-                  </>
-                )} */}
-              </figure>
+              <figure id="imageFigure"></figure>
               <input
                 type="file"
                 id="imageInput"
@@ -170,12 +171,26 @@ function BoardModal({
                 {items && Array.isArray(items) && items.length > 0 && (
                   <div>
                     <h2>{items[currentIndex].title}</h2>
-                    <p>{items[currentIndex].content}</p>
+                    <textarea
+                      className={styles.text}
+                      value={items[currentIndex].content}
+                      onChange={handleContentChange}
+                      disabled={!isEditing} // isEditing이 false이면 disabled
+                    />
                   </div>
                 )}
               </div>
-              <Button onClick={handleSendData}>수정</Button>{" "}
-              {/* 수정 버튼 추가 */}
+              <div
+                style={{ background: "white" }}
+                className={styles.tnwjdtkrwp1}
+              >
+                {isEditing ? (
+                  <ModalButton onClick={handleSaveClick}>저장</ModalButton>
+                ) : (
+                  <ModalButton onClick={handleEditClick}>수정</ModalButton>
+                )}
+                <ModalButton onClick={handleDeleteData}>삭제</ModalButton>
+              </div>
             </div>
           </div>
         </div>

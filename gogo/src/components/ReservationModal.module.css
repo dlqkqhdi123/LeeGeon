@@ -1,4 +1,4 @@
-.modal-overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,23 +11,23 @@
   z-index: 100;
 }
 
-.modal-content {
+.modalContent {
   background: #fff;
   padding: 5px;
   gap: 1rem;
 }
 
-.modal-container {
+.modalContainer {
   width: 1000px;
 }
 
-.modal-header {
+.modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ff9b50;
 }
-.modal-span {
+.modalSpan {
   color: #ff9b50;
   font-weight: 700;
   flex-grow: 1;
@@ -35,7 +35,7 @@
   margin-bottom: 8px;
 }
 
-.close-img {
+.closeImg {
   position: relative;
   bottom: 3px;
   left: 0;
@@ -44,61 +44,61 @@
   border: none;
   cursor: pointer;
 }
-.modal-content {
+.modalContent {
   display: flex;
 }
 
-.modal-imgBox,
-.modal-contentBox {
+.modalImgBox,
+.modalContentBox {
   flex: 1;
   position: relative;
 }
 
-.modal-contentBox {
+.modalContentBox {
   padding: 2rem;
   /* background-color: tomato; */
 }
 
-.modal-imgBox figure {
+.modalImgBox figure {
   background-color: aliceblue;
   height: 440px;
 }
 
-.modal-content-title,
-.modal-content-description {
+.modalContentTitle,
+.modalContent-description {
   margin-bottom: 10px;
   min-height: 100px;
 }
 
-.modal-input,
-.modal-input2 {
+.modalInput,
+.modalInput2 {
   padding: 10px;
   width: 100%;
   border: none;
 }
-.modal-input:focus,
-.modal-input2:focus {
+.modalInput:focus,
+.modalInput2:focus {
   outline: none;
 }
 
-.modal-input {
+.modalInput {
   border-bottom: 1px solid #ff9b50;
 }
 
-.modal-input2 {
+.modalInput2 {
   height: 300px;
   text-align: start;
   resize: none;
   border-bottom: 1px solid #ff9b50;
 }
 
-.modal-content-title[contentEditable]:empty::before,
-.modal-content-description[contentEditable]:empty::before {
+.modalContentTitle[contentEditable]:empty::before,
+.modalContentDescription[contentEditable]:empty::before {
   content: attr(placeholder);
   color: #aaa;
 }
 
-.add-img-container {
+.addImgContainer {
   background-color: #ff9b50;
   color: white;
   height: 50px;
@@ -116,7 +116,7 @@
   height: 100%;
 }
 
-.modal-chevron {
+.modalChevron {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -124,18 +124,18 @@
   cursor: pointer;
 }
 
-.modal-chevron-left {
+.modalChevronLeft {
   left: 0px;
   width: 75px;
   height: 75px;
 }
 
-.modal-chevron-right {
+.modalChevronRight {
   right: 0px;
   width: 75px;
   height: 75px;
 }
-.image-indicators {
+.imageIndicators {
   display: flex;
   position: absolute;
   transform: translateX(-50%);
@@ -143,7 +143,7 @@
   bottom: 70px;
 }
 
-.image-indicator {
+.imageIndicator {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -152,6 +152,12 @@
   cursor: pointer;
 }
 
-.image-indicator.active {
+.imageIndicator.active {
   background-color: #ff9b50;
+}
+.tnwjdtkrwp {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }

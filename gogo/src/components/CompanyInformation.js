@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./MyPage.module.css";
+import MyPageButton from "./MyPageButton";
+
 import {
   collection,
   db,
@@ -77,10 +79,10 @@ function CompanyInformation() {
 
   return (
     <div className={styles.disContainer}>
-      <h1 className={styles.companyTitle}>마이페이지</h1>
+      <h1 className={styles.companyTitle}>정보관리</h1>
       {isEditMode ? (
         <form className={styles.formgrid}>
-          <label>업체명: </label>
+          <label className={styles.label}>업체명: </label>
           <input
             type="text"
             value={companyName}
@@ -88,14 +90,14 @@ function CompanyInformation() {
             className={styles.container2}
           />
 
-          <label>대표전화:</label>
+          <label className={styles.label}>대표전화:</label>
           <input
             type="text"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             className={styles.container2}
           />
-          <label>전문분야:</label>
+          <label className={styles.label}>전문분야:</label>
           <input
             type="text"
             value={specialty}
@@ -103,7 +105,7 @@ function CompanyInformation() {
             className={styles.container2}
           />
 
-          <label>운영시간:</label>
+          <label className={styles.label}>운영시간:</label>
           <input
             type="text"
             value={businessHours}
@@ -111,7 +113,7 @@ function CompanyInformation() {
             className={styles.container2}
           />
 
-          <label>주소:</label>
+          <label className={styles.label}>주소:</label>
           <input
             type="text"
             value={address}
@@ -119,9 +121,9 @@ function CompanyInformation() {
             className={styles.container2}
           />
 
-          <button type="button" onClick={handleSave}>
+          <MyPageButton type="button" onClick={handleSave}>
             저장
-          </button>
+          </MyPageButton>
         </form>
       ) : (
         <div>
@@ -131,9 +133,9 @@ function CompanyInformation() {
           <p className={styles.container2}>운영시간: {businessHours}</p>
           <p className={styles.container2}>주소: {address}</p>
 
-          <button type="button" onClick={handleEdit}>
+          <MyPageButton type="button" onClick={handleEdit}>
             수정
-          </button>
+          </MyPageButton>
         </div>
       )}
     </div>

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Button from "./Button";
-import "./ReservationModal.css";
-import { collection, db, getDocs } from "../api/firebase";
+import styles from "./ReservationModal.module.css";
+import { collection, db, getDocs, updateDoc, doc } from "../api/firebase";
+import ModalButton from "./ModalButton";
 
 function ReservationModal({ isOpen, onClose }) {
   const [images, setImages] = useState([]);
   const [showChevron, setShowChevron] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [reservations, setReservations] = useState([]);
+  const [fieldValues, setFieldValues] = useState([]);
 
   useEffect(() => {
     async function fetchReservations() {
       try {
         const reservations = await getReservations(db);
         setReservations(reservations);
+        setFieldValues(reservations.map(() => ""));
       } catch (error) {
         console.error("예약 정보를 불러오는 중에 오류가 발생했습니다.", error);
       }
@@ -30,7 +32,6 @@ function ReservationModal({ isOpen, onClose }) {
     const reservationsList = reservationsSnapshot.docs.map((doc) => doc.data());
     return reservationsList;
   }
-
   const handleAddImageClick = () => {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
@@ -58,42 +59,75 @@ function ReservationModal({ isOpen, onClose }) {
     );
   };
 
+  const handleSaveClick = async (value, index) => {
+    const newFieldValues = [...fieldValues];
+    newFieldValues[index] = value;
+    setFieldValues(newFieldValues);
+
+    try {
+      const reservationRef = doc(db, "ReservationList", reservations[index].id);
+      console.log(index);
+      await updateDoc(reservationRef, { state: value });
+      console.log("데이터가 성공적으로 수정되었습니다.");
+    } catch (error) {
+      console.error("데이터 수정 중에 오류가 발생했습니다.", error);
+    }
+  };
+
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-container">
-          <div className="modal-header">
-            <span className="modal-span">예약확인</span>
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalContainer}>
+          <div className={styles.modalHeader}>
+            <span className={styles.modalSpan}>예약확인</span>
             <img
-              className="close-img"
+              className={styles.closeImg}
               src="/icon/icon-close.png"
               alt="close-icon"
               onClick={onClose}
             />
           </div>
-          <div className="modal-content">
-            <div className="modal-imgBox"></div>
-            <div className="modal-contentBox">
-              <div className="modal-content-title">
+          <div className={styles.modalContent}>
+            <div className={styles.modalImgBox}></div>
+            <div className={styles.modalContentBox}>
+              <div className={styles.modalContentTitle}>
                 {reservations.map((reservation, index) => (
                   <div key={index}>
                     <div>
                       <input type="checkbox" />
                     </div>
-                    <p>예약 번호 :{index + 1}</p>
-
-                    <p>현재 상태 : {reservation.state}</p>
-                    <p>동물 이름 :{reservation.PetName}</p>
-                    <p>병원 : {reservation.hospital}</p>
-                    <p>예약 날짜 :{reservation.ReservationDate}</p>
+                    <input type="text" value={index + 1} disabled />
+                    <input type="text" value={reservation.state} disabled />
+                    <input type="text" value={reservation.PetName} disabled />
+                    <input type="text" value={reservation.hospital} disabled />
+                    <input
+                      type="text"
+                      value={reservation.ReservationDate}
+                      disabled
+                    />
+                    <input
+                      type="text"
+                      value={fieldValues[index]}
+                      onChange={(e) => {
+                        const newFieldValues = [...fieldValues];
+                        newFieldValues[index] = e.target.value;
+                        setFieldValues(newFieldValues);
+                      }}
+                      disabled={fieldValues[index] !== ""}
+                    />
                   </div>
                 ))}
-                <textarea
-                  className="modal-input2"
-                  placeholder="내용을 입력하세요"
-                ></textarea>
               </div>
-              <Button children="등록하기" />
+              <div className={styles.tnwjdtkrwp}>
+                <ModalButton
+                  onClick={() => handleSaveClick(fieldValues[index], index)}
+                  children="등록하기"
+                />
+                <ModalButton
+                  onClick={() => handleSaveClick(fieldValues[index], index)}
+                  children="수정하기"
+                />
+              </div>
             </div>
           </div>
         </div>

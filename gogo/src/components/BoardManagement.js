@@ -3,8 +3,9 @@ import CommonTableRow from "./table/CommonTableRow";
 import CommonTableColumn from "./table/CommonTableColumn";
 import { getDatas, deleteDatas } from "../api/firebase";
 import { useEffect, useState } from "react";
-import styles from "./table/CommonTable.module.css";
+import styles from "./BoardModal.module.css";
 import BoardModal from "./BoardModal.js";
+import MyPageButton from "./MyPageButton";
 
 const LIMIT = 5;
 function BoardManagement() {
@@ -67,41 +68,46 @@ function BoardManagement() {
   };
 
   return (
-    <div>
-      <h1>내가 쓴글</h1>
+    <div className={styles.boxbox}>
+      <div>
+        <h1 className={styles.headhead}>작성한글</h1>
 
-      <CommonTable headersName={["", "번호", "제목", "펫이름", "예약일자"]}>
-        {items.map((item) => (
+        <CommonTable headersName={["", "번호", "제목", "펫이름", "예약일자"]}>
+          {items.map((item) => (
+            <CommonTableRow>
+              <CommonTableColumn>
+                <input type="checkbox" />
+              </CommonTableColumn>
+              <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
+              <CommonTableColumn key={item.id}>
+                <button onClick={() => openModal(item)}>{item.title}</button>
+              </CommonTableColumn>
+              <CommonTableColumn>강강이</CommonTableColumn>
+              <CommonTableColumn>오늘날짜</CommonTableColumn>
+            </CommonTableRow>
+          ))}
+          {isModalOpen && (
+            <BoardModal
+              isOpen={isModalOpen}
+              BoardManagement={selectedReservation}
+              onClose={closeModal}
+            />
+          )}
+
           <CommonTableRow>
             <CommonTableColumn>
               <input type="checkbox" />
             </CommonTableColumn>
-            <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
-            <CommonTableColumn key={item.id}>
-              <button onClick={() => openModal(item)}>{item.title}</button>
-            </CommonTableColumn>
-            <CommonTableColumn>강강이</CommonTableColumn>
-            <CommonTableColumn>오늘날짜</CommonTableColumn>
+            <CommonTableColumn>02</CommonTableColumn>
+            <CommonTableColumn>하기시렁</CommonTableColumn>
+            <CommonTableColumn>냥냥이</CommonTableColumn>
+            <CommonTableColumn>2024-01-16</CommonTableColumn>
           </CommonTableRow>
-        ))}
-        {isModalOpen && (
-          <BoardModal
-            isOpen={isModalOpen}
-            BoardManagement={selectedReservation}
-            onClose={closeModal}
-          />
-        )}
-
-        <CommonTableRow>
-          <CommonTableColumn>
-            <input type="checkbox" />
-          </CommonTableColumn>
-          <CommonTableColumn>02</CommonTableColumn>
-          <CommonTableColumn>하기시렁</CommonTableColumn>
-          <CommonTableColumn>냥냥이</CommonTableColumn>
-          <CommonTableColumn>2024-01-16</CommonTableColumn>
-        </CommonTableRow>
-      </CommonTable>
+        </CommonTable>
+        <div className={styles.tnwjdtkrwp}>
+          <MyPageButton>삭제</MyPageButton>
+        </div>
+      </div>
     </div>
   );
 }

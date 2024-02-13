@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./MyPage.module.css";
-import Button from "./Button";
 import CommonTable from "./table/CommonTable";
 import CommonTableColumn from "./table/CommonTableColumn";
 import CommonTableRow from "./table/CommonTableRow";
 import { collection, db, doc, getDocs } from "../api/firebase";
 import ReservationModal from "./ReservationModal";
+import MyPageButton from "./MyPageButton";
 
 function ReservationList() {
   const [reservations, setReservations] = useState([]);
@@ -42,55 +42,61 @@ function ReservationList() {
   };
 
   return (
-    <div>
-      <CommonTable
-        headersName={[
-          "",
-          "번호",
-          "예약번호",
-          "상태",
-          "펫이름",
-          "병원",
-          "예약일자",
-        ]}
-      >
-        {reservations.map((reservation, index) => (
-          <CommonTableRow key={index}>
+    <div className={styles.boxbox}>
+      <div>
+        <h1 className={styles.headhead}>예약관리</h1>
+        <CommonTable
+          headersName={[
+            "",
+            "번호",
+            "예약번호",
+            "상태",
+            "펫이름",
+            "병원",
+            "예약일자",
+          ]}
+        >
+          {reservations.map((reservation, index) => (
+            <CommonTableRow key={index}>
+              <CommonTableColumn>
+                <input type="checkbox" />
+              </CommonTableColumn>
+              <CommonTableColumn>{index + 1}</CommonTableColumn>
+              <CommonTableColumn>
+                <button onClick={() => openModal(reservation)}>
+                  {reservation.ReservationNumber}
+                </button>
+              </CommonTableColumn>
+              <CommonTableColumn>{reservation.state}</CommonTableColumn>
+              <CommonTableColumn>{reservation.PetName}</CommonTableColumn>
+              <CommonTableColumn>{reservation.hospital}</CommonTableColumn>
+              <CommonTableColumn>
+                {reservation.ReservationDate}
+              </CommonTableColumn>
+            </CommonTableRow>
+          ))}
+
+          {isModalOpen && (
+            <ReservationModal
+              isOpen={isModalOpen}
+              reservation={selectedReservation}
+              onClose={closeModal}
+            />
+          )}
+          <CommonTableRow>
             <CommonTableColumn>
               <input type="checkbox" />
             </CommonTableColumn>
-            <CommonTableColumn>{index + 1}</CommonTableColumn>
-            <CommonTableColumn>
-              <button onClick={() => openModal(reservation)}>
-                {reservation.ReservationNumber}
-              </button>
-            </CommonTableColumn>
-            <CommonTableColumn>{reservation.state}</CommonTableColumn>
-            <CommonTableColumn>{reservation.PetName}</CommonTableColumn>
-            <CommonTableColumn>{reservation.hospital}</CommonTableColumn>
-            <CommonTableColumn>{reservation.ReservationDate}</CommonTableColumn>
+            <CommonTableColumn>02</CommonTableColumn>
+            <CommonTableColumn>00-000-000</CommonTableColumn>
+            <CommonTableColumn>예약중</CommonTableColumn>
+            <CommonTableColumn>냥냥이</CommonTableColumn>
+            <CommonTableColumn>한 병원</CommonTableColumn>
+            <CommonTableColumn>2024-01-16</CommonTableColumn>
           </CommonTableRow>
-        ))}
-
-        {isModalOpen && (
-          <ReservationModal
-            isOpen={isModalOpen}
-            reservation={selectedReservation}
-            onClose={closeModal}
-          />
-        )}
-        <CommonTableRow>
-          <CommonTableColumn>
-            <input type="checkbox" />
-          </CommonTableColumn>
-          <CommonTableColumn>02</CommonTableColumn>
-          <CommonTableColumn>00-000-000</CommonTableColumn>
-          <CommonTableColumn>예약중</CommonTableColumn>
-          <CommonTableColumn>냥냥이</CommonTableColumn>
-          <CommonTableColumn>한 병원</CommonTableColumn>
-          <CommonTableColumn>2024-01-16</CommonTableColumn>
-        </CommonTableRow>
-      </CommonTable>
+          <MyPageButton>취소하기</MyPageButton>
+        </CommonTable>
+      </div>
     </div>
   );
 }
