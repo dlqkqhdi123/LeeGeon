@@ -19,7 +19,11 @@ function BoardManagement() {
 
   const handleDelete = async (docId, imgUrl) => {
     // db에서 데이터 삭제
-    const result = await deleteDatas("post", docId, imgUrl);
+    const result = await deleteDatas(
+      "MyPageCustomer-Reservation",
+      docId,
+      imgUrl
+    );
 
     // db에서 삭제가 성공했을 때만 그 결과를 화면에 반영한다.
     if (!result) {
@@ -36,7 +40,8 @@ function BoardManagement() {
     try {
       setIsLoading(true);
       setLoadingError(null);
-      result = await getDatas("post", options);
+      result = await getDatas("articles", options);
+      console.log(result);
     } catch (error) {
       console.error(error);
       setLoadingError(error);
@@ -79,8 +84,8 @@ function BoardManagement() {
                 <input type="checkbox" />
               </CommonTableColumn>
               <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
-              <CommonTableColumn key={item.id}>
-                <button onClick={() => openModal(item)}>{item.title}</button>
+              <CommonTableColumn key={item.no}>
+                <button onClick={() => openModal(item)}>{item.title}111</button>
               </CommonTableColumn>
               <CommonTableColumn>강강이</CommonTableColumn>
               <CommonTableColumn>오늘날짜</CommonTableColumn>

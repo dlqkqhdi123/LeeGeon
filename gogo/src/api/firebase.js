@@ -29,12 +29,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyARawYxbOyLKnEWMlPSatqIULiZhn5ZDN0",
-  authDomain: "hospetal-f595a.firebaseapp.com",
-  projectId: "hospetal-f595a",
-  storageBucket: "hospetal-f595a.appspot.com",
-  messagingSenderId: "41843789723",
-  appId: "1:41843789723:web:07d3d1aaf16f0bd24b9b3e",
+  apiKey: "AIzaSyCZijsmmnVurDsqymzx-QPFRFjSe1AKbqU",
+  authDomain: "hospetalbackup.firebaseapp.com",
+  projectId: "hospetalbackup",
+  storageBucket: "hospetalbackup.appspot.com",
+  messagingSenderId: "537758130691",
+  appId: "1:537758130691:web:1154382e01fe09e07a2436",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -55,6 +55,7 @@ async function getDatas(collectionName, options) {
       orderBy(options.order, "desc"),
       limit(options.limit)
     );
+    console.log(docQuery);
   } else {
     docQuery = query(
       collection(db, collectionName),
