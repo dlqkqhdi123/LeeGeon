@@ -115,18 +115,22 @@ function ReservationModal({ isOpen, onClose }) {
                       }}
                       disabled={fieldValues[index] !== ""}
                     />
+                    <div className={styles.tnwjdtkrwp}>
+                      <ModalButton
+                        onClick={() =>
+                          handleSaveClick(fieldValues[index], index)
+                        }
+                        children="등록하기"
+                      />
+                      <ModalButton
+                        onClick={() =>
+                          handleSaveClick(fieldValues[index], index)
+                        }
+                        children="수정하기"
+                      />
+                    </div>
                   </div>
                 ))}
-              </div>
-              <div className={styles.tnwjdtkrwp}>
-                <ModalButton
-                  onClick={() => handleSaveClick(fieldValues[index], index)}
-                  children="등록하기"
-                />
-                <ModalButton
-                  onClick={() => handleSaveClick(fieldValues[index], index)}
-                  children="수정하기"
-                />
               </div>
             </div>
           </div>

@@ -29,13 +29,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEyt7KZUW4031Lfa_lVuqOdOnk6hLoLtU",
-  authDomain: "disease-8f5ff.firebaseapp.com",
-  projectId: "disease-8f5ff",
-  storageBucket: "disease-8f5ff.appspot.com",
-  messagingSenderId: "100793827741",
-  appId: "1:100793827741:web:27c61645f46d157aee2f74",
-  measurementId: "G-MN79TPVD2B",
+  apiKey: "AIzaSyARawYxbOyLKnEWMlPSatqIULiZhn5ZDN0",
+  authDomain: "hospetal-f595a.firebaseapp.com",
+  projectId: "hospetal-f595a",
+  storageBucket: "hospetal-f595a.appspot.com",
+  messagingSenderId: "41843789723",
+  appId: "1:41843789723:web:07d3d1aaf16f0bd24b9b3e",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

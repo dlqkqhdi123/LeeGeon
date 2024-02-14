@@ -79,65 +79,72 @@ function CompanyInformation() {
 
   return (
     <div className={styles.disContainer}>
-      <h1 className={styles.companyTitle}>정보관리</h1>
-      {isEditMode ? (
-        <form className={styles.formgrid}>
-          <label className={styles.label}>업체명: </label>
-          <input
-            type="text"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            className={styles.container2}
-          />
+      <div>
+        <h1 className={styles.companyTitle}>정보관리</h1>
+        {isEditMode ? (
+          <form className={styles.formgrid}>
+            <label className={styles.label}>업체명: </label>
+            <input
+              type="text"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              className={styles.container2}
+            />
 
-          <label className={styles.label}>대표전화:</label>
-          <input
-            type="text"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            className={styles.container2}
-          />
-          <label className={styles.label}>전문분야:</label>
-          <input
-            type="text"
-            value={specialty}
-            onChange={(e) => setSpecialty(e.target.value)}
-            className={styles.container2}
-          />
+            <label className={styles.label}>대표전화:</label>
+            <input
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className={styles.container2}
+            />
+            <label className={styles.label}>전문분야:</label>
+            <input
+              type="text"
+              value={specialty}
+              onChange={(e) => setSpecialty(e.target.value)}
+              className={styles.container2}
+            />
 
-          <label className={styles.label}>운영시간:</label>
-          <input
-            type="text"
-            value={businessHours}
-            onChange={(e) => setBusinessHours(e.target.value)}
-            className={styles.container2}
-          />
+            <label className={styles.label}>운영시간:</label>
+            <input
+              type="text"
+              value={businessHours}
+              onChange={(e) => setBusinessHours(e.target.value)}
+              className={styles.container2}
+            />
 
-          <label className={styles.label}>주소:</label>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className={styles.container2}
-          />
+            <label className={styles.label}>주소:</label>
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className={styles.container2}
+            />
 
-          <MyPageButton type="button" onClick={handleSave}>
-            저장
-          </MyPageButton>
-        </form>
-      ) : (
-        <div>
-          <p className={styles.container2}>업체명: {companyName}</p>
-          <p className={styles.container2}>대표전화: {phoneNumber}</p>
-          <p className={styles.container2}>전문분야: {specialty}</p>
-          <p className={styles.container2}>운영시간: {businessHours}</p>
-          <p className={styles.container2}>주소: {address}</p>
+            <MyPageButton type="button" onClick={handleSave}>
+              저장
+            </MyPageButton>
+          </form>
+        ) : (
+          <div className={styles.formgrid}>
+            <p className={styles.label}>업체명:</p>
+            <p className={styles.container2}>{companyName}</p>
+            <p className={styles.label}>대표전화:</p>
+            <p className={styles.container2}>{phoneNumber}</p>
+            <p className={styles.label}>전문분야:</p>
+            <p className={styles.container2}>{specialty}</p>
+            <p className={styles.label}>운영시간:</p>
+            <p className={styles.container2}>{businessHours}</p>
+            <p className={styles.label}>주소:</p>
+            <p className={styles.container2}>{address}</p>
 
-          <MyPageButton type="button" onClick={handleEdit}>
-            수정
-          </MyPageButton>
-        </div>
-      )}
+            <MyPageButton type="button" onClick={handleEdit}>
+              수정
+            </MyPageButton>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
