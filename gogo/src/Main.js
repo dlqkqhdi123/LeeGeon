@@ -9,6 +9,9 @@ import MaPage from "./pages/MaPage.js";
 import ReservationList from "./components/ReservationList.js";
 import CompanyInformation from "./components/CompanyInformation.js";
 import BoardManagement from "./components/BoardManagement.js";
+import LoginPage from "./components/login/LoginPage.js";
+import SignUp from "./components/Account/SignUp.js";
+import ChoiceAccount from "./components/Account/ChoiceAccount";
 
 function Main() {
   return (
@@ -30,6 +33,10 @@ function Main() {
               element={<ReservationList />}
             ></Route>
             <Route path="BoardManagement" element={<BoardManagement />}></Route>
+          </Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/Account" element={<SignUp />}>
+            <Route path=":ChoiceAccount" element={<ChoiceAccount />}></Route>
           </Route>
         </Route>
       </Routes>

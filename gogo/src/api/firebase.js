@@ -91,29 +91,31 @@ async function getData(collectionName, fieldName, condition, value) {
   return data.length === 1 ? data[0] : data;
 }
 
-async function getMember(values) {
-  const { id, password } = values;
-  let message;
-  let memberObj = {};
+// 기존에 있던 getMember
 
-  const docQuery = query(collection(db, "member"), where("id", "==", id));
-  const querySnapshot = await getDocs(docQuery);
-  if (querySnapshot.docs.length !== 0) {
-    const memberData = querySnapshot.docs.map((doc) => ({
-      docId: doc.id,
-      ...doc.data(),
-    }))[0];
-    if (memberData.password == password) {
-      memberObj = memberData;
-    } else {
-      message = "비밀번호가 일치하지 않습니다. ";
-    }
-  } else {
-    message = "일치하는 아이디가 없습니다 ";
-  }
+// async function getMember(values) {
+//   const { id, password } = values;
+//   let message;
+//   let memberObj = {};
 
-  return { memberObj, message };
-}
+//   const docQuery = query(collection(db, "member"), where("id", "==", id));
+//   const querySnapshot = await getDocs(docQuery);
+//   if (querySnapshot.docs.length !== 0) {
+//     const memberData = querySnapshot.docs.map((doc) => ({
+//       docId: doc.id,
+//       ...doc.data(),
+//     }))[0];
+//     if (memberData.password == password) {
+//       memberObj = memberData;
+//     } else {
+//       message = "비밀번호가 일치하지 않습니다. ";
+//     }
+//   } else {
+//     message = "일치하는 아이디가 없습니다 ";
+//   }
+
+//   return { memberObj, message };
+// }
 
 async function deleteDatas(collectionName, docId, imgUrl) {
   const storage = getStorage();
@@ -127,26 +129,53 @@ async function deleteDatas(collectionName, docId, imgUrl) {
   return true;
 }
 
-async function addDatas(collectionName, formData) {
-  const uuid = crypto.randomUUID();
-  const path = `movie/${uuid}`;
-  const lastId = (await getLastId(collectionName)) + 1;
-  const time = new Date().getTime();
-  // 파일을 저장하고 url 을 받아온다
-  const url = await uploadImage(path, formData.imgUrl);
+// async function addDatas(collectionName, formData) {
+//   const uuid = crypto.randomUUID();
+//   const path = `movie/${uuid}`;
+//   const lastId = (await getLastId(collectionName)) + 1;
+//   const time = new Date().getTime();
+//   // 파일을 저장하고 url 을 받아온다
+//   const url = await uploadImage(path, formData.imgUrl);
 
-  formData.id = lastId;
-  formData.created = time;
-  formData.updateAt = time;
-  formData.imgUrl = url;
+//   formData.id = lastId;
+//   formData.created = time;
+//   formData.updateAt = time;
+//   formData.imgUrl = url;
 
-  const result = await addDoc(collection(db, collectionName), formData);
-  const docSnap = await getDoc(result);
-  if (docSnap.exists()) {
-    const review = { docId: docSnap.id, ...docSnap.data() };
-    return { review };
+//   const result = await addDoc(collection(db, collectionName), formData);
+//   const docSnap = await getDoc(result);
+//   if (docSnap.exists()) {
+//     const review = { docId: docSnap.id, ...docSnap.data() };
+//     return { review };
+//   }
+// }
+const addDatas = async (collectionName, data) => {
+  try {
+    const docRef = await addDoc(collection(db, collectionName), data);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    throw error;
   }
-}
+  Object.keys(data).forEach((field) => {
+    console.log(`${field}: ${data[field]}`);
+  });
+  console.log("전달된 데이터:", data);
+};
+
+export const getLastId = async () => {
+  try {
+    const querySnapshot = await getDocs(
+      query(collection(db, "member"), orderBy("id", "desc"), limit(1))
+    );
+    const lastDoc = querySnapshot.docs[0];
+
+    return lastDoc.data().id;
+  } catch (error) {
+    console.error("Error in getLastId:", error);
+    throw error;
+  }
+};
 
 async function updateDatas(collectionName, docId, updateData) {
   const docRef = doc(db, collectionName, docId); // 업데이트하려는 문서의 참조를 가져옵니다.
@@ -170,17 +199,17 @@ async function uploadImage(path, imgFile) {
   return url;
 }
 
-async function getLastId(collectionName) {
-  const docQuery = query(
-    collection(db, collectionName),
-    orderBy("id", "desc"),
-    limit(1)
-  );
-  const lastDoc = await getDocs(docQuery);
-  const lastId = lastDoc.docs[0].data().id;
+// async function getLastId(collectionName) {
+//   const docQuery = query(
+//     collection(db, collectionName),
+//     orderBy("id", "desc"),
+//     limit(1)
+//   );
+//   const lastDoc = await getDocs(docQuery);
+//   const lastId = lastDoc.docs[0].data().id;
 
-  return lastId;
-}
+//   return lastId;
+// }
 
 async function upDate(collectionName, docId, text) {
   const docQuery = doc(db, collectionName, docId);
@@ -220,6 +249,76 @@ const convertToBase64 = (file) => {
   });
 };
 
+// 박진현 중복확인 아이디
+async function idDatas(collectionName, checkId) {
+  const Snapshot = await getDocs(
+    query(collection(db, collectionName), where("memberId", "==", checkId))
+  );
+  return Snapshot.size;
+}
+// 닉네임 중복확인 박진현
+async function nickDatas(collectionName, nickName) {
+  const Snapshot = await getDocs(
+    query(collection(db, collectionName), where("nickname", "==", nickName))
+  );
+
+  if (Snapshot.empty) {
+    const MemberSnapshot = await getDocs(
+      query(
+        collection(db, collectionName),
+        where("memberNickName", "==", nickName)
+      )
+    );
+
+    return MemberSnapshot.size;
+  }
+
+  return Snapshot.size;
+}
+async function getMember(values) {
+  const { input_id: id, input_pw: password } = values;
+  const docQuery = query(collection(db, "member"), where("memberId", "==", id));
+  let message = "";
+  let memberObj = null;
+
+  const querySnapshot = await getDocs(docQuery);
+  if (!querySnapshot.empty && querySnapshot.docs[0]) {
+    const memberData = querySnapshot.docs[0].data();
+    if (
+      memberData &&
+      memberData.hasOwnProperty("memberId") &&
+      memberData.hasOwnProperty("memberPass") &&
+      memberData.memberId === id &&
+      memberData.memberPass === password
+    ) {
+      memberObj = memberData;
+      message = null;
+    }
+    console.log(memberData);
+  }
+  return { memberObj, message };
+}
+
+// 소셜로그인 박진현
+async function getSocialMember(nickname) {
+  const docQuery = query(
+    collection(db, "member"),
+    where("memberType", "==", "social"),
+    where("memberNickName", "==", nickname)
+  );
+  let memberObj = null;
+
+  const querySnapshot = await getDocs(docQuery);
+  if (!querySnapshot.empty && querySnapshot.docs[0]) {
+    const memberData = querySnapshot.docs[0].data();
+    if (memberData && memberData.memberType === "social") {
+      memberObj = memberData;
+    }
+    console.log(memberData);
+  }
+  return memberObj;
+}
+
 export {
   db,
   getDocs,
@@ -239,4 +338,6 @@ export {
   getTechInfo,
   uploadImages,
   convertToBase64,
+  idDatas,
+  nickDatas,
 };

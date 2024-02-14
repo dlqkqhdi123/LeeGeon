@@ -1,5 +1,5 @@
 import { useGoogleLogin } from "@react-oauth/google";
-import GoogleLogo from "../../assets/logo/google logo_r.png";
+import GoogleLogo from "../../assets/google logo_r.png";
 import { styled } from "styled-components";
 import { addDatas } from "../../api/firebase";
 import { useNavigate } from "react-router-dom";

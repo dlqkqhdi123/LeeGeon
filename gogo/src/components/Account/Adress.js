@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import { useEffect } from "react";
-import { getAddress } from "./../../utills/getAddress";
+import { getAddress } from "../../utils/getAddress";
 import DaumPostcode from "react-daum-postcode";
 
 const Container = styled.div`
@@ -51,17 +51,36 @@ const Modal = styled.div`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 `;
 
-function Address() {
-  const [detailAddress, setDetailAddress] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [address, setAddress] = useState("");
+function Address({ postcode, address, detailAddress, onAddressChange }) {
+  const [detailAddressState, setDetailAddressState] = useState(detailAddress);
+  const [postcodeState, setPostcodeState] = useState(postcode); // 이 부분 수정
+  const [addressState, setAddressState] = useState(address); // 이 부분 수정
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleComplete = (data) => {
     const address = getAddress(data);
-    setPostcode(data.zonecode);
-    setAddress(address);
+    setPostcodeState(data.zonecode);
+    setAddressState(address);
     closeModal();
+
+    console.log("handleComplete", data.zonecode, address, detailAddressState); // 콘솔 로그 추가
+
+    onAddressChange(data.zonecode, address, detailAddressState);
+  };
+
+  const handleDetailAddressChange = (e) => {
+    const newDetailAddress = e.target.value;
+    setDetailAddressState(newDetailAddress);
+
+    console.log(
+      "handleDetailAddressChange",
+      postcodeState,
+      addressState,
+      newDetailAddress
+    ); // 콘솔 로그 추가
+
+    onAddressChange(postcodeState, addressState, newDetailAddress);
   };
 
   const handleClose = () => {
@@ -100,8 +119,9 @@ function Address() {
                 size="md"
                 type="text"
                 placeholder="우편번호"
-                value={postcode}
+                value={postcodeState}
                 readOnly
+                onChange={(e) => setPostcodeState(e.target.value)}
               />
               <div>
                 <InputButton onClick={openModal}>주소 찾기</InputButton>
@@ -128,16 +148,17 @@ function Address() {
               size="md"
               type="text"
               placeholder="주소"
-              value={address}
+              value={addressState}
               readOnly
+              onChange={(e) => setAddressState(e.target.value)}
             />
             <Input
               m="3px"
               size="md"
               type="text"
               placeholder="상세주소"
-              value={detailAddress}
-              onChange={(e) => setDetailAddress(e.target.value)}
+              value={detailAddressState}
+              onChange={handleDetailAddressChange}
             />
           </AddressWrapper>
         </form>

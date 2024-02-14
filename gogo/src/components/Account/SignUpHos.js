@@ -227,6 +227,7 @@ function SignUpHos() {
       memberPhone: phone,
       memberMail: email,
       memberMail2: mail2,
+      memberType: "partner",
     };
     addDatas("member", memberInfo);
   };

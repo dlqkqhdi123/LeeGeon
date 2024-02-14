@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import ownerImg from "../../assets/logo/pet owner.png";
-import partnerImg from "../../assets/logo/pet partner.png";
+import ownerImg from "../../assets/pet owner.png";
+import partnerImg from "../../assets/pet partner.png";
 import SocialKakaoSimple from "./../login/SocialKakaoSimple";
 import SocialNaverSimple from "./../login/SocialNaverSimple";
 import { Link } from "react-router-dom";

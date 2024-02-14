@@ -1,5 +1,5 @@
 import { useGoogleLogin } from "@react-oauth/google";
-import GoogleLogo from "../../assets/logo/google logo.png";
+import GoogleLogo from "../../assets/google logo.png";
 import { styled } from "styled-components";
 import { addDatas, getSocialMember } from "../../api/firebase";
 import { useContext, useState } from "react";

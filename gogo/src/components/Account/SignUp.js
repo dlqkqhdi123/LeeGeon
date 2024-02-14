@@ -3,7 +3,7 @@ import Adress from "./Adress";
 import { addDatas, idDatas, nickDatas } from "../../api/firebase";
 import "./SignUp.css";
 import { styled } from "styled-components";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -57,6 +57,9 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [mail2, setMail2] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [detailAddress, setDetailAddress] = useState("");
   const phoneRef = useRef();
 
   const [idMessage, setIdMessage] = useState("");
@@ -70,6 +73,7 @@ function SignUp() {
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
   const email2Ref = useRef(null);
+  const navigate = useNavigate();
 
   const onChangeId = (e) => {
     const currentId = e.target.value;
@@ -231,6 +235,7 @@ function SignUp() {
   const handleSubmit = () => {
     if (id === "" || nickName === "" || mail2 === "") {
       alert("빈칸을 모두 채워주세요!");
+      return;
     } else if (isId && isNickName && isPassword && isPasswordConfirm) {
       addDatas("member", {
         memberId: id,
@@ -240,7 +245,12 @@ function SignUp() {
         memberPhone: phone,
         memberMail: email,
         memberMail2: mail2,
+        memberPostCode: postcode,
+        memberAdress: address,
+        memberDetailAdress: detailAddress,
+        memberType: "owner",
       });
+      navigate("/OwnerJoinComplete");
     } else {
       if (!isId) {
         alert("아이디 중복확인을 해주세요.");
@@ -451,7 +461,27 @@ function SignUp() {
               <label>주소</label>
             </th>
             <td>
-              <Adress />
+              <Adress
+                postcode={postcode}
+                address={address}
+                detailAddress={detailAddress}
+                onAddressChange={(
+                  updatedPostcode,
+                  updatedAddress,
+                  updatedDetailAddress
+                ) => {
+                  console.log(
+                    "onAddressChange",
+                    updatedPostcode,
+                    updatedAddress,
+                    updatedDetailAddress
+                  ); // 콘솔 로그 추가
+
+                  setPostcode(updatedPostcode);
+                  setAddress(updatedAddress);
+                  setDetailAddress(updatedDetailAddress);
+                }}
+              />
             </td>
           </tr>
         </tbody>
@@ -461,7 +491,7 @@ function SignUp() {
           <Link to="/">취소</Link>
         </CancleBtn>
         <SignBtn type="submit" className="submitBtn" onClick={handleSubmit}>
-          <Link to="/OwnerJoinComplete"> 가입하기</Link>
+          <div> 가입하기</div>
         </SignBtn>
       </div>
     </Container>

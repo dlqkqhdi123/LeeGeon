@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-import SocialKakao from "./SocialKakao";
-import SocialNaver from "./SocialNaver";
+// import SocialKakao from "./SocialKakao";
+// import SocialNaver from "./SocialNaver";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getMember } from "../../api/firebase";
 import "../Account/SignUp.css";
-import SocialGoogle from "./SocialGoogle";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import SocialGoogle from "./SocialGoogle";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const Container = styled.div`
   display: flex;
@@ -144,11 +144,11 @@ function Login() {
           </InputArea>
           <LoginBtnWrapper>
             <LoginBtn type="submit">로그인</LoginBtn>
-            <SocialNaver />
+            {/* <SocialNaver />
             <SocialKakao />
             <GoogleOAuthProvider clientId="41843789723-sgafn18v02hjtmrfcdladehsf8hhq1tt.apps.googleusercontent.com">
               <SocialGoogle></SocialGoogle>
-            </GoogleOAuthProvider>
+            </GoogleOAuthProvider> */}
             <LoginBottom>
               <Link to="/Account/ChoiceAccount">회원가입</Link>
               <Link to="/findId">아이디 비밀번호 찾기</Link>

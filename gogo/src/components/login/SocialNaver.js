@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import NaverLogo from "../../assets/logo/naver logo.png";
+import NaverLogo from "../../assets/naver logo.png";
 import { addDatas, getSocialMember } from "../../api/firebase";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../Account/AuthContext";

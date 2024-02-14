@@ -1,4 +1,4 @@
-import KakaoLogo from "../../assets/logo/kakao logo_r.png";
+import KakaoLogo from "../../assets/kakao logo_r.png";
 import { useEffect, useState } from "react";
 import { addDatas } from "../../api/firebase";
 import { useNavigate } from "react-router-dom";

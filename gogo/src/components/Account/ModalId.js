@@ -1,6 +1,6 @@
 import React from "react";
 import "./Modal.css";
-import closeImg from "../../assets/icon/icon-close_w.png";
+import closeImg from "../../assets/icon-close_w.png";
 import { Link } from "react-router-dom";
 
 function Modal({ open, onClose, memberId, isError }) {

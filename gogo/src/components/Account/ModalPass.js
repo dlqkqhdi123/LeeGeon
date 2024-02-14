@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Modal.css";
-import closeImg from "../../assets/icon/icon-close.png";
+import closeImg from "../../assets/icon-close.png";
 import { useNavigate } from "react-router-dom";
 import { findPass } from "../../api/firebase";
 import "./Modal.css";

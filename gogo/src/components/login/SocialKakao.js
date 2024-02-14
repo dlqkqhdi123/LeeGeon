@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import KakaoLogo from "../../assets/logo/kakao logo.png";
+import KakaoLogo from "../../assets/kakao logo.png";
 import { useContext, useEffect, useState } from "react";
 import { getSocialMember } from "../../api/firebase";
 import AuthContext from "../Account/AuthContext";

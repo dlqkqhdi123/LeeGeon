@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import styled from "styled-components";
-import NaverLogo from "../../assets/logo/naver logo_r.png";
+import { styled } from "styled-components";
+import NaverLogo from "../../assets/naver logo_r.png";
 import { useNavigate } from "react-router-dom";
 const { naver } = window;
 
