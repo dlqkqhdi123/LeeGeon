@@ -12,7 +12,7 @@ import {
 } from "../api/firebase";
 
 function CompanyInformation() {
-  const [companyName, setCompanyName] = useState("");
+  const [hosName, setHosName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [specialty, setSpecialty] = useState("");
   const [businessHours, setBusinessHours] = useState("");
@@ -25,7 +25,7 @@ function CompanyInformation() {
       try {
         const member = await getTechInfo(collectionName);
         console.log(member); // 불러온 데이터 확인
-        setCompanyName(member.companyName);
+        setHosName(member.hosName);
         setPhoneNumber(member.phoneNumber);
         setSpecialty(member.specialty);
         setBusinessHours(member.businessHours);
@@ -46,7 +46,7 @@ function CompanyInformation() {
   const member = JSON.parse(localStorage.getItem("member"));
   const memberId = member?.memberId;
 
-  console.log(member);
+  console.log(memberId);
 
   // 저장 버튼을 눌렀을 때 정보를 업데이트하고 입력 폼을 비활성화하는 함수
   const handleSave = async () => {
@@ -57,26 +57,35 @@ function CompanyInformation() {
     const techInfoDocs = techInfoSnapshot.docs;
 
     if (techInfoDocs.length > 0) {
+      const getCurrentUserData = () => {
+        const userDataJSON = localStorage.getItem("member");
+        if (userDataJSON) {
+          return JSON.parse(userDataJSON);
+        } else {
+          return null;
+        }
+      };
+
       const techInfoId = techInfoDocs[0].id; // 첫 번째 문서의 ID
 
       console.log(techInfoId);
       const updatedData = {
-        companyName: companyName,
+        hosName: hosName,
         phoneNumber: phoneNumber,
         specialty: specialty,
         businessHours: businessHours,
         memberAdress: memberAdress,
       };
-
+      localStorage.setItem("member", JSON.stringify(updatedData));
       await updateDatas("member", techInfoId, updatedData); // updateDatas 함수를 사용하여 데이터 업데이트
 
       // 업데이트 후 데이터 다시 불러오기
-      const updatedTechInfo = await getTechInfo("member");
-      setCompanyName(updatedTechInfo.companyName);
-      setPhoneNumber(updatedTechInfo.phoneNumber);
-      setSpecialty(updatedTechInfo.specialty);
-      setBusinessHours(updatedTechInfo.businessHours);
-      setAddress(updatedTechInfo.memberAdress);
+      const currentUserData = getCurrentUserData();
+      setHosName(currentUserData.hosName);
+      setPhoneNumber(currentUserData.memberPhone);
+      setSpecialty(currentUserData.memberMail2);
+      setBusinessHours(currentUserData.memberPhone);
+      setAddress(currentUserData.memberAdress);
     }
 
     setIsEditMode(false);
@@ -91,8 +100,8 @@ function CompanyInformation() {
             <label className={styles.label}>업체명: </label>
             <input
               type="text"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
+              value={hosName}
+              onChange={(e) => setHosName(e.target.value)}
               className={styles.container2}
             />
 
@@ -134,7 +143,7 @@ function CompanyInformation() {
         ) : (
           <div className={styles.formgrid}>
             <p className={styles.label}>업체명:</p>
-            <p className={styles.container2}>{member?.memberId}</p>
+            <p className={styles.container2}>{member?.hosName}</p>
             <p className={styles.label}>대표전화:</p>
             <p className={styles.container2}>{member?.memberPhone}</p>
             <p className={styles.label}>전문분야:</p>
