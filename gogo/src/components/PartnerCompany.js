@@ -9,7 +9,7 @@ function PartnerCompany() {
     <div className={styles.boxbox}>
       <div>
         <h1 className={styles.headhead}>제휴업체</h1>
-        <CommonTable headersName={["번호", "업체명", "유형"]}>
+        <CommonTable headersName={["", "번호", "업체명", "유형"]}>
           <CommonTableRow>
             <CommonTableColumn></CommonTableColumn>
             <CommonTableColumn></CommonTableColumn>

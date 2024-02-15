@@ -113,7 +113,7 @@ function BoardManagement() {
             <CommonTableColumn>02</CommonTableColumn>
             <CommonTableColumn>하기시렁</CommonTableColumn>
             <CommonTableColumn>냥냥이</CommonTableColumn>
-            <CommonTableColumn>2024-01-16</CommonTableColumn>
+            <CommonTableColumn>24-01-16</CommonTableColumn>
           </CommonTableRow>
         </CommonTable>
         <div className={styles.tnwjdtkrwp}>
