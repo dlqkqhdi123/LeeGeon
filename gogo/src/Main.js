@@ -12,6 +12,7 @@ import BoardManagement from "./components/BoardManagement.js";
 import LoginPage from "./components/login/LoginPage.js";
 import SignUp from "./components/Account/SignUp.js";
 import ChoiceAccount from "./components/Account/ChoiceAccount";
+import CompanyInformation1 from "./components/CompanyInformation1.js";
 
 function Main() {
   return (
@@ -27,7 +28,7 @@ function Main() {
             <Route path=":id" element={<Cat />}></Route>
           </Route>
           <Route path="MyPage" element={<MaPage />}>
-            <Route index element={<CompanyInformation />}></Route>
+            <Route index element={<CompanyInformation1 />}></Route>
             <Route
               path=":reservationList"
               element={<ReservationList />}

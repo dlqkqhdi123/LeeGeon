@@ -1,74 +1,78 @@
 import CommonTable from "./table/CommonTable";
 import CommonTableRow from "./table/CommonTableRow";
 import CommonTableColumn from "./table/CommonTableColumn";
-import { getDatas, deleteDatas } from "../api/firebase";
+import {
+  getDatas,
+  deleteDatas,
+  getDocs,
+  collection,
+  db,
+} from "../api/firebase";
 import { useEffect, useState } from "react";
 import styles from "./BoardModal.module.css";
 import BoardModal from "./BoardModal.js";
 import MyPageButton from "./MyPageButton";
+import { queries } from "@testing-library/react";
 
-const LIMIT = 5;
 function BoardManagement() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("createdAt");
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
-  const [lq, setLq] = useState({});
   const [selectedReservation, setSelectedReservation] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDelete = async (docId, imgUrl) => {
-    // db에서 데이터 삭제
     const result = await deleteDatas(
       "MyPageCustomer-Reservation",
       docId,
       imgUrl
     );
-
-    // db에서 삭제가 성공했을 때만 그 결과를 화면에 반영한다.
     if (!result) {
       alert("저장된 이미지 파일이 없습니다. \n경로를 확인해주세요.");
       return;
     }
-
-    // Items 셋팅
     setItems((prevItems) => prevItems.filter((item) => item.docId !== docId));
   };
 
-  const handleLoad = async (options) => {
-    let result;
+  const handleLoad = async () => {
     try {
       setIsLoading(true);
       setLoadingError(null);
-      result = await getDatas("articles", options);
-      console.log(result);
+      const querySnapshot = await getDocs(collection(db, "boards"));
+      const loadedItems = [];
+      querySnapshot.forEach((doc) => {
+        loadedItems.push(doc.data());
+      });
+      setItems(loadedItems);
     } catch (error) {
-      console.error(error);
-      setLoadingError(error);
-      return;
+      console.error("Error loading data:", error);
+      setLoadingError(error.message);
     } finally {
       setIsLoading(false);
     }
-
-    const { reviews, lastQuery } = result;
-    if (options.lq === undefined) {
-      setItems(reviews);
-    } else {
-      setItems((prevItems) => [...prevItems, ...reviews]);
-    }
-    setLq(lastQuery);
   };
 
   useEffect(() => {
-    handleLoad({ order, lq: undefined, limit: LIMIT });
-  }, [order]);
+    handleLoad();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const query = await getDocs(collection(db, "boards"));
+      const data = query.docs.map((doc) => doc.data());
+      setItems(data); // 가져온 데이터를 items 상태에 설정합니다.
+      console.log(query);
+    };
+    fetchData();
+  }, []);
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  const openModal = (BoardManagement) => {
-    setSelectedReservation(BoardManagement);
+  const openModal = (item) => {
+    setSelectedReservation(item);
     setIsModalOpen(true);
   };
 
@@ -76,19 +80,20 @@ function BoardManagement() {
     <div className={styles.boxbox}>
       <div>
         <h1 className={styles.headhead}>작성한글</h1>
-
         <CommonTable headersName={["", "번호", "제목", "펫이름", "예약일자"]}>
-          {items.map((item) => (
-            <CommonTableRow>
+          {items.map((item, index) => (
+            <CommonTableRow key={index}>
               <CommonTableColumn>
                 <input type="checkbox" />
               </CommonTableColumn>
-              <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
-              <CommonTableColumn key={item.no}>
-                <button onClick={() => openModal(item)}>{item.title}111</button>
+              <CommonTableColumn>{item.boardNumber}</CommonTableColumn>
+              <CommonTableColumn>
+                <button onClick={() => openModal(item)}>
+                  {item.boardTitle}
+                </button>
               </CommonTableColumn>
-              <CommonTableColumn>강강이</CommonTableColumn>
-              <CommonTableColumn>오늘날짜</CommonTableColumn>
+              <CommonTableColumn>{item.petName}</CommonTableColumn>
+              <CommonTableColumn>{item.updatedAt}</CommonTableColumn>
             </CommonTableRow>
           ))}
           {isModalOpen && (
@@ -98,7 +103,6 @@ function BoardManagement() {
               onClose={closeModal}
             />
           )}
-
           <CommonTableRow>
             <CommonTableColumn>
               <input type="checkbox" />

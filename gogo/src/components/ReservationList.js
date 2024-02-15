@@ -13,7 +13,7 @@ function ReservationList() {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창의 상태를 관리하는 상태
 
   async function getReservations(db) {
-    const reservationsCol = collection(db, "ReservationList");
+    const reservationsCol = collection(db, "MyPageCustomer-Reservation");
     const reservationsSnapshot = await getDocs(reservationsCol);
     const reservationsList = reservationsSnapshot.docs.map((doc) => doc.data());
     return reservationsList;
@@ -64,14 +64,14 @@ function ReservationList() {
               <CommonTableColumn>{index + 1}</CommonTableColumn>
               <CommonTableColumn>
                 <button onClick={() => openModal(reservation)}>
-                  {reservation.ReservationNumber}
+                  {reservation.reservationNumber}
                 </button>
               </CommonTableColumn>
-              <CommonTableColumn>{reservation.state}</CommonTableColumn>
-              <CommonTableColumn>{reservation.PetName}</CommonTableColumn>
+              <CommonTableColumn>{reservation.condition}</CommonTableColumn>
+              <CommonTableColumn>{reservation.petName}</CommonTableColumn>
               <CommonTableColumn>{reservation.hospital}</CommonTableColumn>
               <CommonTableColumn>
-                {reservation.ReservationDate}
+                {reservation.reservationDate}
               </CommonTableColumn>
             </CommonTableRow>
           ))}

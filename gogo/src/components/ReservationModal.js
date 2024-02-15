@@ -27,7 +27,7 @@ function ReservationModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   async function getReservations(db) {
-    const reservationsCol = collection(db, "ReservationList");
+    const reservationsCol = collection(db, "MyPageCustomer-Reservation");
     const reservationsSnapshot = await getDocs(reservationsCol);
     const reservationsList = reservationsSnapshot.docs.map((doc) => doc.data());
     return reservationsList;
@@ -59,14 +59,13 @@ function ReservationModal({ isOpen, onClose }) {
     );
   };
 
-  const handleSaveClick = async (value, index) => {
-    const newFieldValues = [...fieldValues];
-    newFieldValues[index] = value;
-    setFieldValues(newFieldValues);
-
+  const handleSaveClick = async (value, reservationId) => {
     try {
-      const reservationRef = doc(db, "ReservationList", reservations[index].id);
-      console.log(index);
+      const reservationRef = doc(
+        db,
+        "MyPageCustomer-Reservation",
+        reservationId
+      );
       await updateDoc(reservationRef, { state: value });
       console.log("데이터가 성공적으로 수정되었습니다.");
     } catch (error) {
@@ -91,18 +90,18 @@ function ReservationModal({ isOpen, onClose }) {
             <div className={styles.modalImgBox}></div>
             <div className={styles.modalContentBox}>
               <div className={styles.modalContentTitle}>
-                {reservations.map((reservation, index) => (
+                {reservations.map((reservation, index, arr) => (
                   <div key={index}>
                     <div>
                       <input type="checkbox" />
                     </div>
                     <input type="text" value={index + 1} disabled />
-                    <input type="text" value={reservation.state} disabled />
-                    <input type="text" value={reservation.PetName} disabled />
+                    <input type="text" value={reservation.condition} disabled />
+                    <input type="text" value={reservation.petName} disabled />
                     <input type="text" value={reservation.hospital} disabled />
                     <input
                       type="text"
-                      value={reservation.ReservationDate}
+                      value={reservation.reservationDate}
                       disabled
                     />
                     <input
@@ -118,13 +117,13 @@ function ReservationModal({ isOpen, onClose }) {
                     <div className={styles.tnwjdtkrwp}>
                       <ModalButton
                         onClick={() =>
-                          handleSaveClick(fieldValues[index], index)
+                          handleSaveClick(fieldValues[index], reservation.id)
                         }
-                        children="등록하기"
+                        children="승인하기"
                       />
                       <ModalButton
                         onClick={() =>
-                          handleSaveClick(fieldValues[index], index)
+                          handleSaveClick(fieldValues[index], reservation.id)
                         }
                         children="수정하기"
                       />
@@ -139,5 +138,4 @@ function ReservationModal({ isOpen, onClose }) {
     </div>
   );
 }
-
 export default ReservationModal;

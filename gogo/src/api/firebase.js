@@ -29,19 +29,21 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZijsmmnVurDsqymzx-QPFRFjSe1AKbqU",
-  authDomain: "hospetalbackup.firebaseapp.com",
-  projectId: "hospetalbackup",
-  storageBucket: "hospetalbackup.appspot.com",
-  messagingSenderId: "537758130691",
-  appId: "1:537758130691:web:1154382e01fe09e07a2436",
+  apiKey: "AIzaSyARawYxbOyLKnEWMlPSatqIULiZhn5ZDN0",
+  authDomain: "hospetal-f595a.firebaseapp.com",
+  projectId: "hospetal-f595a",
+  storageBucket: "hospetal-f595a.appspot.com",
+  messagingSenderId: "41843789723",
+  appId: "1:41843789723:web:07d3d1aaf16f0bd24b9b3e",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage();
 
 async function getDatas(collectionName, options) {
   let docQuery;
+
   if (options === undefined) {
     const querySnapshot = await getDocs(collection(db, collectionName));
     const result = querySnapshot.docs.map((doc) => ({
@@ -49,13 +51,21 @@ async function getDatas(collectionName, options) {
       ...doc.data(),
     }));
     return result;
+  } else if (options.where !== undefined) {
+    // 새로운 조건 추가
+    const { fieldName, condition, value } = options.where;
+    docQuery = query(
+      collection(db, collectionName),
+      where(fieldName, condition, value),
+      orderBy(options.order, "desc"),
+      limit(options.limit)
+    );
   } else if (options.lq === undefined) {
     docQuery = query(
       collection(db, collectionName),
       orderBy(options.order, "desc"),
       limit(options.limit)
     );
-    console.log(docQuery);
   } else {
     docQuery = query(
       collection(db, collectionName),
@@ -64,17 +74,11 @@ async function getDatas(collectionName, options) {
       limit(options.limit)
     );
   }
+
   const querySnapshot = await getDocs(docQuery);
-  // 쿼리 query
-  // orderBy, limit, starAfter
   const result = querySnapshot.docs;
   const lastQuery = result[result.length - 1];
   const reviews = result.map((doc) => ({ docId: doc.id, ...doc.data() }));
-  // const reviews = result.map((doc) => {
-  //   const obj = doc.data();
-  //   obj.docId = doc.id;
-  //   return obj;
-  // });
   return { reviews, lastQuery };
 }
 
@@ -119,7 +123,6 @@ async function getData(collectionName, fieldName, condition, value) {
 // }
 
 async function deleteDatas(collectionName, docId, imgUrl) {
-  const storage = getStorage();
   try {
     const deleteRef = ref(storage, imgUrl);
     await deleteObject(deleteRef);
@@ -224,7 +227,6 @@ const getTechInfo = async (collectionName) => {
   });
   return techInfo;
 };
-const storage = getStorage();
 
 const uploadImages = async (images) => {
   const imageUrls = [];
@@ -320,6 +322,78 @@ async function getSocialMember(nickname) {
   return memberObj;
 }
 
+async function getFirebaseDocument(setLg) {
+  try {
+    const member = JSON.parse(localStorage.getItem("member"));
+
+    const q = query(
+      collection(db, "member"),
+      where("memberId", "==", member.memberId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const docSnapshot = querySnapshot.docs[0];
+      console.log("문서 ID:", docSnapshot.id);
+      setLg({
+        hosName: docSnapshot.data().hosName,
+        phoneNumber: docSnapshot.data().memberPhone,
+        memberAdress: docSnapshot.data().memberAdress,
+        businessHours: docSnapshot.data().businessHours,
+      });
+    } else {
+    }
+  } catch (error) {
+    console.error("Error getting document:", error);
+  }
+}
+
+const updateFirebaseDocument = async (memberRef, lg) => {
+  try {
+    const member = JSON.parse(localStorage.getItem("member"));
+
+    const q = query(
+      collection(db, "member"),
+      where("memberId", "==", member.memberId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const docSnapshot = querySnapshot.docs[0];
+      console.log("문서 ID:", docSnapshot.id);
+
+      // const emailParts = lg.email ? lg.email.split("@") : [];
+      const updatedDoc = {
+        hosName: lg.hosName || member.hosName,
+        phoneNumber: String(docSnapshot.data().memberPhone),
+        memberAdress: lg.memberAdress || member.memberAdress,
+      };
+
+      const docRef = doc(db, "member", docSnapshot.id);
+      await updateDoc(docRef, updatedDoc);
+    }
+  } catch (error) {
+    console.error("파이어베이스 문서 업데이트 실패:", error);
+  }
+};
+
+async function getMemberNickName(memberId) {
+  try {
+    const memberData = await nickDatas("member", memberId);
+
+    if (memberData) {
+      const memberNickName = memberData.memberNickName;
+      return memberNickName;
+    } else {
+      console.log("Member not found for the given memberId.");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting memberNickName by memberId:", error);
+    throw error;
+  }
+}
+
 export {
   db,
   getDocs,
@@ -341,4 +415,7 @@ export {
   convertToBase64,
   idDatas,
   nickDatas,
+  getFirebaseDocument,
+  updateFirebaseDocument,
+  getMemberNickName,
 };

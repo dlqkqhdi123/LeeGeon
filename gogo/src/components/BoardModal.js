@@ -26,24 +26,22 @@ function BoardModal({
   const [images, setImages] = useState([]);
   const [showChevron, setShowChevron] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]); // 배열로 초기화
   const [postData, setPostData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [item, setItem] = useState(null);
 
   const fetchPostData = async () => {
     try {
-      const postCollection = collection(db, "post");
+      const postCollection = collection(db, "boards"); // "boards" 컬렉션을 가져옵니다.
       const postSnapshot = await getDocs(postCollection);
       if (!postSnapshot.empty) {
-        const postData = postSnapshot.docs.map((doc) => {
-          return {
-            ...doc.data(),
-            id: doc.id, // 각 게시물의 id도 함께 저장
-          };
-        });
-        setPostData(postData);
-        setItems(postData); // items 업데이트
-        setCurrentIndex(0);
+        const postData = postSnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setItems(postData); // 게시물 목록을 상태에 저장합니다.
+        setItem(postData[0]); // 첫 번째 게시물을 가져옵니다.
       } else {
         console.log("해당하는 게시물이 없습니다.");
       }
@@ -94,14 +92,7 @@ function BoardModal({
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
-  const handleContentChange = (e) => {
-    const newContent = e.target.value;
-    setItems((prevItems) => {
-      const newItems = [...prevItems];
-      newItems[currentIndex].content = newContent;
-      return newItems;
-    });
-  };
+
   const handleEditClick = () => {
     setIsEditing(true); // 수정 버튼을 누르면 true로 변경
   };
@@ -109,7 +100,7 @@ function BoardModal({
   const handleDeleteData = async () => {
     if (isOpen) {
       try {
-        const postDocRef = doc(db, "post", items[currentIndex].id);
+        const postDocRef = doc(db, "boards", items[currentIndex].id);
         await deleteDoc(postDocRef); // postDocRef 문서 삭제
 
         console.log("데이터 삭제 완료");
@@ -128,7 +119,7 @@ function BoardModal({
           content: items[currentIndex].content,
         };
 
-        const postDocRef = doc(db, "post", items[currentIndex].id);
+        const postDocRef = doc(db, "boards", items[currentIndex].id);
         await updateDoc(postDocRef, updatedData);
 
         console.log("데이터 수정 완료");
@@ -139,6 +130,14 @@ function BoardModal({
         setIsEditing(false); // 저장 버튼을 누르면 false로 변경
       }
     }
+  };
+
+  const handleContentChange = (e) => {
+    const newContent = e.target.value;
+    setItem((prevItem) => ({
+      ...prevItem,
+      content: newContent,
+    }));
   };
 
   return (
@@ -168,16 +167,21 @@ function BoardModal({
             </div>
             <div className={styles.modalContentBox}>
               <div className={styles.modalContentTitle}>
-                {items && Array.isArray(items) && items.length > 0 && (
+                {item !== null ? (
                   <div>
-                    <h2>{items[currentIndex].title}</h2>
-                    <textarea
-                      className={styles.text}
-                      value={items[currentIndex].content}
-                      onChange={handleContentChange}
-                      disabled={!isEditing} // isEditing이 false이면 disabled
-                    />
+                    <div>
+                      <h1>{item.boardTitle}</h1>
+                      <p>{item.content}</p>
+                      <textarea
+                        className={styles.text}
+                        value={item.boardContent}
+                        onChange={handleContentChange}
+                        disabled={!isEditing}
+                      />
+                    </div>
                   </div>
+                ) : (
+                  <p>Loading...</p>
                 )}
               </div>
               <div
