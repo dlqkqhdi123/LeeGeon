@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./ReservationModal.module.css";
 import { collection, db, getDocs, updateDoc, doc } from "../api/firebase";
 import ModalButton from "./ModalButton";
+import CommonTable from "./table/CommonTable";
+import CommonTableColumn from "./table/CommonTableColumn";
 
 function ReservationModal({ isOpen, onClose }) {
   const [images, setImages] = useState([]);
@@ -87,33 +89,99 @@ function ReservationModal({ isOpen, onClose }) {
             />
           </div>
           <div className={styles.modalContent}>
-            <div className={styles.modalImgBox}></div>
             <div className={styles.modalContentBox}>
               <div className={styles.modalContentTitle}>
-                {reservations.map((reservation, index, arr) => (
+                {reservations.map((reservation, index) => (
                   <div key={index}>
-                    <div>
-                      <input type="checkbox" />
-                    </div>
-                    <input type="text" value={index + 1} disabled />
-                    <input type="text" value={reservation.condition} disabled />
-                    <input type="text" value={reservation.petName} disabled />
-                    <input type="text" value={reservation.hospital} disabled />
-                    <input
-                      type="text"
-                      value={reservation.reservationDate}
-                      disabled
-                    />
-                    <input
-                      type="text"
-                      value={fieldValues[index]}
-                      onChange={(e) => {
-                        const newFieldValues = [...fieldValues];
-                        newFieldValues[index] = e.target.value;
-                        setFieldValues(newFieldValues);
-                      }}
-                      disabled={fieldValues[index] !== ""}
-                    />
+                    <form className={styles.reservationForm}>
+                      <div className={styles.divLabel}>
+                        <label className={styles.reservationLabel}>
+                          보호자 성명
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={index + 1}
+                          disabled
+                        />
+                        <label className={styles.reservationLabel}>업체</label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={reservation.condition}
+                          disabled
+                        />
+                        <label className={styles.reservationLabel}>
+                          펫 이름
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={reservation.petName}
+                          disabled
+                        />
+                        <label className={styles.reservationLabel}>
+                          펫 종류
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={reservation.hospital}
+                          disabled
+                        />
+                        <label className={styles.reservationLabel}>
+                          연락처
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={reservation.reservationDate}
+                          disabled
+                        />
+                        <label className={styles.reservationLabel}>
+                          병원명
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={fieldValues[index]}
+                          onChange={(e) => {
+                            const newFieldValues = [...fieldValues];
+                            newFieldValues[index] = e.target.value;
+                            setFieldValues(newFieldValues);
+                          }}
+                          disabled={fieldValues[index] !== ""}
+                        />
+                        <label className={styles.reservationLabel}>
+                          예약일자
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={fieldValues[index]}
+                          onChange={(e) => {
+                            const newFieldValues = [...fieldValues];
+                            newFieldValues[index] = e.target.value;
+                            setFieldValues(newFieldValues);
+                          }}
+                          disabled={fieldValues[index] !== ""}
+                        />
+                        <label className={styles.reservationLabel}>
+                          증상 또는 병명
+                        </label>
+                        <input
+                          className={styles.reservationInput}
+                          type="text"
+                          value={fieldValues[index]}
+                          onChange={(e) => {
+                            const newFieldValues = [...fieldValues];
+                            newFieldValues[index] = e.target.value;
+                            setFieldValues(newFieldValues);
+                          }}
+                          disabled={fieldValues[index] !== ""}
+                        />
+                      </div>
+                    </form>
                     <div className={styles.tnwjdtkrwp}>
                       <ModalButton
                         onClick={() =>

@@ -88,7 +88,10 @@ function BoardManagement() {
               </CommonTableColumn>
               <CommonTableColumn>{item.boardNumber}</CommonTableColumn>
               <CommonTableColumn>
-                <button onClick={() => openModal(item)}>
+                <button
+                  className={styles.modalButton}
+                  onClick={() => openModal(item)}
+                >
                   {item.boardTitle}
                 </button>
               </CommonTableColumn>

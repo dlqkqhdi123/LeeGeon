@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./MyPage.module.css";
+import styles from "./LgMyPage.module.css";
 import MyPageButton from "./MyPageButton";
 
 import {
@@ -9,7 +9,7 @@ import {
   updateDoc,
   updateFirebaseDocument,
 } from "../api/firebase";
-import Overlay from "./Overlay";
+import LgOverlay from "./LgOverlay";
 
 function CompanyInformation1() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,6 +21,7 @@ function CompanyInformation1() {
         phoneNumber: "",
         memberAdress: "",
         businessHours: "",
+        yescarnocar: "",
       }
     );
   });
@@ -97,53 +98,61 @@ function CompanyInformation1() {
       type: "text",
       placeholder: member.businessHours,
     },
+    {
+      id: "yesCarNoCar",
+      label: "주차",
+      type: "text",
+      placeholder: member.yescarnocar,
+    },
   ];
 
   return (
-    <div className={styles.containerBox}>
-      <h1 className={styles.h1}>정보관리</h1>
+    <div className={styles.boxbox}>
+      <div>
+        <h1 className={styles.headhead}>정보관리</h1>
 
-      <form className={styles.infoBox} onSubmit={handleSubmit}>
-        {inputFields.map((field) => (
-          <div className={styles.container2} key={field.id}>
-            <label className={styles.label} htmlFor={field.id}>
-              {field.label}
+        <form className={styles.infoBox} onSubmit={handleSubmit}>
+          {inputFields.map((field) => (
+            <div className={styles.container2} key={field.id}>
+              <label className={styles.label} htmlFor={field.id}>
+                {field.label}
+              </label>
+              <input
+                className={styles.input}
+                type={field.type}
+                id={field.id}
+                placeholder={field.placeholder}
+                value={lg[field.id]}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
+
+          <div className={styles.container2}>
+            <label className={styles.label} htmlFor="withdrawal">
+              회원탈퇴
             </label>
-            <input
-              className={styles.input}
-              type={field.type}
-              id={field.id}
-              placeholder={field.placeholder}
-              value={lg[field.id]}
-              onChange={handleChange}
-            />
+            <div>
+              <MyPageButton
+                type="button"
+                style={{ width: "7rem", height: "2.3rem", margin: "0" }}
+                onClick={() => {
+                  setModalOpen(true);
+                }}
+              >
+                탈퇴하기
+              </MyPageButton>
+            </div>
           </div>
-        ))}
-
-        <div className={styles.container2}>
-          <label className={styles.label} htmlFor="withdrawal">
-            회원탈퇴
-          </label>
-          <div>
-            <MyPageButton
-              type="button"
-              style={{ width: "7rem", height: "2.3rem", margin: "0" }}
-              onClick={() => {
-                setModalOpen(true);
-              }}
-            >
-              탈퇴하기
-            </MyPageButton>
-          </div>
+        </form>
+        <div className={styles.retouch}>
+          <MyPageButton type="submit" onClick={handleSubmit}>
+            수정하기
+          </MyPageButton>
         </div>
-      </form>
-      <div className={styles.retouch}>
-        <MyPageButton type="submit" onClick={handleSubmit}>
-          수정하기
-        </MyPageButton>
-      </div>
 
-      {modalOpen && <Overlay modalOpen={modalOpen} />}
+        {modalOpen && <LgOverlay modalOpen={modalOpen} />}
+      </div>
     </div>
   );
 }

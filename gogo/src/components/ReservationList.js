@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./MyPage.module.css";
+import styles from "./LgMyPage.module.css";
 import CommonTable from "./table/CommonTable";
 import CommonTableColumn from "./table/CommonTableColumn";
 import CommonTableRow from "./table/CommonTableRow";
@@ -63,7 +63,10 @@ function ReservationList() {
               </CommonTableColumn>
               <CommonTableColumn>{index + 1}</CommonTableColumn>
               <CommonTableColumn>
-                <button onClick={() => openModal(reservation)}>
+                <button
+                  className={styles.reserbationButton}
+                  onClick={() => openModal(reservation)}
+                >
                   {reservation.reservationNumber}
                 </button>
               </CommonTableColumn>
@@ -87,7 +90,7 @@ function ReservationList() {
             <CommonTableColumn>
               <input type="checkbox" />
             </CommonTableColumn>
-            <CommonTableColumn>02</CommonTableColumn>
+            <CommonTableColumn>3</CommonTableColumn>
             <CommonTableColumn>00-000-000</CommonTableColumn>
             <CommonTableColumn>예약중</CommonTableColumn>
             <CommonTableColumn>냥냥이</CommonTableColumn>

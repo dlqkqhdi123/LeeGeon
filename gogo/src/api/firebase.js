@@ -340,6 +340,7 @@ async function getFirebaseDocument(setLg) {
         phoneNumber: docSnapshot.data().memberPhone,
         memberAdress: docSnapshot.data().memberAdress,
         businessHours: docSnapshot.data().businessHours,
+        yesCarNoCar: docSnapshot.data().yescarnocar,
       });
     } else {
     }
@@ -367,6 +368,7 @@ const updateFirebaseDocument = async (memberRef, lg) => {
         hosName: lg.hosName || member.hosName,
         phoneNumber: String(docSnapshot.data().memberPhone),
         memberAdress: lg.memberAdress || member.memberAdress,
+        yesCarNoCar: lg.yesCarNoCar || member.yesCarNoCar,
       };
 
       const docRef = doc(db, "member", docSnapshot.id);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./MyPage.module.css";
+import styles from "./LgMyPage.module.css";
 import MyPageButton from "./MyPageButton";
 
 import {

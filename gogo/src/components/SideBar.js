@@ -17,10 +17,7 @@ function SideBar() {
           <Link className={styles.text} to="BoardManagement">
             <li>게시글 관리</li>
           </Link>
-          <Link className={styles.text}>
-            <li>제휴 관리</li>
-          </Link>
-          <Link className={styles.text}>
+          <Link to="partnerCompany" className={styles.text}>
             <li>제휴 업체</li>
           </Link>
         </ul>

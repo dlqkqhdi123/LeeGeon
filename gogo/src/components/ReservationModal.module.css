@@ -161,3 +161,26 @@
   justify-content: center;
   align-items: center;
 }
+.divLabel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 2px solid red;
+  width: 600px;
+  margin: 0 auto;
+}
+.reservationInput {
+  border: none;
+  outline: none;
+}
+.reservationLabel {
+  display: flex;
+  justify-content: flex-start;
+  text-align: start;
+}
+.reservationForm {
+  display: flex;
+  justify-content: flex-start;
+}

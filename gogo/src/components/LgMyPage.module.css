@@ -29,11 +29,11 @@
   align-items: center;
   padding: 8px;
   border-bottom: 2px solid #d9d9d9;
-  /* width: 100%; */
   width: 600px;
   margin: 0 auto;
-  border: none;
-  outline: none;
+  /* width: 100%; */
+  /* border: none; */
+  /* outline: none; */
 }
 
 .label {
@@ -43,7 +43,7 @@
   width: 150px;
 }
 
-input {
+.input {
   border: none;
   outline: none;
   background-color: #f8ebd8;
@@ -56,7 +56,7 @@ input {
   /* margin: 40px 10rem 40px 40%; */
   font-family: Pretendard;
   color: #000000;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   display: flex;
 }
@@ -69,7 +69,8 @@ input {
   align-items: flex-end;
   justify-content: flex-end;
   display: flex;
-  /* padding: 1rem 0; */
+  padding: 1rem 0;
+  margin: 50px 0;
 }
 .h1 {
   align-items: end;
@@ -85,5 +86,21 @@ input {
 }
 .retouch_a {
   align-items: center;
+  display: flex;
+}
+.reserbationButton {
+  border: none;
+  outline: none;
+  background-color: #f8ebd8;
+}
+.boxbox {
+  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.retouch {
+  align-items: center;
+  justify-content: flex-start;
   display: flex;
 }

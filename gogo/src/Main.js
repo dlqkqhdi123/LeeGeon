@@ -13,6 +13,7 @@ import LoginPage from "./components/login/LoginPage.js";
 import SignUp from "./components/Account/SignUp.js";
 import ChoiceAccount from "./components/Account/ChoiceAccount";
 import CompanyInformation1 from "./components/CompanyInformation1.js";
+import PartnerCompany from "./components/PartnerCompany.js";
 
 function Main() {
   return (
@@ -34,6 +35,7 @@ function Main() {
               element={<ReservationList />}
             ></Route>
             <Route path="BoardManagement" element={<BoardManagement />}></Route>
+            <Route path="partnerCompany" element={<PartnerCompany />}></Route>
           </Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/Account" element={<SignUp />}>

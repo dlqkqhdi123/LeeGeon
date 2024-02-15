@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "./Button";
 import styles from "./BoardModal.module.css";
 import {
   collection,
@@ -42,8 +41,10 @@ function BoardModal({
         }));
         setItems(postData); // 게시물 목록을 상태에 저장합니다.
         setItem(postData[0]); // 첫 번째 게시물을 가져옵니다.
+        const imagesUrls = postData.map((item) => item.boardImage); // 이미지 URL 배열 생성
+        setImages(imagesUrls); // 이미지 URL 배열을 상태에 저장합니다.
       } else {
-        console.log("해당하는 게시물이 없습니다.");
+        console.log("게시물이 비어 있습니다.");
       }
     } catch (error) {
       console.error("게시물 정보를 불러오는 중 오류가 발생했습니다.", error);
@@ -95,6 +96,8 @@ function BoardModal({
 
   const handleEditClick = () => {
     setIsEditing(true); // 수정 버튼을 누르면 true로 변경
+    // 수정할 데이터를 item 상태에 복사하여 업데이트합니다.
+    setItem({ ...items[currentIndex] });
   };
 
   const handleDeleteData = async () => {
@@ -115,15 +118,15 @@ function BoardModal({
     if (isOpen) {
       try {
         const updatedData = {
-          title: items[currentIndex].title,
-          content: items[currentIndex].content,
+          boardTitle: item.boardTitle,
+          boardContent: item.boardContent,
         };
 
         const postDocRef = doc(db, "boards", items[currentIndex].id);
         await updateDoc(postDocRef, updatedData);
 
         console.log("데이터 수정 완료");
-        onSendData(updatedData); // 수정된 데이터 전달
+        onClose(); // 모달 닫기
       } catch (error) {
         console.error("데이터 수정 중 오류가 발생했습니다.", error);
       } finally {
@@ -134,9 +137,10 @@ function BoardModal({
 
   const handleContentChange = (e) => {
     const newContent = e.target.value;
+    // item 상태를 직접 업데이트합니다.
     setItem((prevItem) => ({
       ...prevItem,
-      content: newContent,
+      boardContent: newContent,
     }));
   };
 
@@ -155,7 +159,28 @@ function BoardModal({
           </div>
           <div className={styles.modalContent}>
             <div className={styles.modalImgBox}>
-              <figure id="imageFigure"></figure>
+              <figure id="imageFigure">
+                {images.length > 0 && (
+                  <>
+                    <div className="image-indicators">
+                      {images.map((imageUrl, index) => (
+                        <div
+                          key={index}
+                          className={`image-indicator ${
+                            currentIndex === index ? "active" : ""
+                          }`}
+                        ></div>
+                      ))}
+                    </div>
+                    <img
+                      className={styles.boardImage}
+                      src={images[currentIndex]}
+                      alt={`Selected Image ${currentIndex + 1}`}
+                    />
+                  </>
+                )}
+              </figure>
+
               <input
                 type="file"
                 id="imageInput"
@@ -169,9 +194,8 @@ function BoardModal({
               <div className={styles.modalContentTitle}>
                 {item !== null ? (
                   <div>
-                    <div>
+                    <div className={styles.modalBorderBox}>
                       <h1>{item.boardTitle}</h1>
-                      <p>{item.content}</p>
                       <textarea
                         className={styles.text}
                         value={item.boardContent}
