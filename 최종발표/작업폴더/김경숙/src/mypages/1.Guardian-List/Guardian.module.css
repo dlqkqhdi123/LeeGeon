@@ -1,0 +1,30 @@
+.infoBox {
+    width: 100%;
+    display: grid;
+    padding: 2rem 0;
+  }
+  
+  .container2 {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 1.5rem 0;
+  }
+  
+  .label {
+    font-weight: 600;
+    margin-left: 3rem;
+  }
+  
+  .input {
+    border: none;
+    outline: none;
+    background-color: #f8ebd8;
+  }
+
+  .scroll-locked {
+    overflow: hidden;
+  }
+
+

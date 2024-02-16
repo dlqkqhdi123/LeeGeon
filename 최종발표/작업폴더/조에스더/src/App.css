@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "NotoSansKR-Medium";
+  src: local("NotoSansKR-Medium"),
+    url("./components/fonts/Noto_San_KR/static/NotoSansKR-Medium.ttf")
+      format("ttf");
+  font-weight: 500;
+  font-style: normal;
+}

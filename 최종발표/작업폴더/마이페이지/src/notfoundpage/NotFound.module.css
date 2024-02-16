@@ -1,0 +1,119 @@
+.notFound {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  margin: 4rem;
+}
+
+.h1 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 1.5rem 0;
+}
+
+
+/* GoHomeBtn */
+/* .button {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  width: 16rem;
+  height: 8rem;
+  margin: 1rem;
+}
+
+.icon {
+  background-image: url(../assets/icon/button_round_1.svg);
+  width: 100%;
+  height: inherit;
+  background-size: auto;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.icon:hover,
+.icon:active {
+  background-image: url(../assets/icon/button_round_hover.svg);
+}
+
+.h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 3rem 0;
+  font-size: 20px;
+} */
+
+/* find */
+.find {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.h2 {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 1.5rem;
+}
+
+.find > figure {
+  max-width: 500px;
+  max-height: 330px;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.information {
+}
+
+.animal,
+.search {
+  width: 100%;
+  margin: 3rem auto;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.infoBox {
+  width: 100%;
+  display: grid;
+  padding: 2rem 0;
+}
+
+.container2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.label {
+  font-weight: 600;
+  margin-left: 3rem;
+  padding: 1.5rem 0;
+}
+
+.animalInfo {
+  margin: 0rem;
+  padding: 1.5rem 0;
+}

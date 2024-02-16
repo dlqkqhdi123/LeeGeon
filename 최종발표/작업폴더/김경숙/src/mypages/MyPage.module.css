@@ -1,0 +1,36 @@
+.container2{
+  width:inherit;
+  display: flex;
+}
+
+.containerBox {
+  width: 100%;
+  margin: 40px 10rem 40px 32%;
+  padding: 1rem;
+  font-family: Pretendard;
+  color: #000000;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.h1 {
+  align-items: end;
+  justify-content: end;
+  display: flex;
+  padding: 1rem 0 ;
+}
+
+.retouch {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.retouch_a {
+  align-items: center;
+  display: flex;  
+}
+
+
+

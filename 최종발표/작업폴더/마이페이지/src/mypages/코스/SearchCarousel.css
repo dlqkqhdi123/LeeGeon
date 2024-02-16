@@ -1,0 +1,28 @@
+/* css */
+ .carousel {
+     background: coral;
+     width: 500px;       
+      /* width를 늘리면 보여지는 영역이 커짐 */
+     height: 500px;		
+     overflow: hidden;  
+      /* 영역 밖은 숨긴다. */
+ }
+
+ .carouselBox {
+     display: flex;          
+      /* 가로정렬 */
+     /* transition: 1s; */   
+      /* 페이지 넘기는 효과 내기 */
+  }
+
+ .carouselItem {
+     width: 500px;
+     height: 500px;
+     background-position: 50% 50%;  
+      /* 가운데로 보내고 */
+     background-size: contain;	   
+      /* 아래의 코드랑 같이 쓰면 한개의 이미지가 나옴 */
+     background-repeat: no-repeat;
+     flex: none;	  				  
+      /* 이 속성을 넣어야 화면에 1개씩 보여진다. */
+ }

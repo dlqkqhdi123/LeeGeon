@@ -1,0 +1,299 @@
+[
+    {
+        "__id__": "0oFcccVrf0cTM8zSfzpY",
+        "address": "대전 중구 중앙로109번길 10-2 ",
+        "email": "info@ecopharmacy.com",
+        "id": 7,
+        "majorDrugs": "친환경 의약품",
+        "parking": "가능",
+        "rating": 4,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "친환경 제품에 대한 다양한 선택지가 있어서 좋아요.",
+                    "rating": 5,
+                    "user": "김민지"
+                }
+            },
+            {
+                "review": {
+                    "comment": "환경을 고려한 친환경 약국이어서 선택했어요.",
+                    "rating": 3,
+                    "user": "이승우"
+                }
+            }
+        ],
+        "tel": "555-6789",
+        "time": "오전 9시 - 오후 7시",
+        "title": "환경 친화 약국",
+        "url": "http://www.4321example.com"
+    },
+    {
+        "__id__": "BXdsyOaJCDvsfmrGGcFr",
+        "address": "대전 중구 중앙로129번길 27",
+        "email": "info@onlinepharmacy.com",
+        "id": 3,
+        "majorDrugs": "온라인 판매",
+        "parking": "불가능",
+        "rating": 5,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "편리한 온라인 주문과 빠른 배송이 좋아요.",
+                    "rating": 5,
+                    "user": "송지영"
+                }
+            },
+            {
+                "review": {
+                    "comment": "항상 신선한 제품을 제공해주셔서 감사합니다.",
+                    "rating": 5,
+                    "user": "이성재"
+                }
+            }
+        ],
+        "tel": "555-9876",
+        "time": "24/7",
+        "title": "온라인 약국",
+        "url": "http://www.8765randomsite.com"
+    },
+    {
+        "__id__": "G5RQFq9qJnCDEjU8kMss",
+        "address": "대전 중구 중앙로121번길 37",
+        "email": "info@vitaminpharmacy.com",
+        "id": 9,
+        "majorDrugs": "영양 보조제",
+        "parking": "가능",
+        "rating": 2,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "비타민 보충제에 대한 상세한 정보를 제공해주셔서 감사합니다.",
+                    "rating": 3,
+                    "user": "한지민"
+                }
+            },
+            {
+                "review": {
+                    "comment": "비타민 제품이 다양하게 있어서 선택이 풍부해요.",
+                    "rating": 1,
+                    "user": "송중기"
+                }
+            }
+        ],
+        "tel": "555-7890",
+        "time": "오전 8시 - 오후 4시",
+        "title": "비타민 약국",
+        "url": "http://www.2109webpage.com"
+    },
+    {
+        "__id__": "NHt3kvdQoz4ZKOXWOn49",
+        "address": "대전 중구 중앙로137번길 5 ",
+        "email": "info@healthpharmacy.com",
+        "id": 1,
+        "majorDrugs": "일반 의약품",
+        "parking": "가능",
+        "rating": 4,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "항상 친절한 서비스를 받아서 감사합니다.",
+                    "rating": 5,
+                    "user": "김영희"
+                }
+            },
+            {
+                "review": {
+                    "comment": "약을 빠르게 얻을 수 있는 편리한 위치에 있어 좋아요.",
+                    "rating": 4,
+                    "user": "이철수"
+                }
+            },
+            {
+                "review": {
+                    "comment": "새로운 리뷰 내용",
+                    "rating": 3,
+                    "user": "새로운 리뷰어"
+                }
+            }
+        ],
+        "tel": "555-1234",
+        "time": "오전 9시 - 오후 7시",
+        "title": "건강 약국",
+        "url": "http://www.9876demo.com"
+    },
+    {
+        "__id__": "QJvCK2CWFT0UVm3zZFhc",
+        "address": "대전 중구 중앙로 116 ",
+        "email": "info@animalpharmacy.com",
+        "id": 8,
+        "majorDrugs": "내부기생충약",
+        "parking": "가능",
+        "rating": 5,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "애완동물에게 필요한 약을 다양하게 판매하고 있어서 편리합니다.",
+                    "rating": 5,
+                    "user": "김영희"
+                }
+            },
+            {
+                "review": {
+                    "comment": "동물 친화적인 약국이어서 좋아요.",
+                    "rating": 4,
+                    "user": "이철수"
+                }
+            }
+        ],
+        "tel": "555-3456",
+        "time": "오전 10시 - 오후 8시",
+        "title": "동물 약국",
+        "url": "http://www.6543testsite.com"
+    },
+    {
+        "__id__": "h2Jk49kRyy2zJJSQpM3r",
+        "address": "대전 중구 대종로 516",
+        "email": "info@biopharmacy.com",
+        "id": 5,
+        "majorDrugs": "항생제",
+        "parking": "가능",
+        "rating": 4,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "항생제에 대한 상세한 설명과 사용 방법을 알려주셔서 감사합니다.",
+                    "rating": 4,
+                    "user": "이지수"
+                }
+            },
+            {
+                "review": {
+                    "comment": "약국 내부가 깔끔하고 청결해서 좋아요.",
+                    "rating": 3,
+                    "user": "장민석"
+                }
+            }
+        ],
+        "tel": "555-8765",
+        "time": "오전 9시 - 오후 5시",
+        "title": "녹십자 약국",
+        "url": "http://www.3210samplepage.com"
+    },
+    {
+        "__id__": "nqEDETV81zyROFKcJg7I",
+        "address": "대전 중구 대종로505번길 10",
+        "email": "info@herbpharmacy.com",
+        "id": 6,
+        "majorDrugs": "사상충",
+        "parking": "불가능",
+        "rating": 2,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "허브 치료에 대한 전문성이 부족해요.",
+                    "rating": 2,
+                    "user": "김민우"
+                }
+            },
+            {
+                "review": {
+                    "comment": "좋은 허브 제품을 다양하게 찾을 수 있어서 만족합니다.",
+                    "rating": 3,
+                    "user": "이현주"
+                }
+            }
+        ],
+        "tel": "555-2345",
+        "time": "오전 8시 - 오후 6시",
+        "title": "허브 약국",
+        "url": "http://www.7890example.com"
+    },
+    {
+        "__id__": "pStmCRik1veNhoV1rIR0",
+        "address": "대전 중구 대종로529번길 43",
+        "email": "info@pharmacytherapycenter.com",
+        "id": 2,
+        "majorDrugs": "약학 치료",
+        "parking": "가능",
+        "rating": 3,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "약물 치료에 대한 전문적인 상담이 도움이 되었습니다.",
+                    "rating": 3,
+                    "user": "박민지"
+                }
+            },
+            {
+                "review": {
+                    "comment": "시설이 깨끗하고 직원들이 친절해요.",
+                    "rating": 4,
+                    "user": "정재호"
+                }
+            }
+        ],
+        "tel": "555-5678",
+        "time": "오전 8시 - 오후 6시",
+        "title": "약학 치료 센터",
+        "url": "http://www.5432dummywebsite.com"
+    },
+    {
+        "__id__": "q4cYebXtgT2Ub5uTj1cF",
+        "address": "대전 중구 대종로 471",
+        "email": "info@physicaltherapypharmacy.com",
+        "id": 10,
+        "majorDrugs": "물리치료 약품",
+        "parking": "가능",
+        "rating": 3,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "물리치료 약품에 대한 상세한 설명이 도움이 되었습니다.",
+                    "rating": 4,
+                    "user": "박서준"
+                }
+            },
+            {
+                "review": {
+                    "comment": "물리치료에 필요한 약품을 쉽게 찾을 수 있어서 편리합니다.",
+                    "rating": 2,
+                    "user": "김태리"
+                }
+            }
+        ],
+        "tel": "555-0123",
+        "time": "오전 9시 - 오후 6시",
+        "title": "물리치료 약국",
+        "url": "http://www.1023testpage.com"
+    },
+    {
+        "__id__": "tFZBhHwi9sohorZxenv5",
+        "address": "대전 중구 선화동 236-2",
+        "email": "info@kuryongpharmacy.com",
+        "id": 4,
+        "majorDrugs": "한방 의약품",
+        "parking": "가능",
+        "rating": 5,
+        "reviews": [
+            {
+                "review": {
+                    "comment": "한방 의약품에 대한 지식이 풍부한 약사가 상담해줘서 좋았어요.",
+                    "rating": 5,
+                    "user": "김영철"
+                }
+            },
+            {
+                "review": {
+                    "comment": "전통적인 치료 방법을 추구하는 사람들에게 추천합니다.",
+                    "rating": 4,
+                    "user": "이지은"
+                }
+            }
+        ],
+        "tel": "555-4321",
+        "time": "오전 10시 - 오후 8시",
+        "title": "구룡 약국",
+        "url": "http://www.4567trialsite.com"
+    }
+]

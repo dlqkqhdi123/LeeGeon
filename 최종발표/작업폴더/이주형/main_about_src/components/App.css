@@ -1,0 +1,69 @@
+@font-face {
+  font-family: LibreBaskerville;
+  src: url(../assets/font/Libre_Baskerville/LibreBaskerville-Regular.ttf)
+    format("truetype");
+  font-weight: normal;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: NotoSans;
+  src: url(../assets/font/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf)
+    format("truetype");
+  font-weight: normal;
+  font-size: normal;
+}
+
+* {
+  box-sizing: border-box;
+  word-break: keep-all;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  --main1-color: #ff9b50;
+  --main2-color: #ffc26f;
+  --background-color: #f8ebd8;
+  --text-color: #1c1b1f;
+  --serve-color1: #666;
+  --serve-color2: #d9d9d9;
+  --serve-color3: #f9f9f9;
+  --serve-color4: #fff;
+  --serve-color5: #000;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+li,
+p,
+h3 {
+  color: var(--text-color);
+  font-family: NotoSans;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+:global(#root) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

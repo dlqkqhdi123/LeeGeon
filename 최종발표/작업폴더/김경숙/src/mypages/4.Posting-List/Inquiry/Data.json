@@ -1,0 +1,16 @@
+[
+  {
+    "InquiryTitle": "안녕하세요. 저희는 댕댕업체입니다.",
+    "InquiryType": "제휴 및 제안문의",
+    "checkbox": "checkbox",
+    "createDate": "2014-01-16",
+    "no": 1
+  },
+  {
+    "InquiryTitle": "병원진료 예약을 했는데 업체에서...",
+    "InquiryType": "기타",
+    "checkbox": "checkbox",
+    "createDate": "2014-01-16",
+    "no": 2
+  }
+]

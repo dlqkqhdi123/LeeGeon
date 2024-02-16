@@ -1,0 +1,59 @@
+const [items, setItems] = useState();
+
+
+useEffect(() => {
+  const fetchData = async () => {
+    const querySnapshot = await getDocs(query(collection(db, "주형님이 쓰는 컬렉션네임"), limit(4)));
+    const data = querySnapshot.docs.map((doc) => doc.data());
+
+  };
+
+  fetchData();
+}, []);
+
+
+
+
+
+<h2>{주형님이 쓰는 컬렉션네임.제목}</h2>      
+<p>{주형님이 쓰는 컬렉션네임.이미지}</p>
+<p>{주형님이 쓰는 컬렉션네임.가격}</p>
+     
+// 예))
+<p>{collectionName.title}<p>
+
+
+// 실패시 미리 뤼튼한테 물어본 답지
+
+const [items, setItems] = useState([]);
+
+useEffect(() => {
+  const fetchData = async () => {
+    const querySnapshot = await getDocs(query(collection(db, "주형님이 쓰는 컬렉션네임"), limit(4)));
+** ／주형님이 쓰는 콘피그에 따라 호스펫탈 콘피그를 쓴다? 저도모름 호스펫탈백업 콘피그를 쓴다? ＼**
+** ／마이페이지포인트커스텀 작성하시면됩니다 "주형님이쓰는컬렉션네임에" ＼**
+    const data = querySnapshot.docs.map((doc) => doc.data());
+    setItems(data); // 데이터를 상태로 업데이트합니다.
+  };
+
+  fetchData();
+}, []);
+
+// 데이터를 렌더링하는 부분에서는 items를 사용합니다.
+return (
+  <div>
+    {items.map((item, index) => (
+      <div key={index}>
+        <h2>{item.title}</h2>
+        <p>{item.image}</p>
+        <p>{item.price}</p>
+      </div>
+    ))}
+  </div>
+);
+
+변수 
+1. 파이어베이스에 원하는 필드값이 없다
+이건 경숙님하고 싸워야댐
+2. 트레픽 초과 이거는 발견즉시 사용하는 코드 전체 컨트롤 + a , 컨트롤 + // 
+3. 안불러와지는 변수 발생시 진현님 호출

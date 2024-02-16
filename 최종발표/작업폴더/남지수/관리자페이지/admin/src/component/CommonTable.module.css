@@ -1,0 +1,30 @@
+:root {
+  --mainColor: #ff9b50;
+  --subColor: #ffc26f;
+  --backgroundColor: #f8ebd8;
+  --fontColor: #1c1b1f;
+}
+
+.common_table {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.common_table_header_column {
+  border-bottom: 2px solid var(--subColor);
+  border-top: 2px solid var(--subColor);
+  /* font-size: 16px; */
+  padding: 1.5rem 3rem;
+  font-weight: bold;
+}
+
+.common_table_row {
+  /* border-bottom: 1px solid #ff8b50; */
+}
+
+.common_table_column {
+  padding: 1.5rem 0;
+  border-bottom: 2px solid var(--subColor);
+}

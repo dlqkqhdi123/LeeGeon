@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'LibreBaskerville-Bold';
+  src: url('../assets/font/LibreBaskerville-Bold.ttf') format("truetype");
+  font-weight: 700;  
+}
+
+@font-face {
+  font-family: 'LibreBaskerville-Italic';
+  src: url('../assets/font/LibreBaskerville-Italic.ttf');
+  font-weight: 500;  
+}
+
+@font-face {
+  font-family: 'LibreBaskerville-Regular';
+  src: url('../assets/font/LibreBaskerville-Regular.ttf');
+  font-weight: 500;  
+}
+
+@font-face {
+  font-family: 'NotoSansKR-Black';
+  src: url('../assets/font/NotoSansKR-Black.ttf') format("truetype");
+  font-weight: 900;  
+}
+
+@font-face {
+  font-family: 'NotoSansKR-Medium';
+  src: url('../assets/font/NotoSansKR-Medium.ttf');
+  font-weight: 700;  
+}
+
+@font-face {
+  font-family: 'NotoSansKR-Regular';
+  src: url('../assets/font/NotoSansKR-Regular.ttf');
+  font-weight: 500;  
+}
+
+
+:root {
+  --Bold: 'LibreBaskerville-Bold';
+  --Regular: 'LibreBaskerville-Regular';
+}
+
+html {
+  font-family: var(--Regular);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+a,
+h1,
+h2,
+h3,
+h4{
+  font-family: var(--Bold);
+  font-weight: 700;
+  margin: 0;
+}
+
+p{margin: 0;}
+
+button {
+  font-family: var(--Regular);
+  font-weight: 500;
+}
