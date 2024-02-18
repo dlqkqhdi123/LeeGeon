@@ -7,19 +7,19 @@ import catCursorActive from "../../assets/mouse_cat_after.png";
 import styled from "styled-components";
 
 const Cursor = styled.div`
-  cursor: url(${catCursor}) 20 30, auto;
+  cursor: url(${catCursor}) 20 30, auto !important;
   & > * {
-    cursor: url(${catCursor}) 20 30, auto;
+    cursor: url(${catCursor}) 20 30, auto !important;
   }
   &:active {
-    cursor: url(${catCursorActive}) 20 30, auto;
+    cursor: url(${catCursorActive}) 20 30, auto !important;
   }
 `;
 
 const StyledLink = styled(Link)`
-  cursor: url(${catCursor}) 20 30, auto;
+  cursor: url(${catCursor}) 20 30, auto !important;
   &:active {
-    cursor: url(${catCursorActive}) 20 30, auto;
+    cursor: url(${catCursorActive}) 20 30, auto !important;
   }
 `;
 
@@ -44,7 +44,7 @@ function CatItem(props) {
           <h2 className={styles.diseasetitle}>{Cat.title}</h2>
         </StyledLink>
         <div className={styles.f9f9f9}>
-          <p>{Cat.summary}</p>
+          <p className={styles.catCursor}>{Cat.summary}</p>
         </div>
       </div>
     </Cursor>

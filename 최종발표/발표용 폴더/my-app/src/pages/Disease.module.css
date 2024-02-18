@@ -61,4 +61,14 @@
   padding: 50px;
   width: 100%;
   font-size: 14px;
+  cursor: url("../assets/mouse_cat.png") 20 30, auto !important;
+}
+
+.f9f9f9:active,
+.catCursor:active {
+  cursor: url("../assets/mouse_cat_after.png") 20 30, auto !important;
+}
+
+.catCursor {
+  cursor: url("../assets/mouse_cat.png") 20 30, auto !important;
 }

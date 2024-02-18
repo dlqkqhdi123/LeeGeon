@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import closeImg from "../../assets/icon/icon-close_w.png";
+import closeImg from "../../assets/icon/icon-close_w.svg";
 import style from "./FileInput.css";
 
 function FileInput({ onFileChange }) {

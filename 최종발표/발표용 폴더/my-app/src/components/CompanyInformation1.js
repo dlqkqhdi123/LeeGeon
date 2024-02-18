@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./LgMyPage.module.css";
-import MyPageButton from "./MyPageButton";
-
 import {
   db,
   doc,
@@ -10,6 +8,27 @@ import {
   updateFirebaseDocument,
 } from "../api/firebase";
 import LgOverlay from "./LgOverlay";
+import styled from "styled-components";
+
+const MypageButton = styled.button`
+  width: 12rem;
+  height: 3.5rem;
+  border: 2px solid #ff9b50;
+  color: #ff9b50;
+  background-color: #f8ebd8;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4.5rem 0;
+
+  &:hover,
+  &:active {
+    background-color: #ff9b50;
+    color: #ffffff;
+    font-weight: 700;
+  }
+`;
 
 function CompanyInformation1() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -133,7 +152,7 @@ function CompanyInformation1() {
               회원탈퇴
             </label>
             <div>
-              <MyPageButton
+              <MypageButton
                 type="button"
                 style={{ width: "7rem", height: "2.3rem", margin: "0" }}
                 onClick={() => {
@@ -141,14 +160,14 @@ function CompanyInformation1() {
                 }}
               >
                 탈퇴하기
-              </MyPageButton>
+              </MypageButton>
             </div>
           </div>
         </form>
         <div className={styles.retouch}>
-          <MyPageButton type="submit" onClick={handleSubmit}>
+          <MypageButton type="submit" onClick={handleSubmit}>
             수정하기
-          </MyPageButton>
+          </MypageButton>
         </div>
 
         {modalOpen && <LgOverlay modalOpen={modalOpen} />}

@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styles from "./LgMyPage.module.css";
-import CommonTable from "./table/CommonTable";
-import CommonTableColumn from "./table/CommonTableColumn";
-import CommonTableRow from "./table/CommonTableRow";
+import CommonTable from "./../mypages/table/CommonTable";
+import CommonTableColumn from "./../mypages/table/CommonTableColumn";
+import CommonTableRow from "./../mypages/table/CommonTableRow";
 import { collection, db, doc, getDocs } from "../api/firebase";
 import ReservationModal from "./ReservationModal";
-import MyPageButton from "./MyPageButton";
+import styled from "styled-components";
+
+const MypageButton = styled.button`
+  width: 12rem;
+  height: 3.5rem;
+  border: 2px solid #ff9b50;
+  color: #ff9b50;
+  background-color: #f8ebd8;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4.5rem 0;
+
+  &:hover,
+  &:active {
+    background-color: #ff9b50;
+    color: #ffffff;
+    font-weight: 700;
+  }
+`;
 
 function ReservationList() {
   const [reservations, setReservations] = useState([]);
@@ -97,7 +117,7 @@ function ReservationList() {
             <CommonTableColumn>한 병원</CommonTableColumn>
             <CommonTableColumn>2024-01-16</CommonTableColumn>
           </CommonTableRow>
-          <MyPageButton>취소하기</MyPageButton>
+          <MypageButton>취소하기</MypageButton>
         </CommonTable>
       </div>
     </div>

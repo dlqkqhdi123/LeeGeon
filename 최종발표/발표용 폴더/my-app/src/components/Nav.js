@@ -51,9 +51,27 @@ function Nav() {
       navigate("/login");
       e.preventDefault();
     } else {
-      navigate("/mypage");
+      const member = JSON.parse(localStorage.getItem("member"));
+      console.log(member.memberType);
+      if (!member || !member.memberType) {
+        alert("잘못된 접근입니다.");
+        e.preventDefault();
+        return;
+      }
+      switch (member.memberType) {
+        case "owner":
+          navigate("/myPage");
+          break;
+        case "partner":
+          navigate("/myPagePartner");
+          break;
+        case "admin":
+          navigate("/myPageAdmin");
+          break;
+      }
     }
   };
+
   return (
     <nav>
       <div className="nav-container">
@@ -95,6 +113,7 @@ function Nav() {
               to="/mypage/guardian"
               className="nav-link"
               style={getLinkStyle}
+              onClick={handleMyPageClick}
             >
               My Page
             </NavLink>

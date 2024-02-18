@@ -162,7 +162,7 @@ function SignUp() {
           memberPhone: phone,
           memberMail: email,
           memberMail2: mail2,
-          memberType: "social",
+          memberType: "owner",
         });
         navigate("/SocialNameComplete");
       } catch (error) {

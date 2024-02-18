@@ -28,11 +28,11 @@ a {
 
 html,
 body > * {
-  cursor: url("./assets/mouse_dog.png") 20 30, auto !important;
+  cursor: url("./assets/mouse_dog.png") 20 30, auto;
 }
 
 body:active > * {
-  cursor: url("./assets/mouse_dog_after.png") 20 30, auto !important;
+  cursor: url("./assets/mouse_dog_after.png") 20 30, auto;
 }
 
 button,
@@ -42,9 +42,8 @@ select,
 option,
 textarea,
 table > *,
-label,
-div {
-  cursor: url("./assets/mouse_dog.png") 20 30, auto !important;
+label {
+  cursor: url("./assets/mouse_dog.png") 20 30, auto;
 }
 
 button:active,
@@ -53,7 +52,6 @@ a:active,
 select:active,
 option:active,
 textarea:active table:active > *,
-label:active,
-div:active {
+label:active {
   cursor: url("./assets/mouse_dog_after.png") 20 30, auto !important;
 }

@@ -12,7 +12,7 @@ import {
 } from "../api/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ReservationModalHos = ({ isOpen, onClose, hospital }) => {
+const ReservationModalPh = ({ isOpen, onClose, pharmacy }) => {
   const props = useLocation();
   const navigate = useNavigate();
   const { pathname } = props;
@@ -59,7 +59,7 @@ const ReservationModalHos = ({ isOpen, onClose, hospital }) => {
         const reservation = {
           Date,
           Symptom,
-          partner: hospital.title,
+          partner: pharmacy.title,
           petKind: petType,
           petName,
           condition: "예약확인중",
@@ -106,7 +106,7 @@ const ReservationModalHos = ({ isOpen, onClose, hospital }) => {
           <div className={styles.header}>
             <h2 className={styles.title}>
               예약하기
-              <p> {hospital ? hospital.title : "Loading..."}</p>
+              <p> {pharmacy ? pharmacy.title : "Loading..."}</p>
             </h2>
             <button className={styles.closeButton} onClick={onClose}>
               <img src={closeIcon} className={styles.closeIcon} />
@@ -138,6 +138,7 @@ const ReservationModalHos = ({ isOpen, onClose, hospital }) => {
               <select
                 id="petType"
                 value={petType}
+                className={styles.select}
                 onChange={(e) => setPetType(e.target.value)}
               >
                 <option value="">선택해주세요.</option>
@@ -187,4 +188,4 @@ const ReservationModalHos = ({ isOpen, onClose, hospital }) => {
   );
 };
 
-export default ReservationModalHos;
+export default ReservationModalPh;

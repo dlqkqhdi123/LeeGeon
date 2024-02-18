@@ -9,12 +9,15 @@ import catCursorActive from "../assets/mouse_cat_after.png";
 import styled from "styled-components";
 
 const Cursor = styled.div`
-  cursor: url(${catCursor}) 20 30, auto;
+  cursor: url(${catCursor}) 20 30, auto !important;
+  & > * {
+    cursor: url(${catCursor}) 20 30, auto !important;
+  }
   & > a {
-    cursor: url(${catCursor}) 20 30, auto;
+    cursor: url(${catCursor}) 20 30, auto !important;
   }
   &:active {
-    cursor: url(${catCursorActive}) 20 30, auto;
+    cursor: url(${catCursorActive}) 20 30, auto !important;
   }
 `;
 
@@ -33,7 +36,7 @@ function Disease2() {
   }, []);
 
   return (
-    <Cursor>
+    <Cursor className={styles.catCursor}>
       <h1 className={styles.title}>Disease</h1>
       <div className={styles.btnWrap}>
         <Link to="/Dog">
@@ -46,10 +49,8 @@ function Disease2() {
       <p className={styles.choice}>
         아래의 증상 중 &nbsp; <span>한 가지</span>&nbsp; 를 선택하세요
       </p>
-      <div>
-        <div>
-          {/* <p>총 {items.length}개 코스</p> */}
-
+      <div className={styles.catCursor}>
+        <div className={styles.catCursor}>
           {items.length === 0 && !isInit ? (
             <div></div>
           ) : (

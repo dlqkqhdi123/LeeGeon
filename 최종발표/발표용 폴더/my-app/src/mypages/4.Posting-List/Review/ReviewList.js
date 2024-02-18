@@ -4,16 +4,16 @@ import CommonTableColumn from "../../table/CommonTableColumn";
 import CommonTableRow from "../../table/CommonTableRow";
 import Overlay from "../../Overlay";
 import ReviewModal from "./ReviewModal";
-import { firestore } from "../../../api/firebase";
+import { collection, db, getDocs } from "../../../api/firebase";
 
 const ReviewList = (props) => {
   // //////파이어베이스///////////
   const [PostingR, setPostingR] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const PostingRData = await firestore
-        .collection("MyPageCustomer-PostingR")
-        .get();
+      const PostingRData = await getDocs(
+        collection(db, "MyPageCustomer-PostingR")
+      );
       const dataList = PostingRData.docs.map((doc) => doc.data());
       setPostingR(dataList);
     };

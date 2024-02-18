@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./ReservationModal.module.css";
-import closeIcon from "../assets/icon/icon-close_w.png";
+import closeIcon from "../assets/icon/icon-close_w.svg";
 import {
   setDoc,
   collection,

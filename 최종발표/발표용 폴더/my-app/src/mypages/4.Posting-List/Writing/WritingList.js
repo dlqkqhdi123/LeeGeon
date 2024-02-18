@@ -6,16 +6,16 @@ import CommonTableRow from "../../table/CommonTableRow";
 import Overlay from "../../Overlay";
 import WritingModal from "./WritingModal";
 
-import { firestore } from "../../../api/firebase";
+import { collection, db, firestore, getDocs } from "../../../api/firebase";
 
 const WritingList = (props) => {
   // //////파이어베이스///////////
   const [PostingW, setPostingW] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const PostingWData = await firestore
-        .collection("MyPageCustomer-PostingW")
-        .get();
+      const PostingWData = await getDocs(
+        collection(db, "MyPageCustomer-PostingW")
+      );
       const dataList = PostingWData.docs.map((doc) => doc.data());
       setPostingW(dataList);
     };

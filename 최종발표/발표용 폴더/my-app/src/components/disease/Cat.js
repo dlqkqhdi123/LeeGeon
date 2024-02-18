@@ -10,19 +10,19 @@ import catCursor from "../../assets/mouse_cat.png";
 import catCursorActive from "../../assets/mouse_cat_after.png";
 
 const Cursor = styled.div`
-  cursor: url(${catCursor}) 20 30, auto;
+  cursor: url(${catCursor}) 20 30, auto !important;
   & > a {
-    cursor: url(${catCursor}) 20 30, auto;
+    cursor: url(${catCursor}) 20 30, auto !important;
   }
   &:active {
-    cursor: url(${catCursorActive}) 20 30, auto;
+    cursor: url(${catCursorActive}) 20 30, auto !important;
   }
 `;
 
 const StyledLink = styled(Link)`
-  cursor: url(${catCursor}) 20 30, auto;
+  cursor: url(${catCursor}) 20 30, auto !important;
   &:active {
-    cursor: url(${catCursorActive}) 20 30, auto;
+    cursor: url(${catCursorActive}) 20 30, auto !important;
   }
 `;
 

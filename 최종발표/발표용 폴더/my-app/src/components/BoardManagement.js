@@ -1,6 +1,6 @@
-import CommonTable from "./table/CommonTable";
-import CommonTableRow from "./table/CommonTableRow";
-import CommonTableColumn from "./table/CommonTableColumn";
+import CommonTable from "./../mypages/table/CommonTable.js";
+import CommonTableRow from "./../mypages/table/CommonTableRow";
+import CommonTableColumn from "./../mypages/table/CommonTableColumn";
 import {
   getDatas,
   deleteDatas,
@@ -10,30 +10,35 @@ import {
 } from "../api/firebase";
 import { useEffect, useState } from "react";
 import styles from "./BoardModal.module.css";
-import BoardModal from "./BoardModal.js";
-import MyPageButton from "./MyPageButton";
-import { queries } from "@testing-library/react";
+import BoardModal from "./BoardModal";
+import styled from "styled-components";
+
+const MypageButton = styled.button`
+  width: 12rem;
+  height: 3.5rem;
+  border: 2px solid #ff9b50;
+  color: #ff9b50;
+  background-color: #f8ebd8;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4.5rem 0;
+
+  &:hover,
+  &:active {
+    background-color: #ff9b50;
+    color: #ffffff;
+    font-weight: 700;
+  }
+`;
 
 function BoardManagement() {
   const [items, setItems] = useState([]);
-  const [order, setOrder] = useState("createdAt");
   const [isLoading, setIsLoading] = useState(false);
   const [loadingError, setLoadingError] = useState(null);
   const [selectedReservation, setSelectedReservation] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleDelete = async (docId, imgUrl) => {
-    const result = await deleteDatas(
-      "MyPageCustomer-Reservation",
-      docId,
-      imgUrl
-    );
-    if (!result) {
-      alert("저장된 이미지 파일이 없습니다. \n경로를 확인해주세요.");
-      return;
-    }
-    setItems((prevItems) => prevItems.filter((item) => item.docId !== docId));
-  };
 
   const handleLoad = async () => {
     try {
@@ -117,7 +122,7 @@ function BoardManagement() {
           </CommonTableRow>
         </CommonTable>
         <div className={styles.tnwjdtkrwp}>
-          <MyPageButton>삭제</MyPageButton>
+          <MypageButton>삭제</MypageButton>
         </div>
       </div>
     </div>
