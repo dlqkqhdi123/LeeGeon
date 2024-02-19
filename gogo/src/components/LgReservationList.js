@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import styles from "./LgMyPage.module.css";
 import CommonTable from "./table/CommonTable";
 import CommonTableColumn from "./table/CommonTableColumn";
 import CommonTableRow from "./table/CommonTableRow";
-import { collection, db, doc, getDocs } from "../api/firebase";
-import ReservationModal from "./ReservationModal";
+import { db, LgGetReservationsByMemberId } from "../api/firebase";
+import LgReservationModal from "./LgReservationModal";
 import MyPageButton from "./MyPageButton";
 
-function ReservationList() {
+function LgReservationList() {
   const [reservations, setReservations] = useState([]);
   const [selectedReservation, setSelectedReservation] = useState(null); // 선택한 예약 정보를 저장하는 상태
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창의 상태를 관리하는 상태
 
-  async function getReservations(db) {
-    const reservationsCol = collection(db, "MyPageCustomer-Reservation");
-    const reservationsSnapshot = await getDocs(reservationsCol);
-    const reservationsList = reservationsSnapshot.docs.map((doc) => doc.data());
-    return reservationsList;
-  }
+  const member = localStorage.getItem("member");
+  const memberId = member?.memberId;
+  console.log(memberId);
 
   useEffect(() => {
     async function fetchReservations() {
       try {
-        const reservations = await getReservations(db);
-        setReservations(reservations);
+        const member = JSON.parse(localStorage.getItem("member"));
+        const memberId = member?.memberId;
+        console.log(memberId);
+        if (memberId) {
+          const reservations = await LgGetReservationsByMemberId(db, memberId);
+          setReservations(reservations);
+        } else {
+          console.error("회원 ID가 없습니다.");
+        }
       } catch (error) {
         console.error("예약 정보를 불러오는 중에 오류가 발생했습니다.", error);
       }
@@ -38,6 +42,7 @@ function ReservationList() {
 
   const openModal = (reservation) => {
     setSelectedReservation(reservation);
+    console.log(reservation);
     setIsModalOpen(true);
   };
 
@@ -72,7 +77,8 @@ function ReservationList() {
               </CommonTableColumn>
               <CommonTableColumn>{reservation.condition}</CommonTableColumn>
               <CommonTableColumn>{reservation.petName}</CommonTableColumn>
-              <CommonTableColumn>{reservation.hospital}</CommonTableColumn>
+              <CommonTableColumn>{reservation.hosName2}</CommonTableColumn>
+              <CommonTableColumn>{reservation.Date}</CommonTableColumn>
               <CommonTableColumn>
                 {reservation.reservationDate}
               </CommonTableColumn>
@@ -80,23 +86,13 @@ function ReservationList() {
           ))}
 
           {isModalOpen && (
-            <ReservationModal
+            <LgReservationModal
               isOpen={isModalOpen}
               reservation={selectedReservation}
               onClose={closeModal}
             />
           )}
-          <CommonTableRow>
-            <CommonTableColumn>
-              <input type="checkbox" />
-            </CommonTableColumn>
-            <CommonTableColumn>3</CommonTableColumn>
-            <CommonTableColumn>00-000-000</CommonTableColumn>
-            <CommonTableColumn>예약중</CommonTableColumn>
-            <CommonTableColumn>냥냥이</CommonTableColumn>
-            <CommonTableColumn>한 병원</CommonTableColumn>
-            <CommonTableColumn>2024-01-16</CommonTableColumn>
-          </CommonTableRow>
+
           <MyPageButton>취소하기</MyPageButton>
         </CommonTable>
       </div>
@@ -105,4 +101,4 @@ function ReservationList() {
 }
 // 예약 정보 예약자 번호 받아와야 완성
 
-export default ReservationList;
+export default LgReservationList;

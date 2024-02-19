@@ -13,39 +13,29 @@
 
 .modalContent {
   background: #fff;
-  padding: 5px;
-  gap: 1rem;
-}
-
-.modalContainer {
-  width: 1000px;
+  /* padding: 5px; */
+  gap: 2rem;
 }
 
 .modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ff9b50;
-}
-.modalSpan {
-  color: #ff9b50;
-  font-weight: 700;
-  flex-grow: 1;
-  text-align: center;
-  margin-bottom: 8px;
+  /* border-bottom: 1px solid #ff9b50; */
+  background-color: #ffc26f;
+  margin: 0;
+  height: 50px;
 }
 
 .closeImg {
   position: relative;
   bottom: 3px;
-  left: 0;
-  width: 25px;
-  height: 25px;
+  left: -10px;
+  width: 30px;
+  height: 30px;
   border: none;
   cursor: pointer;
-}
-.modalContent {
-  display: flex;
+  fill: #fff;
 }
 
 .modalImgBox,
@@ -80,11 +70,20 @@
 .modalInput2:focus {
   outline: none;
 }
-
+.LgModalSpan {
+  color: #fff;
+  font-weight: 700;
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 8px;
+}
 .modalInput {
   border-bottom: 1px solid #ff9b50;
 }
-
+.LgModalBoxContainer {
+  /* background-color: red; */
+  /* margin: 10px; */
+}
 .modalInput2 {
   height: 300px;
   text-align: start;
@@ -183,4 +182,26 @@
 .reservationForm {
   display: flex;
   justify-content: flex-start;
+}
+.LgModalContainer {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 1rem;
+}
+.LgModalLabel {
+  font-weight: 600;
+  margin-left: 3rem;
+}
+.LgModalText {
+  margin: 0 0 0 4rem;
+  text-align: start;
+}
+.LgBookingList {
+  width: 100%;
+  display: grid;
+}
+.bookingList {
+  width: 100%;
 }

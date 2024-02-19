@@ -395,6 +395,68 @@ async function getMemberNickName(memberId) {
     throw error;
   }
 }
+//업체 예약내역 나중에 변수명 바까야할수도
+async function getReservationByNumber(memberId, reservationNumber) {
+  console.log(reservationNumber);
+  const reservationCollection = collection(
+    db,
+    "member",
+    memberId,
+    "Reservation"
+  );
+  const querySnapshot = await getDocs(reservationCollection);
+
+  for (const doc of querySnapshot.docs) {
+    if (doc.data().reservationNumber === reservationNumber) {
+      console.log("Document data:", doc.data());
+      return doc.data();
+    }
+  }
+
+  console.log("No such document!");
+  return null;
+}
+// 업체예약하기 이건 변수명바꿈
+async function LgGetReservation(memberId, reservationNumber) {
+  try {
+    const q = query(
+      collection(db, "member", memberId, "Reservation"),
+      where("reservationNumber", "==", reservationNumber)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    let reservationData = null;
+
+    querySnapshot.forEach((doc) => {
+      reservationData = doc.data();
+    });
+
+    return reservationData;
+  } catch (error) {
+    console.error("Error getting reservation: ", error);
+  }
+}
+//이건 업체예약 리스트
+async function LgGetReservationsByMemberId(db, memberId) {
+  const memberCol = collection(db, "member");
+  const querySnapshot = await getDocs(
+    query(memberCol, where("memberId", "==", memberId))
+  );
+  const memberDocs = querySnapshot.docs;
+  const reservationsList = [];
+
+  for (const memberDoc of memberDocs) {
+    if (memberDoc && memberDoc.exists()) {
+      const reservationCol = collection(memberDoc.ref, "Reservation");
+      const reservationsSnapshot = await getDocs(reservationCol);
+      const reservations = reservationsSnapshot.docs.map((doc) => doc.data());
+      reservationsList.push(...reservations);
+    }
+  }
+
+  return reservationsList;
+}
 
 export {
   db,
@@ -405,6 +467,8 @@ export {
   addDoc,
   addDatas,
   doc,
+  where,
+  query,
   deleteDoc,
   updateDoc,
   deleteDatas,
@@ -420,4 +484,7 @@ export {
   getFirebaseDocument,
   updateFirebaseDocument,
   getMemberNickName,
+  getReservationByNumber,
+  LgGetReservation,
+  LgGetReservationsByMemberId,
 };

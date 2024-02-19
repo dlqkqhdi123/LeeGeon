@@ -6,7 +6,7 @@ import Dog from "./components/Dog.js";
 import Cat from "./components/Cat";
 import Disease2 from "./pages/Disease2.js";
 import MaPage from "./pages/MaPage.js";
-import ReservationList from "./components/ReservationList.js";
+import LgReservationList from "./components/LgReservationList.js";
 import CompanyInformation from "./components/CompanyInformation.js";
 import BoardManagement from "./components/BoardManagement.js";
 import LoginPage from "./components/login/LoginPage.js";
@@ -32,7 +32,7 @@ function Main() {
             <Route index element={<CompanyInformation1 />}></Route>
             <Route
               path=":reservationList"
-              element={<ReservationList />}
+              element={<LgReservationList />}
             ></Route>
             <Route path="BoardManagement" element={<BoardManagement />}></Route>
             <Route path="partnerCompany" element={<PartnerCompany />}></Route>
