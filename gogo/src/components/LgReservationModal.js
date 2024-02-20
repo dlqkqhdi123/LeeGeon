@@ -9,6 +9,7 @@ import {
   getFirebaseDocument,
   getReservationByNumber,
   LgGetReservation,
+  LgGetReservationByNumber,
 } from "../api/firebase";
 import ModalButton from "./ModalButton";
 import closeIcon from "../assets/icon/icon-close_w.svg";
@@ -24,7 +25,7 @@ function LgReservationModal({ isOpen, onClose, reservation }) {
       if (member && member.memberId) {
         getFirebaseDocument(setReserv);
         if (reservation) {
-          const reservationData = await getReservationByNumber(
+          const reservationData = await LgGetReservationByNumber(
             member.memberId,
             reservation
           );

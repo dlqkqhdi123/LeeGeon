@@ -1,11 +1,11 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import styles from "./LgMyPage.module.css";
-import CommonTable from "./table/CommonTable";
-import CommonTableColumn from "./table/CommonTableColumn";
-import CommonTableRow from "./table/CommonTableRow";
 import { db, LgGetReservationsByMemberId } from "../api/firebase";
 import LgReservationModal from "./LgReservationModal";
-import MyPageButton from "./MyPageButton";
+import MyPageButton from "./MypageButton";
+import CommonTableRow from "./../mypages/table/CommonTableRow";
+import CommonTableColumn from "./../mypages/table/CommonTableColumn";
+import CommonTable from "../mypages/table/CommonTable";
 
 function LgReservationList() {
   const [reservations, setReservations] = useState([]);
