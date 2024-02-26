@@ -396,7 +396,7 @@ async function getMemberNickName(memberId) {
   }
 }
 //업체 예약내역 나중에 변수명 바까야할수도
-async function getReservationByNumber(memberId, reservationNumber) {
+async function LgGetReservationByNumber(memberId, reservationNumber) {
   console.log(reservationNumber);
   const reservationCollection = collection(
     db,
@@ -484,7 +484,7 @@ export {
   getFirebaseDocument,
   updateFirebaseDocument,
   getMemberNickName,
-  getReservationByNumber,
+  LgGetReservationByNumber,
   LgGetReservation,
   LgGetReservationsByMemberId,
 };
